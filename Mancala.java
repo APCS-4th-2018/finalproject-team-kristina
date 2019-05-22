@@ -8,22 +8,19 @@ import java.util.*;
 public abstract class Mancala
 {
     // instance variable
-    protected LinkedList[][] board;  //Mancala board
+    protected LinkedList[] board;  //Mancala board
     
     /**
      * Constructor for objects of Mancala
      */
     public Mancala()
     {
-        board = new LinkedList[8][2];
-        for (int r = 1; r < board.length-1; r++)
+        board = new LinkedList[14];
+        for (int i = 1; i < board.length-1; i++)
         {
-            for (int c = 0; c < board[r].length; c++)
+            for (int num = 1; num <= 4; num++)
             {
-                for (int i = 1; i <= 4; i++)
-                {
-                    //board[r][c].add(new Stone());
-                }
+                //board[i].add(new Stone());
             }
         }
     }
@@ -46,23 +43,34 @@ public abstract class Mancala
     }
     
     /**
-     * 
+     * The color of the background (depends on the type of Mancala)
      */
     public abstract void fillBackground();
     
     /**
-     * 
+     * Draws the board 
      */
     public void drawBoard()
     {
         
     }
     
-    /**
-     * 
-     */
-    public void drawNumbers()
+    //draws the stones in each pit
+    private void drawStones(int location)
     {
         
+    }
+    
+    /**
+     * Prints out the number of stones in each pit
+     */
+    
+    public void drawNumbers()
+    {
+        for (int i = 0; i < board.length; i++)
+        {
+            int num = board[i].size();
+            
+        }
     }
 }
