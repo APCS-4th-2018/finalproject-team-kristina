@@ -1,0 +1,24 @@
+#BlueJ class context
+comment0.target=Mancala
+comment0.text=\n\ Generalized\ game\ of\ Mancala\n\n\ @author\ Helen,\ Kylie,\ Kristina\n\ @version\ 5/22/19\n
+comment1.params=
+comment1.target=Mancala()
+comment1.text=\n\ Constructor\ for\ objects\ of\ Mancala\n
+comment2.params=
+comment2.target=void\ move()
+comment2.text=\n\ \n
+comment3.params=
+comment3.target=boolean\ isWon()
+comment3.text=\n\ \n
+comment4.params=
+comment4.target=void\ fillBackground()
+comment4.text=\n\ The\ color\ of\ the\ background\ (depends\ on\ the\ type\ of\ Mancala)\n
+comment5.params=
+comment5.target=void\ drawBoard()
+comment5.text=\n\ Draws\ the\ board\ \n
+comment6.params=location
+comment6.target=void\ drawStones(int)
+comment7.params=
+comment7.target=void\ drawNumbers()
+comment7.text=\n\ Prints\ out\ the\ number\ of\ stones\ in\ each\ pit\n
+numComments=8
