@@ -1,24 +1,32 @@
-
+import java.util.*;
 /**
- * Abstract class Mancala - write a description of the class here
+ * Generalized game of Mancala
  *
- * @author (your name here)
- * @version (version number or date here)
+ * @author Helen, Kylie, Kristina
+ * @version 5/22/19
  */
 public abstract class Mancala
 {
-    // instance variables - replace the example below with your own
-    private int x;
-
+    // instance variable
+    protected LinkedList[][] board;  //Mancala board
+    
     /**
-     * An example of a method - replace this comment with your own
-     *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
+     * Constructor for objects of Mancala
      */
-    public int sampleMethod(int y)
+    public Mancala()
     {
-        // put your code here
-        return x + y;
+        board = new LinkedList[8][2];
+        for (int r = 1; r < board.length-1; r++)
+        {
+            for (int c = 0; c < board[r].length; c++)
+            {
+                for (int i = 1; i <= 4; i++)
+                {
+                    //board[r][c].add(new Stone());
+                }
+            }
+        }
     }
+
+    
 }
