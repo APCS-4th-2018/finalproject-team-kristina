@@ -28,5 +28,41 @@ public abstract class Mancala
         }
     }
 
+    /**
+     * 
+     */
+    public void move()
+    {
+        
+    }
     
+    /**
+     * 
+     */
+    public boolean isWon()
+    {
+        boolean won = true;
+        return won;
+    }
+    
+    /**
+     * 
+     */
+    public abstract void fillBackground();
+    
+    /**
+     * 
+     */
+    public void drawBoard()
+    {
+        
+    }
+    
+    /**
+     * 
+     */
+    public void drawNumbers()
+    {
+        
+    }
 }
