@@ -26,15 +26,33 @@ public abstract class Mancala
     }
 
     /**
+     * Moves the stones that are clicked on
      * 
+     * @param num  location user clicked
      */
-    public void move()
+    public void move(int num)
     {
         
     }
     
     /**
+     * Returns true if a location on the board is empty
      * 
+     * @param num  location to check
+     * @return true/false
+     */
+    public boolean isEmpty(int num)
+    {
+        boolean empty = false;
+        if (board[num].size() == 0)
+            empty = true;
+        return empty;
+    }
+    
+    /**
+     * Determines whether the game is won yet
+     * 
+     * @return true if the game is won, false if not
      */
     public boolean isWon()
     {
@@ -43,7 +61,7 @@ public abstract class Mancala
     }
     
     /**
-     * The color of the background (depends on the type of Mancala)
+     * Fills the background with a certain color
      */
     public abstract void fillBackground();
     
