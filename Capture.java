@@ -35,6 +35,7 @@ public class Capture
      */
     public boolean isWon()
     {
+        return false;
     }
 
     /**
