@@ -1,33 +1,47 @@
 
 /**
- * Write a description of class Capture here.
+ * Specific methods for the game type Capture of Mancala.
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author Helen, Kylie, Kristina
+ * @version 5/22/19
  */
 public class Capture
 {
-    // instance variables - replace the example below with your own
-    private int x;
-
     /**
-     * Constructor for objects of class Capture
+     *  Constructor for the Capture object
      */
     public Capture()
     {
-        // initialise instance variables
-        x = 0;
     }
 
     /**
-     * An example of a method - replace this comment with your own
-     *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
+     *  Helper method for when stones are captured
      */
-    public int sampleMethod(int y)
+    private void captured()
     {
-        // put your code here
-        return x + y;
+    }
+
+    /**
+     *  Move method specifically for capture game type (how the stones move)
+     */
+    public void move()
+    {
+    }
+
+    /**
+     *  Returns whether the user has won or lost in Capture mode.
+     *
+     * @return    The true or false depending on win or lose
+     */
+    public boolean isWon()
+    {
+        return false;
+    }
+
+    /**
+     *  Fills the background of the screen for Capture games
+     */
+    public void fillBackground()
+    {
     }
 }
