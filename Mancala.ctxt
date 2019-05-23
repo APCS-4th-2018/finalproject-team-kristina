@@ -1,12 +1,5 @@
 #BlueJ class context
 comment0.target=Mancala
-<<<<<<< HEAD
-comment0.text=\n\ Abstract\ class\ Mancala\ -\ write\ a\ description\ of\ the\ class\ here\n\n\ @author\ (your\ name\ here)\n\ @version\ (version\ number\ or\ date\ here)\n
-comment1.params=y
-comment1.target=int\ sampleMethod(int)
-comment1.text=\n\ An\ example\ of\ a\ method\ -\ replace\ this\ comment\ with\ your\ own\n\n\ @param\ \ y\ \ a\ sample\ parameter\ for\ a\ method\n\ @return\ \ \ \ the\ sum\ of\ x\ and\ y\n
-numComments=2
-=======
 comment0.text=\n\ Generalized\ game\ of\ Mancala\n\n\ @author\ Helen,\ Kylie,\ Kristina\n\ @version\ 5/22/19\n
 comment1.params=
 comment1.target=Mancala()
@@ -21,7 +14,6 @@ comment4.params=
 comment4.target=boolean\ isWon()
 comment4.text=\n\ Determines\ whether\ the\ game\ is\ won\ yet\n\ \n\ @return\ true\ if\ the\ game\ is\ won,\ false\ if\ not\n
 comment5.params=
-<<<<<<< HEAD
 comment5.target=void\ fillBackground()
 comment5.text=\n\ Fills\ the\ background\ with\ a\ certain\ color\n
 comment6.params=
@@ -33,14 +25,3 @@ comment8.params=
 comment8.target=void\ drawNumbers()
 comment8.text=\n\ Prints\ out\ the\ number\ of\ stones\ in\ each\ pit\n
 numComments=9
-=======
-comment5.target=void\ drawBoard()
-comment5.text=\n\ Draws\ the\ board\ \n
-comment6.params=location
-comment6.target=void\ drawStones(int)
-comment7.params=
-comment7.target=void\ drawNumbers()
-comment7.text=\n\ Prints\ out\ the\ number\ of\ stones\ in\ each\ pit\n
-numComments=8
->>>>>>> master
->>>>>>> master
