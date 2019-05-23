@@ -1,24 +1,76 @@
-
+import java.util.*;
 /**
- * Abstract class Mancala - write a description of the class here
+ * Generalized game of Mancala
  *
- * @author (your name here)
- * @version (version number or date here)
+ * @author Helen, Kylie, Kristina
+ * @version 5/22/19
  */
 public abstract class Mancala
 {
-    // instance variables - replace the example below with your own
-    private int x;
+    // instance variable
+    protected LinkedList[] board;  //Mancala board
+    
+    /**
+     * Constructor for objects of Mancala
+     */
+    public Mancala()
+    {
+        board = new LinkedList[14];
+        for (int i = 1; i < board.length-1; i++)
+        {
+            for (int num = 1; num <= 4; num++)
+            {
+                //board[i].add(new Stone());
+            }
+        }
+    }
 
     /**
-     * An example of a method - replace this comment with your own
-     *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
+     * 
      */
-    public int sampleMethod(int y)
+    public void move()
     {
-        // put your code here
-        return x + y;
+        
+    }
+    
+    /**
+     * 
+     */
+    public boolean isWon()
+    {
+        boolean won = true;
+        return won;
+    }
+    
+    /**
+     * The color of the background (depends on the type of Mancala)
+     */
+    public abstract void fillBackground();
+    
+    /**
+     * Draws the board 
+     */
+    public void drawBoard()
+    {
+        
+    }
+    
+    //draws the stones in each pit
+    private void drawStones(int location)
+    {
+        
+    }
+    
+    /**
+     * Prints out the number of stones in each pit
+     */
+    
+    public void drawNumbers()
+    {
+        for (int i = 0; i < board.length; i++)
+        {
+            int num = board[i].size();
+            
+        }
     }
 }

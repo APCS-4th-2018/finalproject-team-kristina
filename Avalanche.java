@@ -1,33 +1,41 @@
 
 /**
- * Write a description of class Avalanche here.
+ * The Avalanche mode of the mancala game
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author Helen, Kylie, Kristina
+ * @version 5/22/19
  */
-public class Avalanche
+public class Avalanche extends Mancala
 {
-    // instance variables - replace the example below with your own
-    private int x;
-
     /**
      * Constructor for objects of class Avalanche
      */
     public Avalanche()
     {
-        // initialise instance variables
-        x = 0;
+       
     }
 
     /**
-     * An example of a method - replace this comment with your own
-     *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
+     * Moves the stones that are clicked on
      */
-    public int sampleMethod(int y)
+    public void move()
     {
-        // put your code here
-        return x + y;
+    }
+    
+    /**
+     * Determines whether the game is won yet
+     * 
+     * @return true if the game is won, false if not
+     */
+    public boolean isWon()
+    {
+        return true;
+    }
+    
+    /**
+     * Fills the background with a certain color
+     */
+    public void fillBackground()
+    {
     }
 }
