@@ -17,9 +17,14 @@ public class Avalanche extends Mancala
 
     /**
      * Moves the stones that are clicked on
+     * 
+     * @param num the location of the stone that is clicked on
      */
-    public void move()
+    public void move(int num)
     {
+        //super.move();//move normally
+        /*if(!isEmpty(some int))
+            super.move();//continue moving if there are stones there*/
     }
     
     /**
