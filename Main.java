@@ -12,6 +12,8 @@ import javafx.scene.layout.*;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 /**
  * Write a description of JavaFX class Main here.
@@ -24,7 +26,7 @@ public class Main extends Application
     @Override
     public void start(Stage stage) throws Exception
     {
-        HBox box = new HBox();
+        VBox box = new VBox();
         box.setPadding(new Insets(20));
         box.setSpacing(20);
         box.setAlignment(Pos.CENTER);
@@ -35,9 +37,42 @@ public class Main extends Application
         stage.setTitle("Mancala");
         stage.setScene(scene);
         stage.show();
+        Button button1 = new Button("Avalanche");
+        box.getChildren().add(button1);
+        button1.setOnAction(this::buttonClickA);
+        Button button2 = new Button("Capture");
+        box.getChildren().add(button2);
+        button2.setOnAction(this::buttonClickC);
     }
-    private void buttonClick(ActionEvent event)
+    private void buttonClickA(ActionEvent event)
     {
-
+        Stage stage = new Stage();
+        VBox box = new VBox();
+        box.setPadding(new Insets(20));
+        box.setSpacing(20);
+        box.setAlignment(Pos.CENTER);
+        Text title = new Text("Avalanche");
+        title.setFont(Font.font("SanSerif", 50));
+        box.getChildren().add(title);
+        Scene scene = new Scene(box, 500, 250);
+        stage.setTitle("Mancala");
+        stage.setScene(scene);
+        stage.show();
+        
+    }
+    private void buttonClickC(ActionEvent event)
+    {
+        Stage stage = new Stage();
+        VBox box = new VBox();
+        box.setPadding(new Insets(20));
+        box.setSpacing(20);
+        box.setAlignment(Pos.CENTER);
+        Text title = new Text("Capture");
+        title.setFont(Font.font("SanSerif", 50));
+        box.getChildren().add(title);
+        Scene scene = new Scene(box, 500, 250);
+        stage.setTitle("Mancala");
+        stage.setScene(scene);
+        stage.show();
     }
 }
