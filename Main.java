@@ -14,6 +14,12 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import java.io.FileInputStream; 
+import java.io.FileNotFoundException;
+import javafx.scene.canvas.Canvas;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
+import javafx.stage.Stage; 
 
 /**
  * Write a description of JavaFX class Main here.
@@ -51,14 +57,15 @@ public class Main extends Application
         box.setPadding(new Insets(20));
         box.setSpacing(20);
         box.setAlignment(Pos.CENTER);
-        Text title = new Text("Avalanche");
-        title.setFont(Font.font("SanSerif", 50));
-        box.getChildren().add(title);
-        Scene scene = new Scene(box, 500, 250);
-        stage.setTitle("Mancala");
+        Scene scene = new Scene(box, 1000, 1000);
+        stage.setTitle("Avalanche");
         stage.setScene(scene);
-        stage.show();
         
+        Image image = new Image ("MancalaBoard.png");
+        BackgroundImage bimage = new BackgroundImage(image, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, 
+            BackgroundPosition.CENTER, new BackgroundSize(100,100,true,true, true, true));
+        box.setBackground(new Background(bimage));
+        stage.show();
     }
     private void buttonClickC(ActionEvent event)
     {
@@ -67,12 +74,13 @@ public class Main extends Application
         box.setPadding(new Insets(20));
         box.setSpacing(20);
         box.setAlignment(Pos.CENTER);
-        Text title = new Text("Capture");
-        title.setFont(Font.font("SanSerif", 50));
-        box.getChildren().add(title);
-        Scene scene = new Scene(box, 500, 250);
-        stage.setTitle("Mancala");
+        Scene scene = new Scene(box, 1000, 1000);
+        stage.setTitle("Capture");
         stage.setScene(scene);
+        Image image = new Image ("MancalaBoard.png");
+        BackgroundImage bimage = new BackgroundImage(image, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, 
+            BackgroundPosition.CENTER, new BackgroundSize(100,100,true,true, true, true));
+        box.setBackground(new Background(bimage));
         stage.show();
     }
 }
