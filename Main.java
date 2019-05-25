@@ -73,7 +73,7 @@ public class Main extends Application
         stage.setTitle("Avalanche");
         
         stage.setScene(scene);
-        box.setBackground(displayBoard());
+        box.setBackground(displayBoard('a'));
         
         stage.show();
     }
@@ -87,13 +87,17 @@ public class Main extends Application
         Scene scene = new Scene(box, 1000, 1000);
         stage.setTitle("Capture");
         stage.setScene(scene);
-        box.setBackground(displayBoard());
+        box.setBackground(displayBoard('c'));
         
         stage.show();
     }
-    private Background displayBoard()
+    private Background displayBoard(char letter)
     {
-        Image image = new Image ("mancalaboard.png");
+        Image image;
+        if (letter == 'a')
+            image = new Image("avalancheboard.png");
+        else 
+            image = new Image("captureboard.png");
         BackgroundImage bimage = new BackgroundImage(image, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, 
             BackgroundPosition.CENTER, new BackgroundSize(100,100,true,true, true, true));
         return new Background(bimage);
