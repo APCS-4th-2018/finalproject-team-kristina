@@ -62,8 +62,8 @@ public class Stone
     public void draw()
     {
         Circle circle = new Circle(RADIUS, myColor);
-        int x = (int)(Math.random()*21);
-        int y = (int)(Math.random()*21);
+        int x = (int)(Math.random()*35);
+        int y = (int)(Math.random()*35);
         circle.setCenterX(xLocation + x);
         circle.setCenterY(yLocation + y);
         Group group = new Group();
@@ -72,11 +72,8 @@ public class Stone
         
         group.getChildren().add(circle);
         circle.toFront();
-        
-        group.toFront();
         myScene.setRoot(group);
         myStage.setScene(myScene);
-        circle.toFront();
         myStage.show();
     }
     

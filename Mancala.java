@@ -41,7 +41,22 @@ public abstract class Mancala extends Application
         {
             int x = 0;
             int y = 0;
-            
+            if (i <= 6 )
+                y = 425;
+            else
+                y = 625;
+            if (i == 1 || i == 13)
+                x = 220;
+            else if (i == 2 || i == 12)
+                x = 320;
+            else if (i == 3 || i == 11)
+                x = 420;
+            else if (i == 4 || i == 10)
+                x = 520;
+            else if (i == 5 || i == 9)
+                x = 620;
+            else if (i == 6 || i == 8)
+                x = 720;
             if (i != 7)
             {
                 for (int num = 1; num <= 4; num++)
