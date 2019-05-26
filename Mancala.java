@@ -37,6 +37,8 @@ public abstract class Mancala extends Application
     public Mancala(Scene scene, Stage stage)
     {
         board = new LinkedList[14];
+        for (int i = 0; i<board.length;i++)
+            board[i] = new LinkedList();
         for (int i = 1; i < board.length; i++)
         {
             int x = 0;
@@ -44,24 +46,24 @@ public abstract class Mancala extends Application
             if (i <= 6 )
                 y = 425;
             else
-                y = 625;
+                y = 610;
             if (i == 1 || i == 13)
                 x = 220;
             else if (i == 2 || i == 12)
-                x = 320;
+                x = 335;
             else if (i == 3 || i == 11)
-                x = 420;
+                x = 440;
             else if (i == 4 || i == 10)
-                x = 520;
+                x = 555;
             else if (i == 5 || i == 9)
-                x = 620;
+                x = 660;
             else if (i == 6 || i == 8)
-                x = 720;
+                x = 775;
             if (i != 7)
             {
                 for (int num = 1; num <= 4; num++)
                 {
-                    board[i].add(new Stone(x, y, scene, stage));
+                    board[i].add(new Stone(x,y,scene,stage));
                 }
             }
         }

@@ -62,8 +62,8 @@ public class Stone
     public void draw()
     {
         Circle circle = new Circle(RADIUS, myColor);
-        int x = (int)(Math.random()*35);
-        int y = (int)(Math.random()*35);
+        int x = 25-(int)(Math.random()*50);
+        int y = 25-(int)(Math.random()*50);
         circle.setCenterX(xLocation + x);
         circle.setCenterY(yLocation + y);
         Group group = new Group();
