@@ -30,6 +30,7 @@ import javafx.stage.Stage;
  */
 public class Main extends Application
 {
+    private Mancala game;
     @Override
     public void start(Stage stage) throws Exception
     {
@@ -74,8 +75,8 @@ public class Main extends Application
         
         stage.setScene(scene);
         box.setBackground(displayBoard('a'));
-        
         stage.show();
+        game = new Avalanche(scene, stage);
     }
     private void buttonClickC(ActionEvent event)
     {
@@ -88,8 +89,8 @@ public class Main extends Application
         stage.setTitle("Capture");
         stage.setScene(scene);
         box.setBackground(displayBoard('c'));
-        
         stage.show();
+        game = new Capture(scene, stage);
     }
     private Background displayBoard(char letter)
     {
