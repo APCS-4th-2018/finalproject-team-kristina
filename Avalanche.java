@@ -36,10 +36,10 @@ public class Avalanche extends Mancala
     /**
      * Constructor for objects of class Avalanche
      */
-    public Avalanche(Scene scene, Stage stage)
+    public Avalanche(Scene scene, Stage stage, Pane root)
     {
         
-       super(scene, stage);
+       super(scene, stage, root);
     }
 
     /**
@@ -64,10 +64,4 @@ public class Avalanche extends Mancala
         return true;
     }
     
-    /**
-     * Fills the background with a certain color
-     */
-    public void fillBackground()
-    {
-    }
 }

@@ -65,10 +65,10 @@ public class Main extends Application
     private void buttonClickA(ActionEvent event)
     {
         Stage stage = new Stage();
-        VBox box = new VBox();
+        Pane box = new Pane();
         box.setPadding(new Insets(20));
-        box.setSpacing(20);
-        box.setAlignment(Pos.CENTER);
+        //box.setSpacing(20);
+        //box.setAlignment(Pos.CENTER);
         
         Scene scene = new Scene(box, 1000, 1000);
         stage.setTitle("Avalanche");
@@ -76,31 +76,35 @@ public class Main extends Application
         stage.setScene(scene);
         box.setBackground(displayBoard('a'));
         stage.show();
-        game = new Avalanche(scene, stage);
+        game = new Avalanche(scene, stage, box);
     }
     private void buttonClickC(ActionEvent event)
     {
         Stage stage = new Stage();
-        VBox box = new VBox();
+        Pane box = new Pane();
         box.setPadding(new Insets(20));
-        box.setSpacing(20);
-        box.setAlignment(Pos.CENTER);
+        //box.setSpacing(20);
+        //box.setAlignment(Pos.CENTER);
         Scene scene = new Scene(box, 1000, 1000);
         stage.setTitle("Capture");
         stage.setScene(scene);
         box.setBackground(displayBoard('c'));
+        
         stage.show();
-        game = new Capture(scene, stage);
+        game = new Capture(scene, stage, box);
     }
     private Background displayBoard(char letter)
     {
         Image image;
-        if (letter == 'a')
+        if (letter == 'a')//depending on what type of game is being played, get the correct image
             image = new Image("avalancheboard.png");
         else 
             image = new Image("captureboard.png");
+            
+        //instantiate a new background image
         BackgroundImage bimage = new BackgroundImage(image, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, 
             BackgroundPosition.CENTER, new BackgroundSize(100,100,true,true, true, true));
+            
         return new Background(bimage);
     }
 }
