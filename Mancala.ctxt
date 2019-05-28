@@ -1,32 +1,21 @@
 #BlueJ class context
 comment0.target=Mancala
-<<<<<<< HEAD
-comment0.text=\n\ Abstract\ class\ Mancala\ -\ write\ a\ description\ of\ the\ class\ here\n\n\ @author\ (your\ name\ here)\n\ @version\ (version\ number\ or\ date\ here)\n
-comment1.params=y
-comment1.target=int\ sampleMethod(int)
-comment1.text=\n\ An\ example\ of\ a\ method\ -\ replace\ this\ comment\ with\ your\ own\n\n\ @param\ \ y\ \ a\ sample\ parameter\ for\ a\ method\n\ @return\ \ \ \ the\ sum\ of\ x\ and\ y\n
-numComments=2
-=======
-comment0.text=\n\ Generalized\ game\ of\ Mancala\n\n\ @author\ Helen,\ Kylie,\ Kristina\n\ @version\ 5/22/19\n
-comment1.params=
-comment1.target=Mancala()
-comment1.text=\n\ Constructor\ for\ objects\ of\ Mancala\n
-comment2.params=
-comment2.target=void\ move()
-comment2.text=\n\ \n
-comment3.params=
-comment3.target=boolean\ isWon()
-comment3.text=\n\ \n
+comment0.text=\r\n\ Generalized\ game\ of\ Mancala\r\n\r\n\ @author\ Helen,\ Kylie,\ Kristina\r\n\ @version\ 5/22/19\r\n
+comment1.params=scene\ stage
+comment1.target=Mancala(javafx.scene.Scene,\ javafx.stage.Stage)
+comment1.text=\r\n\ Constructor\ for\ objects\ of\ Mancala\r\n
+comment2.params=num
+comment2.target=void\ move(int)
+comment2.text=\r\n\ Moves\ the\ stones\ that\ are\ clicked\ on\r\n\ \r\n\ @param\ num\ \ location\ user\ clicked\r\n
+comment3.params=num
+comment3.target=boolean\ isEmpty(int)
+comment3.text=\r\n\ Returns\ true\ if\ a\ location\ on\ the\ board\ is\ empty\r\n\ \r\n\ @param\ num\ \ location\ to\ check\r\n\ @return\ true/false\r\n
 comment4.params=
-comment4.target=void\ fillBackground()
-comment4.text=\n\ The\ color\ of\ the\ background\ (depends\ on\ the\ type\ of\ Mancala)\n
-comment5.params=
-comment5.target=void\ drawBoard()
-comment5.text=\n\ Draws\ the\ board\ \n
-comment6.params=location
-comment6.target=void\ drawStones(int)
-comment7.params=
-comment7.target=void\ drawNumbers()
-comment7.text=\n\ Prints\ out\ the\ number\ of\ stones\ in\ each\ pit\n
-numComments=8
->>>>>>> master
+comment4.target=boolean\ isWon()
+comment4.text=\r\n\ Determines\ whether\ the\ game\ is\ won\ yet\r\n\ \r\n\ @return\ true\ if\ the\ game\ is\ won,\ false\ if\ not\r\n
+comment5.params=location
+comment5.target=void\ drawStones(int)
+comment6.params=
+comment6.target=void\ drawNumbers()
+comment6.text=\r\n\ Prints\ out\ the\ number\ of\ stones\ in\ each\ pit\r\n
+numComments=7
