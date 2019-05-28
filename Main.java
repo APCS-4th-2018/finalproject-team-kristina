@@ -1,5 +1,4 @@
 
-
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -21,6 +20,8 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage; 
+import javafx.scene.effect.DropShadow;
+import javafx.scene.input.MouseEvent;
 
 /**
  * Write a description of JavaFX class Main here.
@@ -40,27 +41,68 @@ public class Main extends Application
         Scene scene = new Scene(box, 500, 250);
         Button button1 = new Button("Avalanche");
         Button button2 = new Button("Capture");
-        
+        DropShadow shadow = new DropShadow();
+
         //formatting for the box
         box.setPadding(new Insets(20));
         box.setSpacing(20);
         box.setAlignment(Pos.CENTER);
-        
+
         //title the screen
         title.setFont(Font.font("Monospaced", 50));
         box.getChildren().add(title);
         stage.setTitle("Mancala");
         stage.setScene(scene);
-        
+
         //set background color
         box.setBackground(new Background(new BackgroundFill(Color.BURLYWOOD, new CornerRadii(1), new Insets(1))));
         stage.show();
-        
+
         //add the buttons to the window
         box.getChildren().add(button1);
         button1.setOnAction(this::buttonClickA);
         box.getChildren().add(button2);
         button2.setOnAction(this::buttonClickC);
+        
+        // adds shadow to first button when cursor is on the mouse
+        button1.addEventHandler(MouseEvent.MOUSE_ENTERED, new EventHandler<MouseEvent>() 
+        {
+            @Override
+            public void handle(MouseEvent e) 
+            {
+                button1.setEffect(shadow); //shadow effect
+            }
+        });
+ 
+        // shadow disappears on first button when the cursor is removed
+        button1.addEventHandler(MouseEvent.MOUSE_EXITED, new EventHandler<MouseEvent>() 
+        {
+            @Override
+            public void handle(MouseEvent e) 
+            {
+                button1.setEffect(null); //shadow effect is turned off
+            }
+        });
+        
+        // adds shadow to first button when cursor is on the mouse
+        button2.addEventHandler(MouseEvent.MOUSE_ENTERED, new EventHandler<MouseEvent>() 
+        {
+            @Override
+            public void handle(MouseEvent e) 
+            {
+                button2.setEffect(shadow); //shadow effect
+            }
+        });
+ 
+        // shadow disappears on first button when the cursor is removed
+        button2.addEventHandler(MouseEvent.MOUSE_EXITED, new EventHandler<MouseEvent>() 
+        {
+            @Override
+            public void handle(MouseEvent e) 
+            {
+                button2.setEffect(null); //shadow effect is turned off
+            }
+        });
     }
     private void buttonClickA(ActionEvent event)
     {
