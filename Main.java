@@ -89,18 +89,37 @@ public class Main extends Application
         stage.setTitle("Capture");
         stage.setScene(scene);
         box.setBackground(displayBoard('c'));
+        /*
+        Button btn = new Button();
+        btn.setText("hello");
+        btn.setOnAction(new EventHandler<ActionEvent>(){
+            @Override
+            public void handle(ActionEvent event){System.out.println("hello world");}
+        });
+        
+        Pane root = new Pane();
+        btn.setLayoutX(250);
+        btn.setLayoutY(220);
+        root.getChildren().add(btn);
+        stage.setScene(new Scene(root,300,250));
+        
+        
+       */
         stage.show();
         game = new Capture(scene, stage);
     }
     private Background displayBoard(char letter)
     {
         Image image;
-        if (letter == 'a')
+        if (letter == 'a')//depending on what type of game is being played, get the correct image
             image = new Image("avalancheboard.png");
         else 
             image = new Image("captureboard.png");
+            
+        //instantiate a new background image
         BackgroundImage bimage = new BackgroundImage(image, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, 
             BackgroundPosition.CENTER, new BackgroundSize(100,100,true,true, true, true));
+            
         return new Background(bimage);
     }
 }

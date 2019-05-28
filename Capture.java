@@ -65,10 +65,4 @@ public class Capture extends Mancala
         return false;
     }
 
-    /**
-     *  Fills the background of the screen for Capture games
-     */
-    public void fillBackground()
-    {
-    }
 }

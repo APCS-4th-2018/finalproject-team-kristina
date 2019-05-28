@@ -64,10 +64,4 @@ public class Avalanche extends Mancala
         return true;
     }
     
-    /**
-     * Fills the background with a certain color
-     */
-    public void fillBackground()
-    {
-    }
 }

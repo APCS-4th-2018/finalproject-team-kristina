@@ -104,11 +104,6 @@ public abstract class Mancala extends Application
         return won;
     }
     
-    /**
-     * Fills the background with a certain color
-     */
-    public abstract void fillBackground();
-    
     //draws the stones in each pit
     private void drawStones(int location)
     {
