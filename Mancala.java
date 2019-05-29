@@ -21,6 +21,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage; 
 import javafx.scene.Group;
+import javafx.scene.shape.Circle;
 /**
  * Generalized game of Mancala
  *
@@ -52,8 +53,10 @@ public abstract class Mancala extends Application
             if (i != 7)
             {
                 btns[i] = new Button();
-                btns[i].setLayoutX(setX(i));
-                btns[i].setLayoutY(setY(i));
+                btns[i].setShape(new Circle(50));
+                btns[i].setLayoutX(setX(i)-50);
+                btns[i].setLayoutY(setY(i)-50);
+                btns[i].setMinSize(100,100);
                 btns[i].toFront();
                 root.getChildren().add(btns[i]);
             }
