@@ -65,10 +65,10 @@ public class Main extends Application
     private void buttonClickA(ActionEvent event)
     {
         Stage stage = new Stage();
-        VBox box = new VBox();
+        Pane box = new Pane();
         box.setPadding(new Insets(20));
-        box.setSpacing(20);
-        box.setAlignment(Pos.CENTER);
+        //box.setSpacing(20);
+        //box.setAlignment(Pos.CENTER);
         
         Scene scene = new Scene(box, 1000, 1000);
         stage.setTitle("Avalanche");
@@ -76,37 +76,22 @@ public class Main extends Application
         stage.setScene(scene);
         box.setBackground(displayBoard('a'));
         stage.show();
-        game = new Avalanche(scene, stage);
+        game = new Avalanche(scene, stage, box);
     }
     private void buttonClickC(ActionEvent event)
     {
         Stage stage = new Stage();
-        VBox box = new VBox();
+        Pane box = new Pane();
         box.setPadding(new Insets(20));
-        box.setSpacing(20);
-        box.setAlignment(Pos.CENTER);
+        //box.setSpacing(20);
+        //box.setAlignment(Pos.CENTER);
         Scene scene = new Scene(box, 1000, 1000);
         stage.setTitle("Capture");
         stage.setScene(scene);
         box.setBackground(displayBoard('c'));
-        /*
-        Button btn = new Button();
-        btn.setText("hello");
-        btn.setOnAction(new EventHandler<ActionEvent>(){
-            @Override
-            public void handle(ActionEvent event){System.out.println("hello world");}
-        });
         
-        Pane root = new Pane();
-        btn.setLayoutX(250);
-        btn.setLayoutY(220);
-        root.getChildren().add(btn);
-        stage.setScene(new Scene(root,300,250));
-        
-        
-       */
         stage.show();
-        game = new Capture(scene, stage);
+        game = new Capture(scene, stage, box);
     }
     private Background displayBoard(char letter)
     {

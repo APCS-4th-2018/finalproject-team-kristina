@@ -36,9 +36,9 @@ public class Capture extends Mancala
     /**
      *  Constructor for the Capture object
      */
-    public Capture(Scene scene, Stage stage)
+    public Capture(Scene scene, Stage stage, Pane root)
     {
-        super(scene, stage);
+        super(scene, stage, root);
     }
 
     /**
