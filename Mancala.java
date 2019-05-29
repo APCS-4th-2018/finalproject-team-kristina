@@ -37,10 +37,11 @@ public abstract class Mancala
         board = new LinkedList[14];
         for (int i = 0; i<board.length;i++)
             board[i] = new LinkedList();
-        drawStones();
+            
+         drawStones();
         drawNumbers();
         addButtons();
-
+        
     }
 
     private void addButtons()
@@ -55,6 +56,7 @@ public abstract class Mancala
                 btns[i].setLayoutX(setX(i)-50);
                 btns[i].setLayoutY(setY(i)-50);
                 btns[i].setMinSize(100,100);
+                btns[i].setVisible(false);
                 btns[i].toFront();
                 myRoot.getChildren().add(btns[i]);
             }
