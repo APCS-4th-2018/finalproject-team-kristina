@@ -1,51 +1,49 @@
 import java.util.*;
-import javafx.application.Application;
-import javafx.application.Platform;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.layout.*;
 import javafx.scene.text.Font;
+import javafx.scene.text.FontPosture;
+import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
-import javafx.stage.Stage;
 import javafx.scene.paint.Color;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import java.io.FileInputStream; 
-import java.io.FileNotFoundException;
-import javafx.scene.canvas.Canvas;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage; 
 import javafx.scene.Group;
 import javafx.scene.shape.Circle;
+//import javafx.scene.text.TextFlow;
+import javafx.scene.control.Label;
 /**
  * Generalized game of Mancala
  *
  * @author Helen, Kylie, Kristina
  * @version 5/22/19
  */
-public abstract class Mancala extends Application
+public abstract class Mancala
 {
     // instance variable
     protected LinkedList[] board;  //Mancala board
+    protected Scene myScene;
+    protected Stage myStage;
+    protected Pane myRoot;
 
     /**
      * Constructor for objects of Mancala
      */
     public Mancala(Scene scene, Stage stage, Pane root)
     {
+        myScene = scene;
+        myStage = stage;
+        myRoot = root;
         board = new LinkedList[14];
         for (int i = 0; i<board.length;i++)
             board[i] = new LinkedList();
-        drawStones(scene, stage);
-        addButtons(scene, stage, root);
+        drawStones();
+        drawNumbers();
+        addButtons();
+
     }
 
-    private void addButtons(Scene scene, Stage stage, Pane root)
+    private void addButtons()
     {
         Button[] btns = new Button[14];
         for(int i = 1; i < 14; i++)//skips 0 and 7
@@ -58,15 +56,15 @@ public abstract class Mancala extends Application
                 btns[i].setLayoutY(setY(i)-50);
                 btns[i].setMinSize(100,100);
                 btns[i].toFront();
-                root.getChildren().add(btns[i]);
+                myRoot.getChildren().add(btns[i]);
             }
         }
 
-        stage.setScene(new Scene(scene.getRoot()));
-        stage.show();
+        myStage.setScene(new Scene(myScene.getRoot()));
+        myStage.show();
     }
 
-    private void drawStones(Scene scene, Stage stage)
+    private void drawStones()
     {
         int[] xy = new int[2];
         for (int i = 1; i < board.length; i++)
@@ -77,7 +75,7 @@ public abstract class Mancala extends Application
             {
                 for (int num = 1; num <= 4; num++)
                 {
-                    board[i].add(new Stone(x,y,scene,stage));
+                    board[i].add(new Stone(x,y,myScene,myStage));
                 }
             }
         }
@@ -88,17 +86,17 @@ public abstract class Mancala extends Application
     {
         int x = 0;
         if (i == 1 || i == 13)
-            x = 220;
+            x = 219;
         else if (i == 2 || i == 12)
-            x = 335;
+            x = 331;
         else if (i == 3 || i == 11)
             x = 440;
         else if (i == 4 || i == 10)
-            x = 555;
+            x = 552;
         else if (i == 5 || i == 9)
             x = 660;
         else if (i == 6 || i == 8)
-            x = 775;
+            x = 773;
 
         return x;
     }
@@ -107,9 +105,9 @@ public abstract class Mancala extends Application
     {
         int y = 0;
         if (i <= 6 )
-            y = 425;
+            y = 423;
         else
-            y = 610;
+            y = 608;
         return y;
     }
 
@@ -163,7 +161,43 @@ public abstract class Mancala extends Application
         for (int i = 0; i < board.length; i++)
         {
             int num = board[i].size();
+            int x;
+            int y;
+            Text text = new Text(Integer.toString(num));
+            if (i <= 7)
+                y = 335;
+            else
+                y = 715;
+            if (i == 0)
+                x = 100;
+            else if (i == 1 || i == 13)
+                x = 215;
+            else if (i == 2 || i == 12)
+                x = 330;
+            else if (i == 3 || i == 11)
+                x = 440;
+            else if (i == 4 || i == 10)
+                x = 550;
+            else if (i == 5 || i == 9)
+                x = 655;
+            else if (i == 6 || i == 8)
+                x = 770;
+            else
+                x = 885;
 
+            text.setX(x);
+            text.setY(y);
+            text.setFont(Font.font("Monospaced", FontWeight.EXTRA_BOLD, FontPosture.REGULAR, 30));
+            text.setFill(Color.WHITE);
+            Group group = new Group();
+            group.setAutoSizeChildren(false);
+            group.getChildren().add(myScene.getRoot());
+            group.getChildren().add(text);
+
+            text.toFront();
+            myScene.setRoot(group);
+            myStage.setScene(myScene);
+            myStage.show();
         }
     }
 }
