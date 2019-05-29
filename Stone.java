@@ -61,14 +61,26 @@ public class Stone
     
     private void setColor()
     {
-        //randomizes the color to be blue, black, or white
-        int rand = (int) (Math.random() * 3);
-        if(rand == 0)
-            myColor = Color.BLUE;
-        else 
-            if(rand == 1)
-                myColor = Color.BLACK;
-            else
-                myColor = Color.WHITE;
+        
+       int rand = (int) (Math.random() * 9);
+       if (rand == 0)
+           myColor = Color.BLACK;
+       else if (rand == 1)
+           myColor = Color.WHITE;
+       else if (rand == 2)
+           myColor = Color.RED;
+       else if (rand == 3)
+           myColor = Color.ORANGE;
+       else if (rand == 4)
+           myColor = Color.YELLOW;
+       else if (rand == 5)
+           myColor = Color.GREEN;
+       else if (rand == 6)
+           myColor = Color.DODGERBLUE;
+       else if (rand == 7)
+           myColor = Color.MEDIUMPURPLE;
+       else
+           myColor = Color.PALEVIOLETRED;
+
     }
 }
