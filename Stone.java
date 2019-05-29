@@ -43,17 +43,19 @@ public class Stone
      */
     public void draw()
     {
+        
         Circle circle = new Circle(RADIUS, myColor);
+        circle.setVisible(true);
         int x = 25-(int)(Math.random()*50);
         int y = 25-(int)(Math.random()*50);
         circle.setCenterX(xLocation + x);
         circle.setCenterY(yLocation + y);
+        
         Group group = new Group();
         group.setAutoSizeChildren(false); 
         group.getChildren().add(myScene.getRoot());
         
         group.getChildren().add(circle);
-        circle.toFront();
         myScene.setRoot(group);
         myStage.setScene(myScene);
         myStage.show();
@@ -62,10 +64,8 @@ public class Stone
     private void setColor()
     {
         
-       int rand = (int) (Math.random() * 9);
-       if (rand == 0)
-           myColor = Color.BLACK;
-       else if (rand == 1)
+       int rand = (int) (Math.random() * 8)+1;
+       if (rand == 1)
            myColor = Color.WHITE;
        else if (rand == 2)
            myColor = Color.RED;
