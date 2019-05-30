@@ -10,8 +10,13 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage; 
 import javafx.scene.Group;
 import javafx.scene.shape.Circle;
-//import javafx.scene.text.TextFlow;
+import javafx.scene.shape.Rectangle;
 import javafx.scene.control.Label;
+import javafx.scene.shape.Path;
+import javafx.util.Duration;
+import javafx.animation.PathTransition;
+import javafx.scene.shape.MoveTo;
+import javafx.scene.Parent;
 /**
  * Generalized game of Mancala
  *
@@ -26,12 +31,16 @@ public abstract class Mancala
     protected Scene myScene;
     protected Stage myStage;
     protected Pane myRoot;
+    protected final int PLAYER1 = 1;
+    protected final int PLAYER2 = 2;
+    protected int player;
 
     /**
      * Constructor for objects of Mancala
      */
     public Mancala(Scene scene, Stage stage, Pane root)
     {
+        player = PLAYER1;
         myScene = scene;
         myStage = stage;
         myRoot = root;
@@ -42,6 +51,8 @@ public abstract class Mancala
         addButtons();
         drawStones();
         drawNumbers();
+        move(1);
+        //initialize(1);
     }
 
     private void addButtons()
@@ -122,9 +133,41 @@ public abstract class Mancala
      */
     public void move(int num)
     {
-
+        int count = 1;
+        for(int i = 0; i < board[i].size(); i++)
+        {
+            if (board[num+count] == null)
+                board[num+count] = new LinkedList();
+            board[num+count].add(board[num].get(count-1));
+            count++;
+        }
+        board[num] = null;
     }
 
+    private void initialize(int num)
+    {
+        // Rectangle rectangle = new Rectangle(678, 185);
+
+        // Path path = new Path();
+        // MoveTo moveTo = new MoveTo(100,100);
+        // path.getElements().add(moveTo);
+        // Group group = new Group();
+        // group.setAutoSizeChildren(false);
+        // group.getChildren().add(myScene.getRoot());
+        // for(int i = 0; i < board[num].size(); i++)
+            // group.getChildren().add((Circle)board[num].get(i));
+        // PathTransition transition = new PathTransition();
+        // transition.setDuration(Duration.seconds(5));
+        // transition.setNode(group);
+        // transition.setPath(path);
+        // transition.setCycleCount(1);
+        // transition.setAutoReverse(false);
+        // transition.play();
+        // myScene.setRoot(group);
+        // myStage.setScene(myScene);
+        // myStage.show();
+
+    }
     /**
      * Returns true if a location on the board is empty
      * 
@@ -179,25 +222,25 @@ public abstract class Mancala
                 y = setY(i) + 107;
             x = setX(i) - 10;
             // if (i <= 7)
-                // y = 335;
+            // y = 335;
             // else
-                // y = 715;
+            // y = 715;
             // if (i == 0)
-                // x = 95;
+            // x = 95;
             // else if (i == 1 || i == 13)
-                // x = 207;
+            // x = 207;
             // else if (i == 2 || i == 12)
-                // x = 322;
+            // x = 322;
             // else if (i == 3 || i == 11)
-                // x = 432;
+            // x = 432;
             // else if (i == 4 || i == 10)
-                // x = 542;
+            // x = 542;
             // else if (i == 5 || i == 9)
-                // x = 647;
+            // x = 647;
             // else if (i == 6 || i == 8)
-                // x = 762;
+            // x = 762;
             // else
-                // x = 880;
+            // x = 880;
             count[i].setX(x);
             count[i].setY(y);
             count[i].setFont(Font.font("Monospaced", FontWeight.EXTRA_BOLD, FontPosture.REGULAR, 30));
