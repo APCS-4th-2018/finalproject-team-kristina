@@ -1,5 +1,4 @@
 
-
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -15,6 +14,8 @@ import javafx.stage.Stage;
 import javafx.scene.paint.Color;
 import javafx.scene.image.Image;
 import javafx.stage.Stage; 
+import javafx.scene.effect.DropShadow;
+import javafx.scene.input.MouseEvent;
 
 /**
  * Write a description of JavaFX class Main here.
@@ -34,28 +35,70 @@ public class Main extends Application
         Scene scene = new Scene(box, 500, 250);
         Button button1 = new Button("Avalanche");
         Button button2 = new Button("Capture");
-        
+
         //formatting for the box
         box.setPadding(new Insets(20));
         box.setSpacing(20);
         box.setAlignment(Pos.CENTER);
-        
+
         //title the screen
         title.setFont(Font.font("Monospaced", 50));
         box.getChildren().add(title);
         stage.setTitle("Mancala");
         stage.setScene(scene);
-        
+
         //set background color
         box.setBackground(new Background(new BackgroundFill(Color.BURLYWOOD, new CornerRadii(1), new Insets(1))));
         stage.show();
-        
+
         //add the buttons to the window
         box.getChildren().add(button1);
         button1.setOnAction(this::buttonClickA);
         box.getChildren().add(button2);
         button2.setOnAction(this::buttonClickC);
+
+        DropShadow shadow = new DropShadow();
+        // adds shadow to first button when cursor is on the mouse
+        button1.addEventHandler(MouseEvent.MOUSE_ENTERED, new EventHandler<MouseEvent>() 
+            {
+                @Override
+                public void handle(MouseEvent e) 
+                {
+                    button1.setEffect(shadow); //shadow effect
+                }
+            });
+
+        // shadow disappears on first button when the cursor is removed
+        button1.addEventHandler(MouseEvent.MOUSE_EXITED, new EventHandler<MouseEvent>() 
+            {
+                @Override
+                public void handle(MouseEvent e) 
+                {
+                    button1.setEffect(null); //shadow effect is turned off
+                }
+            });
+
+        // adds shadow to first button when cursor is on the mouse
+        button2.addEventHandler(MouseEvent.MOUSE_ENTERED, new EventHandler<MouseEvent>() 
+            {
+                @Override
+                public void handle(MouseEvent e) 
+                {
+                    button2.setEffect(shadow); //shadow effect
+                }
+            });
+
+        // shadow disappears on first button when the cursor is removed
+        button2.addEventHandler(MouseEvent.MOUSE_EXITED, new EventHandler<MouseEvent>() 
+            {
+                @Override
+                public void handle(MouseEvent e) 
+                {
+                    button2.setEffect(null); //shadow effect is turned off
+                }
+            });
     }
+
     private void buttonClickA(ActionEvent event)
     {
         Stage stage = new Stage();
@@ -63,15 +106,16 @@ public class Main extends Application
         box.setPadding(new Insets(20));
         //box.setSpacing(20);
         //box.setAlignment(Pos.CENTER);
-        
+
         Scene scene = new Scene(box, 1000, 1000);
         stage.setTitle("Avalanche");
-        
+
         stage.setScene(scene);
         box.setBackground(displayBoard('a'));
         stage.show();
         game = new Avalanche(scene, stage, box);
     }
+
     private void buttonClickC(ActionEvent event)
     {
         Stage stage = new Stage();
@@ -83,10 +127,11 @@ public class Main extends Application
         stage.setTitle("Capture");
         stage.setScene(scene);
         box.setBackground(displayBoard('c'));
-        
+
         stage.show();
         game = new Capture(scene, stage, box);
     }
+
     private Background displayBoard(char letter)
     {
         Image image;
@@ -94,11 +139,11 @@ public class Main extends Application
             image = new Image("NewAvalancheBoard.png");
         else 
             image = new Image("NewCaptureBoard.png");
-            
+
         //instantiate a new background image
         BackgroundImage bimage = new BackgroundImage(image, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, 
-            BackgroundPosition.CENTER, new BackgroundSize(100,100,true,true, true, true));
-            
+                BackgroundPosition.CENTER, new BackgroundSize(100,100,true,true, true, true));
+
         return new Background(bimage);
     }
 }
