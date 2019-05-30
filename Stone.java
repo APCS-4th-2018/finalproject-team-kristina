@@ -63,7 +63,6 @@ public class Stone
     
     private void setColor()
     {
-        
        int rand = (int) (Math.random() * 8)+1;
        if (rand == 1)
            myColor = Color.WHITE;
@@ -81,6 +80,5 @@ public class Stone
            myColor = Color.MEDIUMPURPLE;
        else
            myColor = Color.PALEVIOLETRED;
-
     }
 }

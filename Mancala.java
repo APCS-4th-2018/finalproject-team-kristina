@@ -22,6 +22,7 @@ public abstract class Mancala
 {
     // instance variable
     protected LinkedList[] board;  //Mancala board
+    protected Text[] count;
     protected Scene myScene;
     protected Stage myStage;
     protected Pane myRoot;
@@ -35,13 +36,12 @@ public abstract class Mancala
         myStage = stage;
         myRoot = root;
         board = new LinkedList[14];
+        count = new Text[14];
         for (int i = 0; i<board.length;i++)
             board[i] = new LinkedList();
-            
-         drawStones();
-        drawNumbers();
         addButtons();
-        
+        drawStones();
+        drawNumbers();
     }
 
     private void addButtons()
@@ -56,13 +56,11 @@ public abstract class Mancala
                 btns[i].setLayoutX(setX(i)-50);
                 btns[i].setLayoutY(setY(i)-50);
                 btns[i].setMinSize(100,100);
-                btns[i].setVisible(false);
-                btns[i].toFront();
+                btns[i].setVisible(true);
                 myRoot.getChildren().add(btns[i]);
+                btns[i].toFront();
             }
         }
-
-        myStage.setScene(new Scene(myScene.getRoot()));
         myStage.show();
     }
 
@@ -87,7 +85,11 @@ public abstract class Mancala
     private int setX(int i)
     {
         int x = 0;
-        if (i == 1 || i == 13)
+        if (i == 0)
+            x = 95;
+        else if (i == 7)
+            x = 880;
+        else if (i == 1 || i == 13)
             x = 219;
         else if (i == 2 || i == 12)
             x = 331;
@@ -106,7 +108,7 @@ public abstract class Mancala
     private int setY(int i)
     {
         int y = 0;
-        if (i <= 6 )
+        if (i <= 7)
             y = 423;
         else
             y = 608;
@@ -160,46 +162,51 @@ public abstract class Mancala
 
     public void drawNumbers()
     {
+        Group group = new Group();
+        group.setAutoSizeChildren(false);
+        group.getChildren().add(myScene.getRoot());
         for (int i = 0; i < board.length; i++)
         {
             int num = board[i].size();
             int x;
             int y;
-            Text text = new Text(Integer.toString(num));
+            if (count[i] != null)
+                count[i].setOpacity(0.0);
+            count[i] = new Text(Integer.toString(num));
             if (i <= 7)
-                y = 335;
-            else
-                y = 715;
-            if (i == 0)
-                x = 100;
-            else if (i == 1 || i == 13)
-                x = 215;
-            else if (i == 2 || i == 12)
-                x = 330;
-            else if (i == 3 || i == 11)
-                x = 440;
-            else if (i == 4 || i == 10)
-                x = 550;
-            else if (i == 5 || i == 9)
-                x = 655;
-            else if (i == 6 || i == 8)
-                x = 770;
-            else
-                x = 885;
-
-            text.setX(x);
-            text.setY(y);
-            text.setFont(Font.font("Monospaced", FontWeight.EXTRA_BOLD, FontPosture.REGULAR, 30));
-            text.setFill(Color.WHITE);
-            Group group = new Group();
-            group.setAutoSizeChildren(false);
-            group.getChildren().add(myScene.getRoot());
-            group.getChildren().add(text);
-
-            text.toFront();
-            myScene.setRoot(group);
-            myStage.setScene(myScene);
-            myStage.show();
+                y = setY(i) - 88;
+            else 
+                y = setY(i) + 107;
+            x = setX(i) - 10;
+            // if (i <= 7)
+                // y = 335;
+            // else
+                // y = 715;
+            // if (i == 0)
+                // x = 95;
+            // else if (i == 1 || i == 13)
+                // x = 207;
+            // else if (i == 2 || i == 12)
+                // x = 322;
+            // else if (i == 3 || i == 11)
+                // x = 432;
+            // else if (i == 4 || i == 10)
+                // x = 542;
+            // else if (i == 5 || i == 9)
+                // x = 647;
+            // else if (i == 6 || i == 8)
+                // x = 762;
+            // else
+                // x = 880;
+            count[i].setX(x);
+            count[i].setY(y);
+            count[i].setFont(Font.font("Monospaced", FontWeight.EXTRA_BOLD, FontPosture.REGULAR, 30));
+            count[i].setFill(Color.WHITE);
+            //count[i].toFront();
+            group.getChildren().add(count[i]);
         }
+        myScene.setRoot(group);
+        myStage.setScene(myScene);
+        myStage.show();
     }
 }
