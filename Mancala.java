@@ -62,7 +62,7 @@ public abstract class Mancala
             }
         }
 
-        myStage.setScene(new Scene(myScene.getRoot()));
+        myStage.setScene(myScene);
         myStage.show();
     }
 
