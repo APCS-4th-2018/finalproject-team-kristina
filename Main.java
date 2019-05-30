@@ -91,9 +91,9 @@ public class Main extends Application
     {
         Image image;
         if (letter == 'a')//depending on what type of game is being played, get the correct image
-            image = new Image("avalancheboard.png");
+            image = new Image("NewAvalancheBoard.png");
         else 
-            image = new Image("captureboard.png");
+            image = new Image("NewCaptureBoard.png");
             
         //instantiate a new background image
         BackgroundImage bimage = new BackgroundImage(image, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, 
