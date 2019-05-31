@@ -76,23 +76,28 @@ public abstract class Mancala
                 btns[i].toFront();
             }
         }
-        myStage.show();
+        //myStage.show();
     }
 
     private void drawStones(int num, int count)
     {
-        //if (board[num] != null)
-        //for (int i = 0; i < board[num].size(); i++)
-        //((Stone)board[num].get(i)).setTransparent();
+        if (board[num] != null)
+           for (int i = 0; i < board[num].size(); i++)
+                ((Stone)board[num].get(i)).setTransparent();      
+        
         board[num] = new LinkedList();
         int x = setX(num);
         int y = setY(num);
 
         for (int i = 1; i <= count; i++)
         {
-            board[num].add(new Stone(x,y,myScene,myStage));
+            Stone s = new Stone(x,y,myScene,myStage);
+            board[num].add(s);
+            //group.getChildren().add((s.getCircle()));
         }
-
+        //myScene.setRoot(group);
+        //myStage.setScene(myScene);
+        myStage.show();
     }
     private int setX(int i)
     {
@@ -152,8 +157,8 @@ public abstract class Mancala
             {
                 if (board[num].size() >= 1)
                 {
-                    ((Stone)board[num].get(0)).setTransparent();
-                    //group.getChildren().add((Circle)board[num].get(0)); //problem?
+                    //((Stone)board[num].get(0)).setTransparent();
+                    //group.getChildren().add(((Stone)board[num].get(0)).getCircle()); //problem?
                 }
                 board[num+count].add(board[num].remove(0));
                 drawStones(num, board[num].size());
@@ -161,9 +166,9 @@ public abstract class Mancala
             }
             count++;
         }
-        myScene.setRoot(group);
-        myStage.setScene(myScene);
-        myStage.show();
+        //myScene.setRoot(group);
+        //myStage.setScene(myScene);
+        //myStage.show();
         drawNumbers();
         if (player == PLAYER1)
             player = PLAYER2;

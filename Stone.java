@@ -13,6 +13,7 @@ import javafx.scene.Group;
 public class Stone
 {
     // instance variables 
+    private Circle myCircle;
     private int xLocation;
     private int yLocation;
     private Color myColor;
@@ -43,19 +44,19 @@ public class Stone
      */
     public void draw()
     {
-        
-        Circle circle = new Circle(RADIUS, myColor);
-        circle.setVisible(true);
+        //Circle circle = new Circle(RADIUS);
+        myCircle = new Circle(RADIUS, myColor);
+        //circle.setVisible(true);
         int x = 25-(int)(Math.random()*50);
         int y = 25-(int)(Math.random()*50);
-        circle.setCenterX(xLocation + x);
-        circle.setCenterY(yLocation + y);
+        myCircle.setCenterX(xLocation + x);
+        myCircle.setCenterY(yLocation + y);
         
         Group group = new Group();
         group.setAutoSizeChildren(false); 
         group.getChildren().add(myScene.getRoot());
         
-        group.getChildren().add(circle);
+        group.getChildren().add(myCircle);
         myScene.setRoot(group);
         myStage.setScene(myScene);
         myStage.show();
@@ -82,8 +83,15 @@ public class Stone
            myColor = Color.PALEVIOLETRED;
     }
     
+    public Circle getCircle()
+    {
+        return myCircle;
+    }
+    
     public void setTransparent()
     {
         myColor = Color.TRANSPARENT;
+        myCircle.setVisible(false);
+        draw();
     }
 }
