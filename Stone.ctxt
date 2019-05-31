@@ -9,6 +9,4 @@ comment2.target=void\ draw()
 comment2.text=\r\n\ Draws\ the\ stone\r\n\r\n\ @param\ \ y\ \ a\ sample\ parameter\ for\ a\ method\r\n
 comment3.params=
 comment3.target=void\ setColor()
-comment4.params=
-comment4.target=void\ setTransparent()
-numComments=5
+numComments=4
