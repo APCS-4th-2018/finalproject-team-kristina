@@ -25,7 +25,7 @@ public class Avalanche extends Mancala
      */
     public void move(int num)
     {
-        //super.move();//move normally
+        super.move(num);//move normally
         /*if(!isEmpty(some int))
             super.move();//continue moving if there are stones there*/
     }

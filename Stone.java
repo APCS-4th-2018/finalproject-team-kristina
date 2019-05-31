@@ -81,4 +81,9 @@ public class Stone
        else
            myColor = Color.PALEVIOLETRED;
     }
+    
+    public void setTransparent()
+    {
+        myColor = Color.TRANSPARENT;
+    }
 }
