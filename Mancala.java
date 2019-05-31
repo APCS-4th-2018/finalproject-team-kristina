@@ -41,7 +41,8 @@ public abstract class Mancala
      */
     public Mancala(Scene scene, Stage stage, Pane root)
     {
-        player = PLAYER1;
+        //player = PLAYER1;
+        player = PLAYER2;
         myScene = scene;
         myStage = stage;
         myRoot = root;
@@ -54,7 +55,8 @@ public abstract class Mancala
             if (i != 7)
                 drawStones(i, 4);
         drawNumbers();
-        move(4);
+        //move(4);
+        move(5);
 
         //initialize(1);
     }
@@ -93,10 +95,7 @@ public abstract class Mancala
         {
             Stone s = new Stone(x,y,myScene,myStage);
             board[num].add(s);
-            //group.getChildren().add((s.getCircle()));
         }
-        //myScene.setRoot(group);
-        //myStage.setScene(myScene);
         myStage.show();
     }
     private int setX(int i)
@@ -125,6 +124,8 @@ public abstract class Mancala
     private int setY(int i)
     {
         int y = 0;
+        if (i == 0 || i == 7)
+            y = 515;
         if (i <= 7)
             y = 423;
         else
@@ -155,20 +156,12 @@ public abstract class Mancala
                 i--; 
             else
             {
-                if (board[num].size() >= 1)
-                {
-                    //((Stone)board[num].get(0)).setTransparent();
-                    //group.getChildren().add(((Stone)board[num].get(0)).getCircle()); //problem?
-                }
                 board[num+count].add(board[num].remove(0));
                 drawStones(num, board[num].size());
                 drawStones(num+count, board[num+count].size());
             }
             count++;
         }
-        //myScene.setRoot(group);
-        //myStage.setScene(myScene);
-        //myStage.show();
         drawNumbers();
         if (player == PLAYER1)
             player = PLAYER2;
