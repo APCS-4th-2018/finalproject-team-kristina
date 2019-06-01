@@ -17,6 +17,7 @@ import javafx.util.Duration;
 import javafx.animation.PathTransition;
 import javafx.scene.shape.MoveTo;
 import javafx.scene.Parent;
+import javafx.event.ActionEvent;
 /**
  * Generalized game of Mancala
  *
@@ -55,10 +56,82 @@ public abstract class Mancala
             if (i != 7)
                 drawStones(i, 4);
         drawNumbers();
-        //move(4);
-        move(5);
-
+        play();
         //initialize(1);
+    }
+
+    private void buttonClick1(ActionEvent event)
+    {
+        move(1);
+    }
+
+    private void buttonClick2(ActionEvent event)
+    {
+        move(2);
+    }
+
+    private void buttonClick3(ActionEvent event)
+    {
+        move(3);
+    }
+
+    private void buttonClick4(ActionEvent event)
+    {
+        move(4);
+    }
+
+    private void buttonClick5(ActionEvent event)
+    {
+        move(5);
+    }
+
+    private void buttonClick6(ActionEvent event)
+    {
+        move(6);
+    }
+
+    private void buttonClick8(ActionEvent event)
+    {
+        move(8);
+    }
+
+    private void buttonClick9(ActionEvent event)
+    {
+        move(9);
+    }
+
+    private void buttonClick10(ActionEvent event)
+    {
+        move(10);
+    }
+
+    private void buttonClick11(ActionEvent event)
+    {
+        move(11);
+    }
+
+    private void buttonClick12(ActionEvent event)
+    {
+        move(12);
+    }
+
+    private void buttonClick13(ActionEvent event)
+    {
+        move(13);
+    }
+
+    private void play()
+    {
+        while (!isWon())
+        {
+            if (player == PLAYER1)
+            {
+                //move();
+            }
+            else
+            {
+            }
+        }
     }
 
     private void addButtons()
@@ -76,6 +149,30 @@ public abstract class Mancala
                 btns[i].setVisible(true);
                 myRoot.getChildren().add(btns[i]);
                 btns[i].toFront();
+                if (i == 1)
+                    btns[i].setOnAction(this::buttonClick1);
+                else if (i == 2)
+                    btns[i].setOnAction(this::buttonClick2);
+                else if (i == 3)
+                    btns[i].setOnAction(this::buttonClick3);
+                else if (i == 4)
+                    btns[i].setOnAction(this::buttonClick4);
+                else if (i == 5)
+                    btns[i].setOnAction(this::buttonClick5);
+                else if (i == 6)
+                    btns[i].setOnAction(this::buttonClick6);
+                else if (i == 8)
+                    btns[i].setOnAction(this::buttonClick8);
+                else if (i == 9)
+                    btns[i].setOnAction(this::buttonClick9);
+                else if (i == 10)
+                    btns[i].setOnAction(this::buttonClick10);
+                else if (i == 11)
+                    btns[i].setOnAction(this::buttonClick11);
+                else if (i == 12)
+                    btns[i].setOnAction(this::buttonClick12);
+                else if (i == 13)
+                    btns[i].setOnAction(this::buttonClick13);
             }
         }
         //myStage.show();
@@ -84,12 +181,15 @@ public abstract class Mancala
     private void drawStones(int num, int count)
     {
         if (board[num] != null)
-           for (int i = 0; i < board[num].size(); i++)
+            for (int i = 0; i < board[num].size(); i++)
                 ((Stone)board[num].get(i)).setTransparent();      
-        
+
         board[num] = new LinkedList();
         int x = setX(num);
         int y = setY(num);
+
+        if (num == 0 || num == 7)
+            y = y + 93;
 
         for (int i = 1; i <= count; i++)
         {
@@ -98,6 +198,7 @@ public abstract class Mancala
         }
         myStage.show();
     }
+
     private int setX(int i)
     {
         int x = 0;
@@ -124,8 +225,6 @@ public abstract class Mancala
     private int setY(int i)
     {
         int y = 0;
-        if (i == 0 || i == 7)
-            y = 515;
         if (i <= 7)
             y = 423;
         else
