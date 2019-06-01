@@ -36,6 +36,7 @@ public abstract class Mancala
     protected final int PLAYER1 = 1;
     protected final int PLAYER2 = 2;
     protected int player;
+    protected boolean won;
 
     /**
      * Constructor for objects of Mancala
@@ -49,6 +50,7 @@ public abstract class Mancala
         myRoot = root;
         board = new LinkedList[BOARDSIZE];
         count = new Text[BOARDSIZE];
+        won = false;
         //for (int i = 0; i < BOARDSIZE; i++)
         //board[i] = new LinkedList();
         addButtons();
@@ -56,82 +58,85 @@ public abstract class Mancala
             if (i != 7)
                 drawStones(i, 4);
         drawNumbers();
-        play();
+        //play();
         //initialize(1);
     }
 
     private void buttonClick1(ActionEvent event)
     {
-        move(1);
+        if (!won)
+            move(1);
     }
 
     private void buttonClick2(ActionEvent event)
     {
-        move(2);
+        if (!won)
+            move(2);
     }
 
     private void buttonClick3(ActionEvent event)
     {
-        move(3);
+        if (!won)
+            move(3);
     }
 
     private void buttonClick4(ActionEvent event)
     {
-        move(4);
+        if (!won)
+            move(4);
     }
 
     private void buttonClick5(ActionEvent event)
     {
-        move(5);
+        if (!won)
+            move(5);
     }
 
     private void buttonClick6(ActionEvent event)
     {
-        move(6);
+        if (!won)
+            move(6);
     }
 
     private void buttonClick8(ActionEvent event)
     {
-        move(8);
+        if (!won)
+            move(8);
     }
 
     private void buttonClick9(ActionEvent event)
     {
-        move(9);
+        if (!won)
+            move(9);
     }
 
     private void buttonClick10(ActionEvent event)
     {
-        move(10);
+        if (!won)
+            move(10);
     }
 
     private void buttonClick11(ActionEvent event)
     {
-        move(11);
+        if (!won)
+            move(11);
     }
 
     private void buttonClick12(ActionEvent event)
     {
-        move(12);
+        if (!won)
+            move(12);
     }
 
     private void buttonClick13(ActionEvent event)
     {
-        move(13);
+        if (!won)
+            move(13);
     }
 
     private void play()
     {
-        while (!isWon())
-        {
-            if (player == PLAYER1)
-            {
-                //move();
-            }
-            else
-            {
-            }
-        }
+        
     }
 
     private void addButtons()
@@ -247,17 +252,18 @@ public abstract class Mancala
 
         for(int i = 1; i <= size; i++)
         {
-            if (board[num+count] == null)
-                board[num+count] = new LinkedList();
+            int index = num + count % 13;
+            if (board[index] == null)
+                board[index] = new LinkedList();
             if (player == PLAYER1 && num+count == 7)
                 i--;
             else if (player == PLAYER2 && num+count == 0)
                 i--; 
             else
             {
-                board[num+count].add(board[num].remove(0));
+                board[index].add(board[num].remove(0));
                 drawStones(num, board[num].size());
-                drawStones(num+count, board[num+count].size());
+                drawStones(index, board[index].size());
             }
             count++;
         }
@@ -266,6 +272,7 @@ public abstract class Mancala
             player = PLAYER2;
         else 
             player = PLAYER1;
+        //isWon();
     }
 
     private void initialize(int num)
@@ -312,10 +319,9 @@ public abstract class Mancala
      * 
      * @return true if the game is won, false if not
      */
-    public boolean isWon()
+    public void isWon()
     {
-        boolean won = true;
-        return won;
+        won = true;
     }
 
     //draws the stones in each pit
