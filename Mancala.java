@@ -273,7 +273,6 @@ public abstract class Mancala
             count[i].setY(y);
             count[i].setFont(Font.font("Monospaced", FontWeight.EXTRA_BOLD, FontPosture.REGULAR, 30));
             count[i].setFill(Color.WHITE);
-            //count[i].toFront();
             group.getChildren().add(count[i]);
         }
         myScene.setRoot(group);

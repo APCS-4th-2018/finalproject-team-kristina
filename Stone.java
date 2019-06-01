@@ -46,7 +46,6 @@ public class Stone
     {
         //Circle circle = new Circle(RADIUS);
         myCircle = new Circle(RADIUS, myColor);
-        //circle.setVisible(true);
         int x = 25-(int)(Math.random()*50);
         int y = 25-(int)(Math.random()*50);
         myCircle.setCenterX(xLocation + x);

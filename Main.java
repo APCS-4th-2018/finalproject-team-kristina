@@ -104,8 +104,6 @@ public class Main extends Application
         Stage stage = new Stage();
         Pane box = new Pane();
         box.setPadding(new Insets(20));
-        //box.setSpacing(20);
-        //box.setAlignment(Pos.CENTER);
 
         Scene scene = new Scene(box, 1000, 1000);
         stage.setTitle("Avalanche");
@@ -121,8 +119,6 @@ public class Main extends Application
         Stage stage = new Stage();
         Pane box = new Pane();
         box.setPadding(new Insets(20));
-        //box.setSpacing(20);
-        //box.setAlignment(Pos.CENTER);
         Scene scene = new Scene(box, 1000, 1000);
         stage.setTitle("Capture");
         stage.setScene(scene);

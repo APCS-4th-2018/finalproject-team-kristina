@@ -36,9 +36,9 @@ public class Capture extends Mancala
      *
      * @return    The true or false depending on win or lose
      */
-    public boolean isWon()
-    {
-        return false;
-    }
+    //public boolean isWon()
+    //{
+        //return false;
+    //}
 
 }

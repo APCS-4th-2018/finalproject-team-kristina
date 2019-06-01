@@ -14,7 +14,6 @@ public class Avalanche extends Mancala
      */
     public Avalanche(Scene scene, Stage stage, Pane root)
     {
-        
        super(scene, stage, root);
     }
 
@@ -35,9 +34,9 @@ public class Avalanche extends Mancala
      * 
      * @return true if the game is won, false if not
      */
-    public boolean isWon()
-    {
-        return true;
-    }
+   // public boolean isWon()
+    //{
+       // return true;
+    //}
     
 }
