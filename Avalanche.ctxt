@@ -1,0 +1,10 @@
+#BlueJ class context
+comment0.target=Avalanche
+comment0.text=\r\n\ The\ Avalanche\ mode\ of\ the\ mancala\ game\r\n\r\n\ @author\ Helen,\ Kylie,\ Kristina\r\n\ @version\ 5/22/19\r\n
+comment1.params=scene\ stage\ root
+comment1.target=Avalanche(javafx.scene.Scene,\ javafx.stage.Stage,\ javafx.scene.layout.Pane)
+comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ Avalanche\r\n
+comment2.params=num
+comment2.target=void\ move(int)
+comment2.text=\r\n\ Moves\ the\ stones\ that\ are\ clicked\ on\r\n\ \r\n\ @param\ num\ the\ location\ of\ the\ stone\ that\ is\ clicked\ on\r\n
+numComments=3
