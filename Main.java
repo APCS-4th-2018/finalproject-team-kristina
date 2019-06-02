@@ -16,6 +16,8 @@ import javafx.scene.image.Image;
 import javafx.stage.Stage; 
 import javafx.scene.effect.DropShadow;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.text.FontPosture; 
+import javafx.scene.text.FontWeight; 
 
 /**
  * Write a description of JavaFX class Main here.
@@ -35,6 +37,7 @@ public class Main extends Application
         Scene scene = new Scene(box, 500, 250);
         Button button1 = new Button("Avalanche");
         Button button2 = new Button("Capture");
+        DropShadow shadow = new DropShadow();        
 
         //formatting for the box
         box.setPadding(new Insets(20));
@@ -42,7 +45,11 @@ public class Main extends Application
         box.setAlignment(Pos.CENTER);
 
         //title the screen
-        title.setFont(Font.font("Monospaced", 50));
+        //title.setFont(Font.font("Monospaced", 50));
+        title.setFont(Font.font("Monospaced", FontWeight.BOLD, FontPosture.REGULAR, 60));
+        title.setStrokeWidth(2); //setting width  
+        title.setStroke(Color.WHITE); //setting border
+        title.setFill(Color.PEACHPUFF); //set text color
         box.getChildren().add(title);
         stage.setTitle("Mancala");
         stage.setScene(scene);
@@ -57,7 +64,6 @@ public class Main extends Application
         box.getChildren().add(button2);
         button2.setOnAction(this::buttonClickC);
 
-        DropShadow shadow = new DropShadow();
         // adds shadow to first button when cursor is on the mouse
         button1.addEventHandler(MouseEvent.MOUSE_ENTERED, new EventHandler<MouseEvent>() 
             {
