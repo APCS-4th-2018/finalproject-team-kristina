@@ -14,13 +14,13 @@ public class Stone
 {
     // instance variables 
     private Circle myCircle;
-    private int xLocation;
-    private int yLocation;
+    private int xLocation; //x coordinate
+    private int yLocation; //y coordinate
     private Color myColor;
     private Scene myScene;
     private Stage myStage;
     private int num;
-    private final int RADIUS = 15;
+    private final int RADIUS = 15; //radius of stone
 
     /**
      * Constructor for objects of class Stone
@@ -48,9 +48,9 @@ public class Stone
     {
         //Circle circle = new Circle(RADIUS);
         myCircle = new Circle(RADIUS, myColor);
-        int x = 0;
-        int y = 0;
-        if (num != 0 && num != 7)
+        int x = 0; //set initial x location to 0
+        int y = 0; //set initial y location to 0
+        if (num != 0 && num != 7) //if num is not 0 and is not theh 7th pit
         {
             x = 25-(int)(Math.random()*50);
             y = 25-(int)(Math.random()*50);
@@ -75,34 +75,43 @@ public class Stone
 
     private void setColor()
     {
-        int rand = (int) (Math.random() * 8)+1;
-        if (rand == 1)
+        //declare and instantiate variable
+        int rand = (int) (Math.random() * 8)+1; //finds random number
+        if (rand == 1) //if rand is one set stone to white
             myColor = Color.WHITE;
-        else if (rand == 2)
+        else if (rand == 2) //if rand is two set stone to red
             myColor = Color.RED;
-        else if (rand == 3)
+        else if (rand == 3) //if rand is three set stone to orange
             myColor = Color.ORANGE;
-        else if (rand == 4)
+        else if (rand == 4) //if rand is four set stone to yellow
             myColor = Color.YELLOW;
-        else if (rand == 5)
+        else if (rand == 5) //if rand is five set stone to green
             myColor = Color.GREEN;
-        else if (rand == 6)
+        else if (rand == 6) //if rand is six set stone to dodger blue
             myColor = Color.DODGERBLUE;
-        else if (rand == 7)
+        else if (rand == 7) //if rand is seven set stone to medium purple
             myColor = Color.MEDIUMPURPLE;
-        else
+        else //else if none of those, set stone to pale violet red
             myColor = Color.PALEVIOLETRED;
     }
 
+    /**
+     * Gets the circle from Stone object
+     *
+     * @return myCircle the stone
+     */ 
     public Circle getCircle()
     {
-        return myCircle;
+        return myCircle; //returns myCricle Circle object
     }
 
+    /**
+     * Erases stone by setting color to transparent and making invisable.
+     */ 
     public void setTransparent()
     {
-        myColor = Color.TRANSPARENT;
-        myCircle.setVisible(false);
-        draw();
+        myColor = Color.TRANSPARENT; //sets stone color to transparent
+        myCircle.setVisible(false); //sets visibility to false
+        draw(); //draws the erased stone
     }
 }

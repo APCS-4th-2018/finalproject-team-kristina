@@ -65,7 +65,7 @@ public abstract class Mancala
         displayPlayers();
         showPlayer();
         //play();
-        initialize(1);
+        //initialize(1);
     }
 
     private void displayPlayers()
