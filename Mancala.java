@@ -246,23 +246,20 @@ public abstract class Mancala
     {
         int count = 1;
         int size = board[num].size();
-        Group group = new Group();
-        group.setAutoSizeChildren(false); 
-        group.getChildren().add(myScene.getRoot());
 
         for(int i = 1; i <= size; i++)
         {
-            int index = num + count % 13;
+            int index = (num + count) % 14;
             if (board[index] == null)
                 board[index] = new LinkedList();
-            if (player == PLAYER1 && num+count == 7)
+            if (player == PLAYER1 && index == 7)
                 i--;
-            else if (player == PLAYER2 && num+count == 0)
+            else if (player == PLAYER2 && index == 0)
                 i--; 
             else
             {
-                board[index].add(board[num].remove(0));
-                drawStones(num, board[num].size());
+                board[index].add(board[num%14].remove(0));
+                drawStones(num%14, board[num%14].size());
                 drawStones(index, board[index].size());
             }
             count++;
