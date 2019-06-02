@@ -46,10 +46,10 @@ public class Main extends Application
 
         //title the screen
         //title.setFont(Font.font("Monospaced", 50));
-        title.setFont(Font.font("Monospaced", FontWeight.BOLD, FontPosture.REGULAR, 60));
+        title.setFont(Font.font("Monospaced", FontWeight.BOLD, FontPosture.REGULAR, 45));
         title.setStrokeWidth(2); //setting width  
         title.setStroke(Color.WHITE); //setting border
-        title.setFill(Color.PEACHPUFF); //set text color
+        title.setFill(Color.LIGHTBLUE); //set text color
         box.getChildren().add(title);
         stage.setTitle("Mancala");
         stage.setScene(scene);
@@ -59,6 +59,8 @@ public class Main extends Application
         stage.show();
 
         //add the buttons to the window
+        button1.setStyle("-fx-background-radius: 8"); //set rounded borders
+        button2.setStyle("-fx-background-radius: 8"); 
         box.getChildren().add(button1);
         button1.setOnAction(this::buttonClickA);
         box.getChildren().add(button2);
