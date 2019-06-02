@@ -43,8 +43,7 @@ public abstract class Mancala
      */
     public Mancala(Scene scene, Stage stage, Pane root)
     {
-        //player = PLAYER1;
-        player = PLAYER2;
+        player = PLAYER1;
         myScene = scene;
         myStage = stage;
         myRoot = root;
@@ -58,8 +57,29 @@ public abstract class Mancala
             if (i != 7)
                 drawStones(i, 4);
         drawNumbers();
+        displayPlayers();
         //play();
         //initialize(1);
+    }
+    
+    private void displayPlayers()
+    {
+        Group group = new Group();
+        group.setAutoSizeChildren(false);
+        group.getChildren().add(myScene.getRoot());
+        Text t1 = new Text("Player 1");
+        t1.setX(450);
+        t1.setY(210);
+        t1.setFont(Font.font("Monospaced", FontWeight.EXTRA_BOLD, FontPosture.REGULAR, 30));
+        group.getChildren().add(t1);
+        Text t2 = new Text("Player 2");
+        t2.setX(450);
+        t2.setY(830);
+        t2.setFont(Font.font("Monospaced", FontWeight.EXTRA_BOLD, FontPosture.REGULAR, 30));
+        group.getChildren().add(t2);
+        myScene.setRoot(group);
+        myStage.setScene(myScene);
+        myStage.show();
     }
 
     private void buttonClick1(ActionEvent event)
@@ -269,7 +289,7 @@ public abstract class Mancala
             player = PLAYER2;
         else 
             player = PLAYER1;
-        //isWon();
+        isWon();
     }
 
     private void initialize(int num)
