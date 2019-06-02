@@ -18,6 +18,7 @@ import javafx.animation.PathTransition;
 import javafx.scene.shape.MoveTo;
 import javafx.scene.Parent;
 import javafx.event.ActionEvent;
+import javafx.scene.effect.InnerShadow;
 /**
  * Generalized game of Mancala
  *
@@ -37,6 +38,7 @@ public abstract class Mancala
     protected final int PLAYER2 = 2;
     protected int player;
     protected boolean won;
+    protected Text[]  players;
 
     /**
      * Constructor for objects of Mancala
@@ -49,6 +51,7 @@ public abstract class Mancala
         myRoot = root;
         board = new LinkedList[BOARDSIZE];
         count = new Text[BOARDSIZE];
+        players = new Text[2];
         won = false;
         //for (int i = 0; i < BOARDSIZE; i++)
         //board[i] = new LinkedList();
@@ -61,25 +64,51 @@ public abstract class Mancala
         //play();
         //initialize(1);
     }
-    
+
     private void displayPlayers()
     {
         Group group = new Group();
         group.setAutoSizeChildren(false);
         group.getChildren().add(myScene.getRoot());
-        Text t1 = new Text("Player 1");
-        t1.setX(450);
-        t1.setY(210);
-        t1.setFont(Font.font("Monospaced", FontWeight.EXTRA_BOLD, FontPosture.REGULAR, 30));
-        group.getChildren().add(t1);
-        Text t2 = new Text("Player 2");
-        t2.setX(450);
-        t2.setY(830);
-        t2.setFont(Font.font("Monospaced", FontWeight.EXTRA_BOLD, FontPosture.REGULAR, 30));
-        group.getChildren().add(t2);
+        for (int i = 0; i < 2; i++)
+        {
+            players[i] = new Text("Player " + (i+1));
+            players[i].setX(400);
+            if (i == 0)
+                players[i].setY(240);
+            else
+                players[i].setY(800);
+            players[i].setFont(Font.font("Monospaced", FontWeight.EXTRA_BOLD, FontPosture.REGULAR, 30));
+            group.getChildren().add(players[i]);
+        }
         myScene.setRoot(group);
         myStage.setScene(myScene);
         myStage.show();
+    }
+
+    private void showPlayer()
+    {
+        Text t1, t2;
+        InnerShadow is = new InnerShadow();
+        is.setOffsetX(4.0f);
+        is.setOffsetY(4.0f);
+
+        if (player == PLAYER1)
+        {
+            t1 = players[0];
+            t2 = players[1];
+        }
+        else 
+        {
+            t1 = players[1];
+            t2 = players[0];
+        }
+        t1.setEffect(is);
+        t1.setFill(Color.DARKVIOLET);
+        t1.setX(380);
+        t1.setFont(Font.font(null, FontWeight.BOLD, 80));
+        t2.setX(450);
+        t2.setFont(Font.font("Monospaced", FontWeight.EXTRA_BOLD, FontPosture.REGULAR, 30));
     }
 
     private void buttonClick1(ActionEvent event)
@@ -156,7 +185,7 @@ public abstract class Mancala
 
     private void play()
     {
-        
+
     }
 
     private void addButtons()
@@ -266,7 +295,7 @@ public abstract class Mancala
     {
         int count = 1;
         int size = board[num].size();
-
+        showPlayer();
         for(int i = 1; i <= size; i++)
         {
             int index = (num + count) % 14;
