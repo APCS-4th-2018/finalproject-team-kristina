@@ -57,8 +57,8 @@ public class Stone
         }
         else
         {
-            x = 100-(int)(Math.random()*200);
-            y = 500-(int)(Math.random()*1000);
+            x = 50-(int)(Math.random()*100);
+            y = 150-(int)(Math.random()*300);
         }
         myCircle.setCenterX(xLocation + x);
         myCircle.setCenterY(yLocation + y);
