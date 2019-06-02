@@ -33,16 +33,16 @@ public class Main extends Application
     {
         //instantiate variables
         VBox box = new VBox();
-        Text title = new Text("Mancala");
+        Text title = new Text("Mancala"); //create title text
         Scene scene = new Scene(box, 500, 250);
-        Button button1 = new Button("Avalanche");
-        Button button2 = new Button("Capture");
-        DropShadow shadow = new DropShadow();        
+        Button button1 = new Button("Avalanche"); //creates avalanche button
+        Button button2 = new Button("Capture"); //creates capture button
+        DropShadow shadow = new DropShadow(); //for button shadow
 
         //formatting for the box
         box.setPadding(new Insets(20));
-        box.setSpacing(20);
-        box.setAlignment(Pos.CENTER);
+        box.setSpacing(20); //sets spacing of words
+        box.setAlignment(Pos.CENTER); //sets to center
 
         //title the screen
         //title.setFont(Font.font("Monospaced", 50));
@@ -114,10 +114,10 @@ public class Main extends Application
         box.setPadding(new Insets(20));
 
         Scene scene = new Scene(box, 1000, 1000);
-        stage.setTitle("Avalanche");
+        stage.setTitle("Avalanche"); //sets stage title for avalanche game
 
         stage.setScene(scene);
-        box.setBackground(displayBoard('a'));
+        box.setBackground(displayBoard('a')); 
         stage.show();
         game = new Avalanche(scene, stage, box);
     }
@@ -128,7 +128,7 @@ public class Main extends Application
         Pane box = new Pane();
         box.setPadding(new Insets(20));
         Scene scene = new Scene(box, 1000, 1000);
-        stage.setTitle("Capture");
+        stage.setTitle("Capture"); //sets stage title for avalanche game
         stage.setScene(scene);
         box.setBackground(displayBoard('c'));
 
@@ -140,7 +140,7 @@ public class Main extends Application
     {
         Image image;
         if (letter == 'a')//depending on what type of game is being played, get the correct image
-            image = new Image("NewAvalancheBoard.png");
+            image = new Image("NewAvalancheBoard.png"); 
         else 
             image = new Image("NewCaptureBoard.png");
 
