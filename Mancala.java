@@ -65,7 +65,7 @@ public abstract class Mancala
         displayPlayers();
         showPlayer();
         //play();
-        //initialize(1);
+        initialize(1);
     }
 
     private void displayPlayers()
@@ -296,7 +296,7 @@ public abstract class Mancala
     {
         int count = 1;
         int size = board[num].size();
-        
+
         for(int i = 1; i <= size; i++)
         {
             int index = (num + count) % 14;
@@ -319,7 +319,7 @@ public abstract class Mancala
             player = PLAYER2;
         else 
             player = PLAYER1;
-            showPlayer();
+        showPlayer();
         isWon();
     }
 
@@ -346,6 +346,18 @@ public abstract class Mancala
         // myStage.setScene(myScene);
         // myStage.show();
 
+        Group group = new Group();
+        group.setAutoSizeChildren(false);
+        //group.getChildren().add(myScene.getRoot());
+        for(int i = 0; i < board[num].size(); i++)
+            group.getChildren().add((Circle)board[num].get(i));
+        PathTransition transition = new PathTransition();
+        transition.setNode(group);
+        transition.setDuration(Duration.seconds(5));
+        transition.setPath(new Rectangle(678, 185));
+        Scene scene = new Scene(group, 800,800);
+        myStage.setScene(scene);
+        myStage.show();
     }
 
     /**
