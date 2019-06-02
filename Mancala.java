@@ -1,4 +1,4 @@
-import java.util.*;
+import java.util.LinkedList;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.text.Font;
@@ -19,6 +19,9 @@ import javafx.scene.shape.MoveTo;
 import javafx.scene.Parent;
 import javafx.event.ActionEvent;
 import javafx.scene.effect.InnerShadow;
+import javafx.scene.layout.VBox;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 /**
  * Generalized game of Mancala
  *
@@ -39,6 +42,7 @@ public abstract class Mancala
     protected int player;
     protected boolean won;
     protected Text[]  players;
+    protected Text turn;
 
     /**
      * Constructor for objects of Mancala
@@ -53,8 +57,6 @@ public abstract class Mancala
         count = new Text[BOARDSIZE];
         players = new Text[2];
         won = false;
-        //for (int i = 0; i < BOARDSIZE; i++)
-        //board[i] = new LinkedList();
         addButtons();
         for (int i = 1; i < BOARDSIZE; i++)
             if (i != 7)
@@ -77,7 +79,7 @@ public abstract class Mancala
             if (i == 0)
                 players[i].setY(240);
             else
-                players[i].setY(800);
+                players[i].setY(820);
             players[i].setFont(Font.font("Monospaced", FontWeight.EXTRA_BOLD, FontPosture.REGULAR, 30));
             group.getChildren().add(players[i]);
         }
@@ -88,27 +90,25 @@ public abstract class Mancala
 
     private void showPlayer()
     {
-        Text t1, t2;
-        InnerShadow is = new InnerShadow();
-        is.setOffsetX(4.0f);
-        is.setOffsetY(4.0f);
-
+        if (turn != null)
+            turn.setOpacity(0.0);
         if (player == PLAYER1)
-        {
-            t1 = players[0];
-            t2 = players[1];
-        }
+            turn = new Text("Next turn: player 1");
         else 
-        {
-            t1 = players[1];
-            t2 = players[0];
-        }
-        t1.setEffect(is);
-        t1.setFill(Color.DARKVIOLET);
-        t1.setX(380);
-        t1.setFont(Font.font(null, FontWeight.BOLD, 80));
-        t2.setX(450);
-        t2.setFont(Font.font("Monospaced", FontWeight.EXTRA_BOLD, FontPosture.REGULAR, 30));
+            turn = new Text("Next turn: player 2");
+        turn.setX(100);
+        turn.setY(100);
+        turn.setFont(Font.font("Monospaced", FontWeight.BOLD, FontPosture.REGULAR, 20));
+
+        Group group = new Group();
+        group.setAutoSizeChildren(false);
+        group.getChildren().add(myScene.getRoot());
+        group.getChildren().add(turn);
+        myScene.setRoot(group);
+        myStage.setScene(myScene);
+        myStage.show();
+
+        //add something in case of free turn- maybe override in avalanche/capture
     }
 
     private void buttonClick1(ActionEvent event)
@@ -367,13 +367,92 @@ public abstract class Mancala
      */
     public void isWon()
     {
-        won = true;
+        int winner = 0;
+        boolean allEmpty1 = true;
+        boolean allEmpty2 = true;
+        for (int i = 1; i <= 6; i++)
+            if (!isEmpty(i))
+                allEmpty1 = false;
+        for (int i = 8; i <= 13; i++)
+            if (!isEmpty(i))
+                allEmpty2 = false;
+        if (allEmpty1 || allEmpty2)
+        {
+            if (allEmpty1)
+            {
+                won = true;
+                winner = findWinner(1);
+            }
+            else if (allEmpty2)
+            {
+                won = true;
+                winner = findWinner(2);
+            }
+            declareWinner(winner);
+        }
     }
 
-    //draws the stones in each pit
-    private void drawStones(int location)
+    private void declareWinner(int winner)
     {
+        InnerShadow is = new InnerShadow();
+        is.setOffsetX(4.0f);
+        is.setOffsetY(4.0f);
 
+        Stage stage = new Stage();
+        VBox box = new VBox();
+        box.setPadding(new Insets(20));
+        box.setSpacing(20);
+        box.setAlignment(Pos.CENTER);
+
+        Text title = new Text("The winner is...");
+        title.setFont(Font.font("Monospaced", 36));
+
+        Text result;
+        if (winner == 0)
+            result = new Text("It's a tie!");
+        else if (winner == 1)
+            result = new Text("Player 1!");
+        else 
+            result = new Text("Player 2!");
+        result.setEffect(is);
+        result.setFill(Color.MEDIUMORCHID);
+        result.setX(380);
+        result.setFont(Font.font(null, FontWeight.BOLD, 80));
+        box.getChildren().add(title);
+        box.getChildren().add(result);
+        Scene scene = new Scene(box, 500, 250);
+        stage.setTitle("Results");
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    private int findWinner(int num)
+    {
+        int winner = 0;
+        int start, end, own;
+        if (num == 1)
+        {
+            start = 8;
+            end = 13;
+            own = 7;
+        }
+        else 
+        {
+            start = 1; 
+            end = 6;
+            own = 0;
+        }
+        for (int i = start; i <= end; i++)
+            if (board[i] != null)
+                while (board[i].size() != 0)
+                    board[own].add(board[i].remove(0));
+        int count1 = board[0].size();
+        int count2 = board[7].size();
+        if (count1 > count2)
+            winner = PLAYER1;
+        else if (count2 > count1)
+            winner = PLAYER2;
+        return winner;
     }
 
     /**
@@ -400,26 +479,6 @@ public abstract class Mancala
             else 
                 y = setY(i) + 107;
             x = setX(i) - 10;
-            // if (i <= 7)
-            // y = 335;
-            // else
-            // y = 715;
-            // if (i == 0)
-            // x = 95;
-            // else if (i == 1 || i == 13)
-            // x = 207;
-            // else if (i == 2 || i == 12)
-            // x = 322;
-            // else if (i == 3 || i == 11)
-            // x = 432;
-            // else if (i == 4 || i == 10)
-            // x = 542;
-            // else if (i == 5 || i == 9)
-            // x = 647;
-            // else if (i == 6 || i == 8)
-            // x = 762;
-            // else
-            // x = 880;
             count[i].setX(x);
             count[i].setY(y);
             count[i].setFont(Font.font("Monospaced", FontWeight.EXTRA_BOLD, FontPosture.REGULAR, 30));
