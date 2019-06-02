@@ -63,6 +63,7 @@ public abstract class Mancala
                 drawStones(i, 4);
         drawNumbers();
         displayPlayers();
+        showPlayer();
         //play();
         //initialize(1);
     }
@@ -295,7 +296,7 @@ public abstract class Mancala
     {
         int count = 1;
         int size = board[num].size();
-        showPlayer();
+        
         for(int i = 1; i <= size; i++)
         {
             int index = (num + count) % 14;
@@ -318,6 +319,7 @@ public abstract class Mancala
             player = PLAYER2;
         else 
             player = PLAYER1;
+            showPlayer();
         isWon();
     }
 
