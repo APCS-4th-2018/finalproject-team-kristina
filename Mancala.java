@@ -17,6 +17,8 @@ import javafx.util.Duration;
 import javafx.animation.PathTransition;
 import javafx.scene.shape.MoveTo;
 import javafx.scene.Parent;
+import javafx.event.ActionEvent;
+import javafx.scene.effect.InnerShadow;
 /**
  * Generalized game of Mancala
  *
@@ -35,19 +37,22 @@ public abstract class Mancala
     protected final int PLAYER1 = 1;
     protected final int PLAYER2 = 2;
     protected int player;
+    protected boolean won;
+    protected Text[]  players;
 
     /**
      * Constructor for objects of Mancala
      */
     public Mancala(Scene scene, Stage stage, Pane root)
     {
-        //player = PLAYER1;
-        player = PLAYER2;
+        player = PLAYER1;
         myScene = scene;
         myStage = stage;
         myRoot = root;
         board = new LinkedList[BOARDSIZE];
         count = new Text[BOARDSIZE];
+        players = new Text[2];
+        won = false;
         //for (int i = 0; i < BOARDSIZE; i++)
         //board[i] = new LinkedList();
         addButtons();
@@ -55,10 +60,132 @@ public abstract class Mancala
             if (i != 7)
                 drawStones(i, 4);
         drawNumbers();
-        //move(4);
-        move(5);
-
+        displayPlayers();
+        //play();
         //initialize(1);
+    }
+
+    private void displayPlayers()
+    {
+        Group group = new Group();
+        group.setAutoSizeChildren(false);
+        group.getChildren().add(myScene.getRoot());
+        for (int i = 0; i < 2; i++)
+        {
+            players[i] = new Text("Player " + (i+1));
+            players[i].setX(400);
+            if (i == 0)
+                players[i].setY(240);
+            else
+                players[i].setY(800);
+            players[i].setFont(Font.font("Monospaced", FontWeight.EXTRA_BOLD, FontPosture.REGULAR, 30));
+            group.getChildren().add(players[i]);
+        }
+        myScene.setRoot(group);
+        myStage.setScene(myScene);
+        myStage.show();
+    }
+
+    private void showPlayer()
+    {
+        Text t1, t2;
+        InnerShadow is = new InnerShadow();
+        is.setOffsetX(4.0f);
+        is.setOffsetY(4.0f);
+
+        if (player == PLAYER1)
+        {
+            t1 = players[0];
+            t2 = players[1];
+        }
+        else 
+        {
+            t1 = players[1];
+            t2 = players[0];
+        }
+        t1.setEffect(is);
+        t1.setFill(Color.DARKVIOLET);
+        t1.setX(380);
+        t1.setFont(Font.font(null, FontWeight.BOLD, 80));
+        t2.setX(450);
+        t2.setFont(Font.font("Monospaced", FontWeight.EXTRA_BOLD, FontPosture.REGULAR, 30));
+    }
+
+    private void buttonClick1(ActionEvent event)
+    {
+        if (!won)
+            move(1);
+    }
+
+    private void buttonClick2(ActionEvent event)
+    {
+        if (!won)
+            move(2);
+    }
+
+    private void buttonClick3(ActionEvent event)
+    {
+        if (!won)
+            move(3);
+    }
+
+    private void buttonClick4(ActionEvent event)
+    {
+        if (!won)
+            move(4);
+    }
+
+    private void buttonClick5(ActionEvent event)
+    {
+        if (!won)
+            move(5);
+    }
+
+    private void buttonClick6(ActionEvent event)
+    {
+        if (!won)
+            move(6);
+    }
+
+    private void buttonClick8(ActionEvent event)
+    {
+        if (!won)
+            move(8);
+    }
+
+    private void buttonClick9(ActionEvent event)
+    {
+        if (!won)
+            move(9);
+    }
+
+    private void buttonClick10(ActionEvent event)
+    {
+        if (!won)
+            move(10);
+    }
+
+    private void buttonClick11(ActionEvent event)
+    {
+        if (!won)
+            move(11);
+    }
+
+    private void buttonClick12(ActionEvent event)
+    {
+        if (!won)
+            move(12);
+    }
+
+    private void buttonClick13(ActionEvent event)
+    {
+        if (!won)
+            move(13);
+    }
+
+    private void play()
+    {
+
     }
 
     private void addButtons()
@@ -76,6 +203,30 @@ public abstract class Mancala
                 btns[i].setVisible(true);
                 myRoot.getChildren().add(btns[i]);
                 btns[i].toFront();
+                if (i == 1)
+                    btns[i].setOnAction(this::buttonClick1);
+                else if (i == 2)
+                    btns[i].setOnAction(this::buttonClick2);
+                else if (i == 3)
+                    btns[i].setOnAction(this::buttonClick3);
+                else if (i == 4)
+                    btns[i].setOnAction(this::buttonClick4);
+                else if (i == 5)
+                    btns[i].setOnAction(this::buttonClick5);
+                else if (i == 6)
+                    btns[i].setOnAction(this::buttonClick6);
+                else if (i == 8)
+                    btns[i].setOnAction(this::buttonClick8);
+                else if (i == 9)
+                    btns[i].setOnAction(this::buttonClick9);
+                else if (i == 10)
+                    btns[i].setOnAction(this::buttonClick10);
+                else if (i == 11)
+                    btns[i].setOnAction(this::buttonClick11);
+                else if (i == 12)
+                    btns[i].setOnAction(this::buttonClick12);
+                else if (i == 13)
+                    btns[i].setOnAction(this::buttonClick13);
             }
         }
         //myStage.show();
@@ -84,20 +235,24 @@ public abstract class Mancala
     private void drawStones(int num, int count)
     {
         if (board[num] != null)
-           for (int i = 0; i < board[num].size(); i++)
+            for (int i = 0; i < board[num].size(); i++)
                 ((Stone)board[num].get(i)).setTransparent();      
-        
+
         board[num] = new LinkedList();
         int x = setX(num);
         int y = setY(num);
 
+        if (num == 0 || num == 7)
+            y = y + 93;
+
         for (int i = 1; i <= count; i++)
         {
-            Stone s = new Stone(x,y,myScene,myStage);
+            Stone s = new Stone(num,x,y,myScene,myStage);
             board[num].add(s);
         }
         myStage.show();
     }
+
     private int setX(int i)
     {
         int x = 0;
@@ -124,8 +279,6 @@ public abstract class Mancala
     private int setY(int i)
     {
         int y = 0;
-        if (i == 0 || i == 7)
-            y = 515;
         if (i <= 7)
             y = 423;
         else
@@ -142,23 +295,21 @@ public abstract class Mancala
     {
         int count = 1;
         int size = board[num].size();
-        Group group = new Group();
-        group.setAutoSizeChildren(false); 
-        group.getChildren().add(myScene.getRoot());
-
+        showPlayer();
         for(int i = 1; i <= size; i++)
         {
-            if (board[num+count] == null)
-                board[num+count] = new LinkedList();
-            if (player == PLAYER1 && num+count == 7)
+            int index = (num + count) % 14;
+            if (board[index] == null)
+                board[index] = new LinkedList();
+            if (player == PLAYER1 && index == 7)
                 i--;
-            else if (player == PLAYER2 && num+count == 0)
+            else if (player == PLAYER2 && index == 0)
                 i--; 
             else
             {
-                board[num+count].add(board[num].remove(0));
-                drawStones(num, board[num].size());
-                drawStones(num+count, board[num+count].size());
+                board[index].add(board[num%14].remove(0));
+                drawStones(num%14, board[num%14].size());
+                drawStones(index, board[index].size());
             }
             count++;
         }
@@ -167,6 +318,7 @@ public abstract class Mancala
             player = PLAYER2;
         else 
             player = PLAYER1;
+        isWon();
     }
 
     private void initialize(int num)
@@ -213,10 +365,9 @@ public abstract class Mancala
      * 
      * @return true if the game is won, false if not
      */
-    public boolean isWon()
+    public void isWon()
     {
-        boolean won = true;
-        return won;
+        won = true;
     }
 
     //draws the stones in each pit
