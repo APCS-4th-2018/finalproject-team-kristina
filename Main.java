@@ -39,7 +39,7 @@ public class Main extends Application
         Scene scene = new Scene(box, 500, 250);
         Button button1 = new Button("Avalanche"); //creates avalanche button
         Button button2 = new Button("Capture"); //creates capture button
-        Button buttonHelp = new Button("?"); //creates help button for instructions
+        Button buttonHelp = new Button("Help"); //creates help button for instructions
         DropShadow shadow = new DropShadow(); //for button shadow
 
         //window help 1
