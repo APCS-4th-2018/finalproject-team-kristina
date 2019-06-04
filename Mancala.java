@@ -233,7 +233,7 @@ public abstract class Mancala
         //myStage.show();
     }
 
-    private void drawStones(int num, int count)
+    public void drawStones(int num, int count)
     {
         if (board[num] != null)
             for (int i = 0; i < board[num].size(); i++)
@@ -296,6 +296,7 @@ public abstract class Mancala
     {
         int count = 1;
         int size = board[num].size();
+        
 
         for(int i = 1; i <= size; i++)
         {
@@ -314,11 +315,15 @@ public abstract class Mancala
             }
             count++;
         }
+        
         drawNumbers();
+        
         if (player == PLAYER1)
             player = PLAYER2;
         else 
             player = PLAYER1;
+            
+           
         showPlayer();
         isWon();
     }
