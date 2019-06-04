@@ -18,6 +18,7 @@ import javafx.scene.effect.DropShadow;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.FontPosture; 
 import javafx.scene.text.FontWeight; 
+import javafx.stage.Popup;
 
 /**
  * Write a description of JavaFX class Main here.
@@ -40,14 +41,18 @@ public class Main extends Application
         Button button1A = new Button("?"); //creates help button for avalanche
         Button button2A = new Button("?"); //creates help button for capture
         DropShadow shadow = new DropShadow(); //for button shadow
-
+        Popup help1 = new Popup(); //creates pop up
+        
+        //formatting popup
+        help1.setX(300); //set popup x location
+        help1.setY(200); //set popup y location
+        
         //formatting for the box
         box.setPadding(new Insets(20));
         box.setSpacing(20); //sets spacing of words
         box.setAlignment(Pos.CENTER); //sets to center
 
         //title the screen
-        //title.setFont(Font.font("Monospaced", 50));
         title.setFont(Font.font("Monospaced", FontWeight.BOLD, FontPosture.REGULAR, 55));
         title.setStrokeWidth(2); //setting width  
         title.setStroke(Color.WHITE); //setting border
@@ -67,7 +72,9 @@ public class Main extends Application
         button2.setOnAction(this::buttonClickC);
         button1.setStyle("-fx-background-radius: 7"); //set rounded borders
         button2.setStyle("-fx-background-radius: 7"); 
+        box.getChildren().add(button1A);
 
+        /***** BUTTON LAYOUT *****/
         // adds shadow/color to first button when cursor is on the mouse
         button1.addEventHandler(MouseEvent.MOUSE_ENTERED, new EventHandler<MouseEvent>() 
             {
@@ -111,6 +118,7 @@ public class Main extends Application
                     button2.setStyle("-fx-background-radius: 7;" + "-fx-text-fill: black;"); //highlight blue
                 }
             });
+            
     }
 
     private void buttonClickA(ActionEvent event)
