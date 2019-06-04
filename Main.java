@@ -147,7 +147,7 @@ public class Main extends Application
         //instantiate a new background image
         BackgroundImage bimage = new BackgroundImage(image, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, 
                 BackgroundPosition.CENTER, new BackgroundSize(100,100,true,true, true, true));
-
+                
         return new Background(bimage);
     }
 }
