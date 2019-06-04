@@ -31,6 +31,7 @@ public abstract class Mancala
     protected Scene myScene;
     protected Stage myStage;
     protected Pane myRoot;
+    protected final int BOARDSIZE = 14;
     protected final int PLAYER1 = 1;
     protected final int PLAYER2 = 2;
     protected int player;
@@ -44,14 +45,17 @@ public abstract class Mancala
         myScene = scene;
         myStage = stage;
         myRoot = root;
-        board = new LinkedList[14];
-        count = new Text[14];
-        for (int i = 0; i<board.length;i++)
-            board[i] = new LinkedList();
+        board = new LinkedList[BOARDSIZE];
+        count = new Text[BOARDSIZE];
+        //for (int i = 0; i < BOARDSIZE; i++)
+        //board[i] = new LinkedList();
         addButtons();
-        drawStones();
+        for (int i = 1; i < BOARDSIZE; i++)
+            if (i != 7)
+                drawStones(i, 4);
         drawNumbers();
-        move(1);
+        move(4);
+
         //initialize(1);
     }
 
@@ -75,24 +79,21 @@ public abstract class Mancala
         myStage.show();
     }
 
-    private void drawStones()
+    private void drawStones(int num, int count)
     {
-        int[] xy = new int[2];
-        for (int i = 1; i < board.length; i++)
+        //if (board[num] != null)
+        //for (int i = 0; i < board[num].size(); i++)
+        //((Stone)board[num].get(i)).setTransparent();
+        board[num] = new LinkedList();
+        int x = setX(num);
+        int y = setY(num);
+
+        for (int i = 1; i <= count; i++)
         {
-            int x = setX(i);
-            int y = setY(i);
-            if (i != 7)
-            {
-                for (int num = 1; num <= 4; num++)
-                {
-                    board[i].add(new Stone(x,y,myScene,myStage));
-                }
-            }
+            board[num].add(new Stone(x,y,myScene,myStage));
         }
 
     }
-
     private int setX(int i)
     {
         int x = 0;
@@ -134,14 +135,40 @@ public abstract class Mancala
     public void move(int num)
     {
         int count = 1;
-        for(int i = 0; i < board[i].size(); i++)
+        int size = board[num].size();
+        Group group = new Group();
+        group.setAutoSizeChildren(false); 
+        group.getChildren().add(myScene.getRoot());
+
+        for(int i = 1; i <= size; i++)
         {
             if (board[num+count] == null)
                 board[num+count] = new LinkedList();
-            board[num+count].add(board[num].get(count-1));
+            if (player == PLAYER1 && num+count == 7)
+                i--;
+            else if (player == PLAYER2 && num+count == 0)
+                i--; 
+            else
+            {
+                if (board[num].size() >= 1)
+                {
+                    ((Stone)board[num].get(0)).setTransparent();
+                    //group.getChildren().add((Circle)board[num].get(0)); //problem?
+                }
+                board[num+count].add(board[num].remove(0));
+                drawStones(num, board[num].size());
+                drawStones(num+count, board[num+count].size());
+            }
             count++;
         }
-        board[num] = null;
+        myScene.setRoot(group);
+        myStage.setScene(myScene);
+        myStage.show();
+        drawNumbers();
+        if (player == PLAYER1)
+            player = PLAYER2;
+        else 
+            player = PLAYER1;
     }
 
     private void initialize(int num)
@@ -155,7 +182,7 @@ public abstract class Mancala
         // group.setAutoSizeChildren(false);
         // group.getChildren().add(myScene.getRoot());
         // for(int i = 0; i < board[num].size(); i++)
-            // group.getChildren().add((Circle)board[num].get(i));
+        // group.getChildren().add((Circle)board[num].get(i));
         // PathTransition transition = new PathTransition();
         // transition.setDuration(Duration.seconds(5));
         // transition.setNode(group);
@@ -168,6 +195,7 @@ public abstract class Mancala
         // myStage.show();
 
     }
+
     /**
      * Returns true if a location on the board is empty
      * 
@@ -210,6 +238,8 @@ public abstract class Mancala
         group.getChildren().add(myScene.getRoot());
         for (int i = 0; i < board.length; i++)
         {
+            if (board[i] == null)
+                board[i] = new LinkedList();
             int num = board[i].size();
             int x;
             int y;
