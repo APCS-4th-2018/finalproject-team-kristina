@@ -68,43 +68,47 @@ public class Main extends Application
         box.getChildren().add(button2);
         button2.setOnAction(this::buttonClickC);
 
-        // adds shadow to first button when cursor is on the mouse
+        // adds shadow/color to first button when cursor is on the mouse
         button1.addEventHandler(MouseEvent.MOUSE_ENTERED, new EventHandler<MouseEvent>() 
             {
                 @Override
                 public void handle(MouseEvent e) 
                 {
                     button1.setEffect(shadow); //shadow effect
+                    button1.setStyle("-fx-text-fill: cadetblue"); //highlight blue
                 }
             });
 
-        // shadow disappears on first button when the cursor is removed
+        // shadow/color disappears on first button when the cursor is removed
         button1.addEventHandler(MouseEvent.MOUSE_EXITED, new EventHandler<MouseEvent>() 
             {
                 @Override
                 public void handle(MouseEvent e) 
                 {
                     button1.setEffect(null); //shadow effect is turned off
+                    button1.setStyle("-fx-text-fill: black"); //color effect turned off
                 }
             });
 
-        // adds shadow to first button when cursor is on the mouse
+        // adds shadow/color to first button when cursor is on the mouse
         button2.addEventHandler(MouseEvent.MOUSE_ENTERED, new EventHandler<MouseEvent>() 
             {
                 @Override
                 public void handle(MouseEvent e) 
                 {
                     button2.setEffect(shadow); //shadow effect
+                    button2.setStyle("-fx-text-fill: cadetblue"); //highlight blue
                 }
             });
 
-        // shadow disappears on first button when the cursor is removed
+        // shadow/color disappears on first button when the cursor is removed
         button2.addEventHandler(MouseEvent.MOUSE_EXITED, new EventHandler<MouseEvent>() 
             {
                 @Override
                 public void handle(MouseEvent e) 
                 {
                     button2.setEffect(null); //shadow effect is turned off
+                    button2.setStyle("-fx-text-fill: black"); //highlight blue
                 }
             });
     }
