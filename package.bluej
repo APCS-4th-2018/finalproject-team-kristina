@@ -11,6 +11,7 @@ dependency3.type=UsesDependency
 dependency4.from=Mancala
 dependency4.to=Stone
 dependency4.type=UsesDependency
+<<<<<<< HEAD
 editor.fx.0.height=0
 editor.fx.0.width=0
 editor.fx.0.x=0
@@ -21,6 +22,18 @@ package.divider.horizontal=0.6
 package.divider.vertical=0.8154981549815498
 package.editor.height=435
 package.editor.width=674
+=======
+editor.fx.0.height=747
+editor.fx.0.width=818
+editor.fx.0.x=551
+editor.fx.0.y=94
+objectbench.height=82
+objectbench.width=440
+package.divider.horizontal=0.5866141732283464
+package.divider.vertical=0.814968814968815
+package.editor.height=385
+package.editor.width=652
+>>>>>>> 91f472f0276b1f9df1c10ca82bf83687baffc571
 package.editor.x=43
 package.editor.y=63
 package.frame.height=600

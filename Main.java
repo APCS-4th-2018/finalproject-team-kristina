@@ -16,6 +16,8 @@ import javafx.scene.image.Image;
 import javafx.stage.Stage; 
 import javafx.scene.effect.DropShadow;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.text.FontPosture; 
+import javafx.scene.text.FontWeight; 
 
 /**
  * Write a description of JavaFX class Main here.
@@ -31,18 +33,23 @@ public class Main extends Application
     {
         //instantiate variables
         VBox box = new VBox();
-        Text title = new Text("Mancala");
+        Text title = new Text("Mancala"); //create title text
         Scene scene = new Scene(box, 500, 250);
-        Button button1 = new Button("Avalanche");
-        Button button2 = new Button("Capture");
+        Button button1 = new Button("Avalanche"); //creates avalanche button
+        Button button2 = new Button("Capture"); //creates capture button
+        DropShadow shadow = new DropShadow(); //for button shadow
 
         //formatting for the box
         box.setPadding(new Insets(20));
-        box.setSpacing(20);
-        box.setAlignment(Pos.CENTER);
+        box.setSpacing(20); //sets spacing of words
+        box.setAlignment(Pos.CENTER); //sets to center
 
         //title the screen
-        title.setFont(Font.font("Monospaced", 50));
+        //title.setFont(Font.font("Monospaced", 50));
+        title.setFont(Font.font("Monospaced", FontWeight.BOLD, FontPosture.REGULAR, 55));
+        title.setStrokeWidth(2); //setting width  
+        title.setStroke(Color.WHITE); //setting border
+        title.setFill(Color.TAN); //set text color
         box.getChildren().add(title);
         stage.setTitle("Mancala");
         stage.setScene(scene);
@@ -52,12 +59,13 @@ public class Main extends Application
         stage.show();
 
         //add the buttons to the window
+        button1.setStyle("-fx-background-radius: 7"); //set rounded borders
+        button2.setStyle("-fx-background-radius: 7"); 
         box.getChildren().add(button1);
         button1.setOnAction(this::buttonClickA);
         box.getChildren().add(button2);
         button2.setOnAction(this::buttonClickC);
 
-        DropShadow shadow = new DropShadow();
         // adds shadow to first button when cursor is on the mouse
         button1.addEventHandler(MouseEvent.MOUSE_ENTERED, new EventHandler<MouseEvent>() 
             {
@@ -104,14 +112,12 @@ public class Main extends Application
         Stage stage = new Stage();
         Pane box = new Pane();
         box.setPadding(new Insets(20));
-        //box.setSpacing(20);
-        //box.setAlignment(Pos.CENTER);
 
         Scene scene = new Scene(box, 1000, 1000);
-        stage.setTitle("Avalanche");
+        stage.setTitle("Avalanche"); //sets stage title for avalanche game
 
         stage.setScene(scene);
-        box.setBackground(displayBoard('a'));
+        box.setBackground(displayBoard('a')); 
         stage.show();
         game = new Avalanche(scene, stage, box);
     }
@@ -121,10 +127,8 @@ public class Main extends Application
         Stage stage = new Stage();
         Pane box = new Pane();
         box.setPadding(new Insets(20));
-        //box.setSpacing(20);
-        //box.setAlignment(Pos.CENTER);
         Scene scene = new Scene(box, 1000, 1000);
-        stage.setTitle("Capture");
+        stage.setTitle("Capture"); //sets stage title for avalanche game
         stage.setScene(scene);
         box.setBackground(displayBoard('c'));
 
@@ -136,14 +140,14 @@ public class Main extends Application
     {
         Image image;
         if (letter == 'a')//depending on what type of game is being played, get the correct image
-            image = new Image("NewAvalancheBoard.png");
+            image = new Image("NewAvalancheBoard.png"); 
         else 
             image = new Image("NewCaptureBoard.png");
 
         //instantiate a new background image
         BackgroundImage bimage = new BackgroundImage(image, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, 
                 BackgroundPosition.CENTER, new BackgroundSize(100,100,true,true, true, true));
-
+                
         return new Background(bimage);
     }
 }
