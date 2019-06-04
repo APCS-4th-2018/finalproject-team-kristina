@@ -19,8 +19,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.text.FontPosture; 
 import javafx.scene.text.FontWeight; 
 import javafx.stage.Popup;
-import javafx.scene.shape.Circle;
-
+import javafx.scene.shape.Circle;///////////
+import javafx.scene.control.Label; //////////
 /**
  * Write a description of JavaFX class Main here.
  *
@@ -39,8 +39,7 @@ public class Main extends Application
         Scene scene = new Scene(box, 500, 250);
         Button button1 = new Button("Avalanche"); //creates avalanche button
         Button button2 = new Button("Capture"); //creates capture button
-        Button button1A = new Button("?"); //creates help button for avalanche
-        Button button2A = new Button("?"); //creates help button for capture
+        Button buttonHelp = new Button("?"); //creates help button for instructions
         DropShadow shadow = new DropShadow(); //for button shadow
 
         //window help 1
@@ -48,11 +47,12 @@ public class Main extends Application
         help1.setX(300); 
         help1.setY(200);
         help1.getContent().addAll(new Circle(25, 25, 50, Color.AQUAMARINE));
-        //Scene scene1 = new Scene(box, 1000, 1000);
-        //Stage stage1 = new Stage();
-        //stage1.setTitle("Help"); //sets stage title for avalanche game
+        Label label = new Label("This is a Popup"); 
+        label.setStyle(" -fx-background-color: white;");
+        help1.getContent().add(label);
+        label.setMinWidth(80); 
+        label.setMinHeight(50); 
 
-        
         //formatting for the box
         box.setPadding(new Insets(20));
         box.setSpacing(20); //sets spacing of words
@@ -78,15 +78,18 @@ public class Main extends Application
         button2.setOnAction(this::buttonClickC);
         button1.setStyle("-fx-background-radius: 7"); //set rounded borders
         button2.setStyle("-fx-background-radius: 7"); 
-        box.getChildren().add(button1A);
-        box.getChildren().add(button2A);
+        box.getChildren().add(buttonHelp);
 
         /***** POPUP WINDOW *****/
-        button1A.setOnAction(new EventHandler<ActionEvent>() 
+        buttonHelp.setOnAction(new EventHandler<ActionEvent>() 
             {
                 @Override public void handle(ActionEvent event) 
                 {
-                    help1.show(stage);
+                    //help1.show(stage);
+                    if (!help1.isShowing()) 
+                        help1.show(stage); 
+                    else
+                        help1.hide();
                 }
             });
 
