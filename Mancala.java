@@ -318,16 +318,21 @@ public abstract class Mancala
         
         drawNumbers();
         
-        if (player == PLAYER1)
-            player = PLAYER2;
-        else 
-            player = PLAYER1;
+        switchPlayers();
             
            
         showPlayer();
         isWon();
     }
 
+    protected void switchPlayers()
+    {
+        if (player == PLAYER1)
+            player = PLAYER2;
+        else 
+            player = PLAYER1;
+    }
+    
     private void initialize(int num)
     {
         // Rectangle rectangle = new Rectangle(678, 185);

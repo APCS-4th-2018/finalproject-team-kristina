@@ -24,12 +24,14 @@ public class Avalanche extends Mancala
      */
     public void move(int num)
     {
-        int next = num + board[num].size();
+        int next = (num + board[num].size()) % 14;
         super.move(num);//move normally
+
         while(!isEmpty(next))
         {
             num = next;
-            next = next + board[num].size();
+            next = (next + board[num].size());
+            super.switchPlayers();//keep it on the same player
             super.move(num);//continue moving if there are stones there
         }
     }

@@ -32,30 +32,32 @@ public class Capture extends Mancala
         int next = (num + board[num].size()) % 14;
         int size, across, diff;
         super.move(num);
-        size = board[next].size();
         //hello if you're looking at this know that it doesn't capture all the stones from the opposite pit for some reason
         if(board[next].size() == 1)//if where you end up in an empty pit
         {
+            super.switchPlayers();//keep on the same player
             if(player == PLAYER1)
             {
                 board[0].add(board[next].remove(0));
-                drawStones(0, 1);
                 across = 13 - next + 1;
-                for(int i = 0; i < board[across].size(); i++)
-                    board[0].add(board[across].remove(i));
-                drawStones(0, board[across].size());
+                size = board[across].size();
+                for(int i = 0; i < size; i++)
+                    board[0].add(board[across].remove(0));
+                drawStones(0, size + 1);
             }
             else
             {
                 board[7].add(board[next].remove(0));
                 drawStones(7, 1);
                 across = 13 - next + 1;
-                for(int i = 0; i < board[across].size(); i++)
-                    board[7].add(board[across].remove(i));
-                drawStones(7, board[across].size());
+                size = board[across].size();
+                for(int i = 0; i < size; i++)
+                    board[7].add(board[across].remove(0));
+                drawStones(7, size + 1);
             }
             drawNumbers();
             isWon();
+            super.switchPlayers();//switchs back
         }
 
     }
