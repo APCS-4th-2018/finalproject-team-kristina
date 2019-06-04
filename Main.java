@@ -61,12 +61,12 @@ public class Main extends Application
         stage.show();
 
         //add the buttons to the window
-        button1.setStyle("-fx-background-radius: 7"); //set rounded borders
-        button2.setStyle("-fx-background-radius: 7"); 
         box.getChildren().add(button1);
         button1.setOnAction(this::buttonClickA);
         box.getChildren().add(button2);
         button2.setOnAction(this::buttonClickC);
+        button1.setStyle("-fx-background-radius: 7"); //set rounded borders
+        button2.setStyle("-fx-background-radius: 7"); 
 
         // adds shadow/color to first button when cursor is on the mouse
         button1.addEventHandler(MouseEvent.MOUSE_ENTERED, new EventHandler<MouseEvent>() 
@@ -75,7 +75,7 @@ public class Main extends Application
                 public void handle(MouseEvent e) 
                 {
                     button1.setEffect(shadow); //shadow effect
-                    button1.setStyle("-fx-text-fill: cadetblue"); //highlight blue
+                    button1.setStyle("-fx-background-radius: 7;" + "-fx-text-fill: cadetblue;"); //highlight blue
                 }
             });
 
@@ -86,7 +86,7 @@ public class Main extends Application
                 public void handle(MouseEvent e) 
                 {
                     button1.setEffect(null); //shadow effect is turned off
-                    button1.setStyle("-fx-text-fill: black"); //color effect turned off
+                    button1.setStyle("-fx-background-radius: 7;" +"-fx-text-fill: black;"); //color effect turned off
                 }
             });
 
@@ -97,7 +97,7 @@ public class Main extends Application
                 public void handle(MouseEvent e) 
                 {
                     button2.setEffect(shadow); //shadow effect
-                    button2.setStyle("-fx-text-fill: cadetblue"); //highlight blue
+                    button2.setStyle("-fx-background-radius: 7;" + "-fx-text-fill: cadetblue;"); //highlight blue
                 }
             });
 
@@ -108,7 +108,7 @@ public class Main extends Application
                 public void handle(MouseEvent e) 
                 {
                     button2.setEffect(null); //shadow effect is turned off
-                    button2.setStyle("-fx-text-fill: black"); //highlight blue
+                    button2.setStyle("-fx-background-radius: 7;" + "-fx-text-fill: black;"); //highlight blue
                 }
             });
     }
