@@ -89,7 +89,7 @@ public abstract class Mancala
         myStage.show();
     }
 
-    private void showPlayer()
+    protected void showPlayer()
     {
         if (turn != null)
             turn.setOpacity(0.0);
@@ -238,7 +238,9 @@ public abstract class Mancala
         if (board[num] != null)
             for (int i = 0; i < board[num].size(); i++)
                 ((Stone)board[num].get(i)).setTransparent();      
-
+                
+        
+            
         board[num] = new LinkedList();
         int x = setX(num);
         int y = setY(num);
@@ -318,16 +320,21 @@ public abstract class Mancala
         
         drawNumbers();
         
+       // switchPlayers();
+            
+           
+        // showPlayer();
+        // isWon();
+    }
+
+    protected void switchPlayers()
+    {
         if (player == PLAYER1)
             player = PLAYER2;
         else 
             player = PLAYER1;
-            
-           
-        showPlayer();
-        isWon();
     }
-
+    
     private void initialize(int num)
     {
         // Rectangle rectangle = new Rectangle(678, 185);
