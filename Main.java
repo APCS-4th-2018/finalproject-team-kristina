@@ -19,6 +19,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.text.FontPosture; 
 import javafx.scene.text.FontWeight; 
 import javafx.stage.Popup;
+import javafx.scene.shape.Circle;
 
 /**
  * Write a description of JavaFX class Main here.
@@ -41,11 +42,16 @@ public class Main extends Application
         Button button1A = new Button("?"); //creates help button for avalanche
         Button button2A = new Button("?"); //creates help button for capture
         DropShadow shadow = new DropShadow(); //for button shadow
-        Popup help1 = new Popup(); //creates pop up
-        
-        //formatting popup
-        help1.setX(300); //set popup x location
-        help1.setY(200); //set popup y location
+
+        //window help 1
+        Popup help1 = new Popup(); 
+        help1.setX(300); 
+        help1.setY(200);
+        help1.getContent().addAll(new Circle(25, 25, 50, Color.AQUAMARINE));
+        //Scene scene1 = new Scene(box, 1000, 1000);
+        //Stage stage1 = new Stage();
+        //stage1.setTitle("Help"); //sets stage title for avalanche game
+
         
         //formatting for the box
         box.setPadding(new Insets(20));
@@ -73,6 +79,24 @@ public class Main extends Application
         button1.setStyle("-fx-background-radius: 7"); //set rounded borders
         button2.setStyle("-fx-background-radius: 7"); 
         box.getChildren().add(button1A);
+        box.getChildren().add(button2A);
+
+        /***** POPUP WINDOW *****/
+        button1A.setOnAction(new EventHandler<ActionEvent>() 
+            {
+                @Override public void handle(ActionEvent event) 
+                {
+                    help1.show(stage);
+                }
+            });
+
+        /*
+        Button hide = new Button("Hide");
+        hide.setOnAction(new EventHandler<ActionEvent>() {
+        @Override public void handle(ActionEvent event) {
+        help1.hide();
+        }
+        });*/
 
         /***** BUTTON LAYOUT *****/
         // adds shadow/color to first button when cursor is on the mouse
@@ -118,7 +142,7 @@ public class Main extends Application
                     button2.setStyle("-fx-background-radius: 7;" + "-fx-text-fill: black;"); //highlight blue
                 }
             });
-            
+
     }
 
     private void buttonClickA(ActionEvent event)
