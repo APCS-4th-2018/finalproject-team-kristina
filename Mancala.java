@@ -324,7 +324,7 @@ public abstract class Mancala
         //make and add the new stones
         for (int i = 1; i <= count; i++)
         {
-            board[num].add(new Stone(num,x,y,myScene,myStage));
+            board[num].add(new Stone(num,x,y,myScene));
         }
     }
 
