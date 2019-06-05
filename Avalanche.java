@@ -30,7 +30,7 @@ public class Avalanche extends Mancala
         while(!isEmpty(next))
         {
             num = next;
-            next = (next + board[num].size());
+            next = (next + board[num].size()) % 14;
             //super.switchPlayers();//keep it on the same player
             super.move(num);//continue moving if there are stones there
             
