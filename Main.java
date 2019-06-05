@@ -42,17 +42,6 @@ public class Main extends Application
         Button buttonHelp = new Button("Help"); //creates help button for instructions
         DropShadow shadow = new DropShadow(); //for button shadow
 
-        /***window help 1
-        Popup help1 = new Popup(); 
-        help1.setX(300); 
-        help1.setY(200);
-        help1.getContent().addAll(new Circle(25, 25, 50, Color.AQUAMARINE));
-        Label label = new Label("This is a Popup"); 
-        label.setStyle(" -fx-background-color: white;");
-        help1.getContent().add(label);
-        label.setMinWidth(80); 
-        label.setMinHeight(50); ****/
-
         //formatting for the box
         box.setPadding(new Insets(20));
         box.setSpacing(20); //sets spacing of words
@@ -72,35 +61,15 @@ public class Main extends Application
         stage.show();
 
         //add the buttons to the window
-        box.getChildren().add(button1);
-        button1.setOnAction(this::buttonClickA);
-        box.getChildren().add(button2);
-        button2.setOnAction(this::buttonClickC);
+        box.getChildren().add(button1); //button1 added to box
+        button1.setOnAction(this::buttonClickA); //on action go to buttonClickA
+        box.getChildren().add(button2); //button2 added to box
+        button2.setOnAction(this::buttonClickC); //on action go to buttonClickC
+        box.getChildren().add(buttonHelp); //buttonHelp added to box
+        buttonHelp.setOnAction(this::showStage); //on action go to showStage
         button1.setStyle("-fx-background-radius: 7"); //set rounded borders
         button2.setStyle("-fx-background-radius: 7"); 
-        box.getChildren().add(buttonHelp);
-        buttonHelp.setOnAction(this::showStage);
-
-        /***** POPUP WINDOW 
-        buttonHelp.setOnAction(new EventHandler<ActionEvent>() 
-        {
-        @Override public void handle(ActionEvent event) 
-        {
-        //help1.show(stage);
-        if (!help1.isShowing()) 
-        help1.show(stage); 
-        else
-        help1.hide();
-        }
-        });*****/
-
-        /*
-        Button hide = new Button("Hide");
-        hide.setOnAction(new EventHandler<ActionEvent>() {
-        @Override public void handle(ActionEvent event) {
-        help1.hide();
-        }
-        });*/
+        buttonHelp.setStyle("-fx-background-radius: 7"); 
 
         /***** BUTTON LAYOUT *****/
         // adds shadow/color to first button when cursor is on the mouse
@@ -146,7 +115,7 @@ public class Main extends Application
                     button2.setStyle("-fx-background-radius: 7;" + "-fx-text-fill: black;"); //highlight blue
                 }
             });
-
+        /**** END OF BUTTON LAYOUT ****/
     }
 
     //when the Avalanche button is clicked
@@ -197,10 +166,10 @@ public class Main extends Application
     {
         Stage stage = new Stage();
         VBox comp = new VBox();
-        
+
         //sets stage title for avalanche game
         stage.setTitle("Capture"); 
-        
+
         Scene stageScene = new Scene(comp, 300, 300);
         stage.setScene(stageScene);
         stage.show();
