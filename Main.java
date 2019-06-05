@@ -1,6 +1,4 @@
-
 import javafx.application.Application;
-import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -22,14 +20,16 @@ import javafx.stage.Popup;
 import javafx.scene.shape.Circle;///////////
 import javafx.scene.control.Label; //////////
 /**
- * Write a description of JavaFX class Main here.
+ * Driver class that handles initial screen
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author Helen, Kylie, Kristina
+ * @version 5/22/19
  */
 public class Main extends Application
 {
+    //local variable
     private Mancala game;
+    
     @Override
     public void start(Stage stage) throws Exception
     {
@@ -148,39 +148,57 @@ public class Main extends Application
 
     }
 
+    //when the Avalanche button is clicked
     private void buttonClickA(ActionEvent event)
     {
+        //declares and instantiates variables
         Stage stage = new Stage();
         Pane box = new Pane();
         box.setPadding(new Insets(20));
-
         Scene scene = new Scene(box, 1000, 1000);
-        stage.setTitle("Avalanche"); //sets stage title for avalanche game
-
         stage.setScene(scene);
+        
+        //sets stage title for avalanche game
+        stage.setTitle("Avalanche"); 
+
+        //sets the background image (board)
         box.setBackground(displayBoard('a')); 
+        
         stage.show();
+        
+        //instantiates new Avalanche game
         game = new Avalanche(scene, stage, box);
     }
 
+    //when the Capture button is clicked
     private void buttonClickC(ActionEvent event)
     {
+        //declares and instantiates variables
         Stage stage = new Stage();
         Pane box = new Pane();
         box.setPadding(new Insets(20));
         Scene scene = new Scene(box, 1000, 1000);
-        stage.setTitle("Capture"); //sets stage title for avalanche game
         stage.setScene(scene);
+        
+        //sets stage title for avalanche game
+        stage.setTitle("Capture"); 
+        
+        //sets the background image (board)
         box.setBackground(displayBoard('c'));
 
         stage.show();
+        
+        //instantiates new Capture game
         game = new Capture(scene, stage, box);
     }
 
+    //chooses correct background image depending on the type of Mancala
     private Background displayBoard(char letter)
     {
         Image image;
-        if (letter == 'a')//depending on what type of game is being played, get the correct image
+        
+        //depending on what type of game is being played, get the correct image
+        if (letter == 'a')
             image = new Image("NewAvalancheBoard.png"); 
         else 
             image = new Image("NewCaptureBoard.png");
@@ -188,7 +206,7 @@ public class Main extends Application
         //instantiate a new background image
         BackgroundImage bimage = new BackgroundImage(image, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, 
                 BackgroundPosition.CENTER, new BackgroundSize(100,100,true,true, true, true));
-
+                
         return new Background(bimage);
     }
 }
