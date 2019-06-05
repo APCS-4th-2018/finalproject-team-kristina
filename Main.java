@@ -16,7 +16,9 @@ import javafx.scene.effect.DropShadow;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.FontPosture; 
 import javafx.scene.text.FontWeight; 
-
+import javafx.stage.Popup;
+import javafx.scene.shape.Circle;///////////
+import javafx.scene.control.Label; //////////
 /**
  * Driver class that handles initial screen
  *
@@ -37,7 +39,19 @@ public class Main extends Application
         Scene scene = new Scene(box, 500, 250);
         Button button1 = new Button("Avalanche"); //creates avalanche button
         Button button2 = new Button("Capture"); //creates capture button
+        Button buttonHelp = new Button("Help"); //creates help button for instructions
         DropShadow shadow = new DropShadow(); //for button shadow
+
+        //window help 1
+        Popup help1 = new Popup(); 
+        help1.setX(300); 
+        help1.setY(200);
+        help1.getContent().addAll(new Circle(25, 25, 50, Color.AQUAMARINE));
+        Label label = new Label("This is a Popup"); 
+        label.setStyle(" -fx-background-color: white;");
+        help1.getContent().add(label);
+        label.setMinWidth(80); 
+        label.setMinHeight(50); 
 
         //formatting for the box
         box.setPadding(new Insets(20));
@@ -58,52 +72,80 @@ public class Main extends Application
         stage.show();
 
         //add the buttons to the window
-        button1.setStyle("-fx-background-radius: 7"); //set rounded borders
-        button2.setStyle("-fx-background-radius: 7"); 
         box.getChildren().add(button1);
         button1.setOnAction(this::buttonClickA);
         box.getChildren().add(button2);
         button2.setOnAction(this::buttonClickC);
+        button1.setStyle("-fx-background-radius: 7"); //set rounded borders
+        button2.setStyle("-fx-background-radius: 7"); 
+        box.getChildren().add(buttonHelp);
 
-        // adds shadow to first button when cursor is on the mouse
+        /***** POPUP WINDOW *****/
+        buttonHelp.setOnAction(new EventHandler<ActionEvent>() 
+            {
+                @Override public void handle(ActionEvent event) 
+                {
+                    //help1.show(stage);
+                    if (!help1.isShowing()) 
+                        help1.show(stage); 
+                    else
+                        help1.hide();
+                }
+            });
+
+        /*
+        Button hide = new Button("Hide");
+        hide.setOnAction(new EventHandler<ActionEvent>() {
+        @Override public void handle(ActionEvent event) {
+        help1.hide();
+        }
+        });*/
+
+        /***** BUTTON LAYOUT *****/
+        // adds shadow/color to first button when cursor is on the mouse
         button1.addEventHandler(MouseEvent.MOUSE_ENTERED, new EventHandler<MouseEvent>() 
             {
                 @Override
                 public void handle(MouseEvent e) 
                 {
                     button1.setEffect(shadow); //shadow effect
+                    button1.setStyle("-fx-background-radius: 7;" + "-fx-text-fill: cadetblue;"); //highlight blue
                 }
             });
 
-        // shadow disappears on first button when the cursor is removed
+        // shadow/color disappears on first button when the cursor is removed
         button1.addEventHandler(MouseEvent.MOUSE_EXITED, new EventHandler<MouseEvent>() 
             {
                 @Override
                 public void handle(MouseEvent e) 
                 {
                     button1.setEffect(null); //shadow effect is turned off
+                    button1.setStyle("-fx-background-radius: 7;" +"-fx-text-fill: black;"); //color effect turned off
                 }
             });
 
-        // adds shadow to first button when cursor is on the mouse
+        // adds shadow/color to first button when cursor is on the mouse
         button2.addEventHandler(MouseEvent.MOUSE_ENTERED, new EventHandler<MouseEvent>() 
             {
                 @Override
                 public void handle(MouseEvent e) 
                 {
                     button2.setEffect(shadow); //shadow effect
+                    button2.setStyle("-fx-background-radius: 7;" + "-fx-text-fill: cadetblue;"); //highlight blue
                 }
             });
 
-        // shadow disappears on first button when the cursor is removed
+        // shadow/color disappears on first button when the cursor is removed
         button2.addEventHandler(MouseEvent.MOUSE_EXITED, new EventHandler<MouseEvent>() 
             {
                 @Override
                 public void handle(MouseEvent e) 
                 {
                     button2.setEffect(null); //shadow effect is turned off
+                    button2.setStyle("-fx-background-radius: 7;" + "-fx-text-fill: black;"); //highlight blue
                 }
             });
+
     }
 
     //when the Avalanche button is clicked
