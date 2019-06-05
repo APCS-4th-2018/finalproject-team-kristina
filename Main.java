@@ -1,3 +1,4 @@
+
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -199,16 +200,17 @@ public class Main extends Application
 
         //title header
         Text title = new Text("Instructions:"); //create title text
-        title.setFont(Font.font("Monospaced", FontWeight.BOLD, FontPosture.REGULAR, 55));
+        title.setFont(Font.font("Monospaced", FontWeight.BOLD, FontPosture.REGULAR, 50));
         title.setStrokeWidth(2); //setting width  
         title.setStroke(Color.WHITE); //setting border
         title.setFill(Color.TAN); //set text color
         box.getChildren().add(title);
 
         //add instructions to the box
-        Label label = new Label("this is VBox example");
-        box.getChildren().add(label); 
-        
+        Label capture = new Label("Capture Mode:");
+        box.getChildren().add(capture); 
+        capture.setFont(Font.font("Monospaced", FontWeight.BOLD, FontPosture.REGULAR, 20));
+
         //set background color
         box.setBackground(new Background(new BackgroundFill(Color.LIGHTPINK, new CornerRadii(1), new Insets(1))));
         stage.show();
