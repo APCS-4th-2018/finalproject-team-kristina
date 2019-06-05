@@ -11,6 +11,10 @@ public class Avalanche extends Mancala
 {
     /**
      * Constructor for objects of class Avalanche
+     * 
+     * @param scene
+     * @param stage
+     * @param root
      */
     public Avalanche(Scene scene, Stage stage, Pane root)
     {

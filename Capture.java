@@ -2,7 +2,7 @@ import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage; 
 /**
- * Specific methods for the game type Capture of Mancala.
+ * The Capture mode of the mancala game
  *
  * @author Helen, Kylie, Kristina
  * @version 5/22/19
@@ -11,6 +11,10 @@ public class Capture extends Mancala
 {
     /**
      *  Constructor for the Capture object
+     *  
+     *  @param scene
+     *  @param stage
+     *  @param root
      */
     public Capture(Scene scene, Stage stage, Pane root)
     {
@@ -19,11 +23,15 @@ public class Capture extends Mancala
 
     /**
      *  Helper method for when stones are captured
+     *  
+     *  @param num number of the pit clicked on
+     *  @param next number of the pit where the last stone lands
      */
     private void captured(int num, int next)
     {
-        
+        //declare variables
         int size, across, diff, originalSize;
+        
         if(player == PLAYER1 && next >= 1 && next <= 6)
         {
             originalSize = board[0].size();
@@ -49,6 +57,8 @@ public class Capture extends Mancala
 
     /**
      *  Move method specifically for capture game type (how the stones move)
+     *  
+     *  @param num location of the pit clicked on
      */
     public void move(int num)
     {
@@ -90,14 +100,4 @@ public class Capture extends Mancala
         hideButtons();
         isWon();
     }
-    /**
-     *  Returns whether the user has won or lost in Capture mode.
-     *
-     * @return    The true or false depending on win or lose
-     */
-    //public boolean isWon()
-    //{
-    //return false;
-    //}
-
 }
