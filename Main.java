@@ -199,7 +199,7 @@ public class Main extends Application
                 + "every pit \nuntil the player runs out of stones. If the last stone dropped is in an empty \nhole on the current "
                 + "player's pit, the player will capture all stones on the same \npit on the opposite side of the board, capturing "
                 + "the other players' stones.\nThe game ends when all six holes on neither player's side are empty. \nThe player "
-                + "with the most stones is the winner,"); //capture mode label
+                + "with the most stones is the winner."); //capture mode label
 
         Label avalanche = new Label("Avalanche Mode Rules:"); //avalanche mode label
         Label avalanche1 = new Label("Each player owns one side of the board. Players take turns selecting \na pile of stones "
@@ -219,7 +219,7 @@ public class Main extends Application
         title.setFont(Font.font("Monospaced", FontWeight.BOLD, FontPosture.REGULAR, 50));
         title.setStrokeWidth(2); //setting width  
         title.setStroke(Color.WHITE); //setting border
-        title.setFill(Color.LIGHTPINK); //set text color
+        title.setFill(Color.PINK); //set text color
         box.getChildren().add(title);
 
         //formatting labels and adding to box
@@ -233,12 +233,11 @@ public class Main extends Application
         avalanche1.setFont(Font.font("Monospaced", FontPosture.REGULAR, 15)); //instruction format
 
         //set background color
-        box.setBackground(new Background(new BackgroundFill(Color.LIGHTCYAN, new CornerRadii(1), new Insets(1))));
-        stage.show();
+        box.setBackground(new Background(new BackgroundFill(Color.MISTYROSE, new CornerRadii(1), new Insets(1))));
 
         Scene stageScene = new Scene(box, 770, 650);
         stage.setScene(stageScene);
-        stage.show();
+        stage.show(); //show stage
     }
 
     //chooses correct background image depending on the type of Mancala
