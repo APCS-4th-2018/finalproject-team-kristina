@@ -391,9 +391,9 @@ public abstract class Mancala
                 board[index] = new LinkedList();
                 
             //skip opponents big pit
-            if (player == PLAYER1 && index == 7)
+            if (player == PLAYER1 && index == 0)
                 i--;
-            else if (player == PLAYER2 && index == 0)
+            else if (player == PLAYER2 && index == 7)
                 i--; 
             //otherwise add stone to the location
             else
