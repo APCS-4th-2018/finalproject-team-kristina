@@ -184,13 +184,31 @@ public class Main extends Application
 
     private void showStage(ActionEvent event)
     {
+        //declare and initialize variables
+        VBox box = new VBox();
         Stage stage = new Stage();
-        VBox comp = new VBox();
 
-        //sets stage title for avalanche game
-        stage.setTitle("Capture"); 
+        //sets stage title for help
+        stage.setTitle("Help"); 
 
-        Scene stageScene = new Scene(comp, 300, 300);
+        //formatting for the box
+        box.setPadding(new Insets(20));
+        box.setSpacing(20); //sets spacing of words
+        box.setAlignment(Pos.CENTER); //sets to center
+
+        Text title = new Text("Mancala"); //create title text
+        title.setFont(Font.font("Monospaced", FontWeight.BOLD, FontPosture.REGULAR, 55));
+        title.setStrokeWidth(2); //setting width  
+        title.setStroke(Color.WHITE); //setting border
+        title.setFill(Color.TAN); //set text color
+        box.getChildren().add(title);
+        stage.setTitle("Mancala");
+
+        //set background color
+        box.setBackground(new Background(new BackgroundFill(Color.BURLYWOOD, new CornerRadii(1), new Insets(1))));
+        stage.show();
+
+        Scene stageScene = new Scene(box, 300, 300);
         stage.setScene(stageScene);
         stage.show();
     }
