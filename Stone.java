@@ -54,14 +54,14 @@ public class Stone
         if (num != 0 && num != 7) 
         {
             //slightly randomizes locations so stones are not directly on top of each other
-            x = 25-(int)(Math.random()*50);
+            x = 20-(int)(Math.random()*40);
             y = 25-(int)(Math.random()*50);
         }
         else
         {
             //slightly randomizes locations so stones are not directly on top of each other
-            x = 25-(int)(Math.random()*50);
-            y = 150-(int)(Math.random()*300);
+            x = 20-(int)(Math.random()*40);
+            y = 100-(int)(Math.random()*200);
         }
         
         //sets center of the circle

@@ -195,84 +195,84 @@ public abstract class Mancala
     //moves the stones in pit 1 when clicked on
     private void buttonClick1(ActionEvent event)
     {
-        if (!won)
+        if (!won && player == PLAYER1)
             move(1);
     }
 
     //moves the stones in pit 2 when clicked on
     private void buttonClick2(ActionEvent event)
     {
-        if (!won)
+        if (!won && player == PLAYER1)
             move(2);
     }
 
     //moves the stones in pit 3 when clicked on
     private void buttonClick3(ActionEvent event)
     {
-        if (!won)
+        if (!won && player == PLAYER1)
             move(3);
     }
 
     //moves the stones in pit 4 when clicked on
     private void buttonClick4(ActionEvent event)
     {
-        if (!won)
+        if (!won && player == PLAYER1)
             move(4);
     }
 
     //moves the stones in pit 5 when clicked on
     private void buttonClick5(ActionEvent event)
     {
-        if (!won)
+        if (!won && player == PLAYER1)
             move(5);
     }
 
     //moves the stones in pit 6 when clicked on
     private void buttonClick6(ActionEvent event)
     {
-        if (!won)
+        if (!won && player == PLAYER1)
             move(6);
     }
 
     //moves the stones in pit 8 when clicked on
     private void buttonClick8(ActionEvent event)
     {
-        if (!won)
+        if (!won && player == PLAYER2)
             move(8);
     }
 
     //moves the stones in pit 9 when clicked on
     private void buttonClick9(ActionEvent event)
     {
-        if (!won)
+        if (!won && player == PLAYER2)
             move(9);
     }
 
     //moves the stones in pit 10 when clicked on
     private void buttonClick10(ActionEvent event)
     {
-        if (!won)
+        if (!won && player == PLAYER2)
             move(10);
     }
 
     //moves the stones in pit 11 when clicked on
     private void buttonClick11(ActionEvent event)
     {
-        if (!won)
+        if (!won && player == PLAYER2)
             move(11);
     }
 
     //moves the stones in pit 12 when clicked on
     private void buttonClick12(ActionEvent event)
     {
-        if (!won)
+        if (!won && player == PLAYER2)
             move(12);
     }
 
     //moves the stones in pit 13 when clicked on
     private void buttonClick13(ActionEvent event)
     {
-        if (!won)
+        if (!won && player == PLAYER2)
             move(13);
     }
 
