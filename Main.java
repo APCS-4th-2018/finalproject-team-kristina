@@ -16,9 +16,7 @@ import javafx.scene.effect.DropShadow;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.FontPosture; 
 import javafx.scene.text.FontWeight; 
-import javafx.stage.Popup;
-import javafx.scene.shape.Circle;///////////
-import javafx.scene.control.Label; //////////
+
 /**
  * Driver class that handles initial screen
  *
@@ -113,6 +111,28 @@ public class Main extends Application
                 {
                     button2.setEffect(null); //shadow effect is turned off
                     button2.setStyle("-fx-background-radius: 7;" + "-fx-text-fill: black;"); //highlight blue
+                }
+            });
+
+        // adds shadow/color to first button when cursor is on the mouse
+        buttonHelp.addEventHandler(MouseEvent.MOUSE_ENTERED, new EventHandler<MouseEvent>() 
+            {
+                @Override
+                public void handle(MouseEvent e) 
+                {
+                    buttonHelp.setEffect(shadow); //shadow effect
+                    buttonHelp.setStyle("-fx-background-radius: 7;" + "-fx-text-fill: cadetblue;"); //highlight blue
+                }
+            });
+
+        // shadow/color disappears on first button when the cursor is removed
+        buttonHelp.addEventHandler(MouseEvent.MOUSE_EXITED, new EventHandler<MouseEvent>() 
+            {
+                @Override
+                public void handle(MouseEvent e) 
+                {
+                    buttonHelp.setEffect(null); //shadow effect is turned off
+                    buttonHelp.setStyle("-fx-background-radius: 7;" +"-fx-text-fill: black;"); //color effect turned off
                 }
             });
         /**** END OF BUTTON LAYOUT ****/
