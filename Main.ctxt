@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=Main
-comment0.text=\n\ Write\ a\ description\ of\ JavaFX\ class\ Main\ here.\n\n\ @author\ (your\ name)\n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment0.text=\r\n\ Driver\ class\ that\ handles\ initial\ screen\r\n\r\n\ @author\ Helen,\ Kylie,\ Kristina\r\n\ @version\ 5/22/19\r\n
 comment1.params=stage
 comment1.target=void\ start(javafx.stage.Stage)
 comment2.params=e
