@@ -1,13 +1,13 @@
 #BlueJ class context
 comment0.target=Capture
-comment0.text=\n\ Specific\ methods\ for\ the\ game\ type\ Capture\ of\ Mancala.\n\n\ @author\ Helen,\ Kylie,\ Kristina\n\ @version\ 5/22/19\n
+comment0.text=\r\n\ Specific\ methods\ for\ the\ game\ type\ Capture\ of\ Mancala.\r\n\r\n\ @author\ Helen,\ Kylie,\ Kristina\r\n\ @version\ 5/22/19\r\n
 comment1.params=scene\ stage\ root
 comment1.target=Capture(javafx.scene.Scene,\ javafx.stage.Stage,\ javafx.scene.layout.Pane)
-comment1.text=\n\ \ Constructor\ for\ the\ Capture\ object\n
+comment1.text=\r\n\ \ Constructor\ for\ the\ Capture\ object\r\n
 comment2.params=
 comment2.target=void\ captured()
-comment2.text=\n\ \ Helper\ method\ for\ when\ stones\ are\ captured\n
-comment3.params=
-comment3.target=void\ move()
-comment3.text=\n\ \ Move\ method\ specifically\ for\ capture\ game\ type\ (how\ the\ stones\ move)\n
+comment2.text=\r\n\ \ Helper\ method\ for\ when\ stones\ are\ captured\r\n
+comment3.params=num
+comment3.target=void\ move(int)
+comment3.text=\r\n\ \ Move\ method\ specifically\ for\ capture\ game\ type\ (how\ the\ stones\ move)\r\n
 numComments=4

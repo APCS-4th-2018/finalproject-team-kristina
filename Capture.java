@@ -63,6 +63,7 @@ public class Capture extends Mancala
         }
         switchPlayers();//switches what player going
         showPlayer();
+        hideButtons();
         isWon();
     }
     /**

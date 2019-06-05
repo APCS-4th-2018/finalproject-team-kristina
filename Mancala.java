@@ -43,6 +43,7 @@ public abstract class Mancala
     protected boolean won;
     protected Text[]  players;
     protected Text turn;
+    protected Button[] btns;
 
     /**
      * Constructor for objects of Mancala
@@ -56,6 +57,7 @@ public abstract class Mancala
         board = new LinkedList[BOARDSIZE];
         count = new Text[BOARDSIZE];
         players = new Text[2];
+        btns = new Button[14];
         won = false;
         addButtons();
         for (int i = 1; i < BOARDSIZE; i++)
@@ -64,6 +66,7 @@ public abstract class Mancala
         drawNumbers();
         displayPlayers();
         showPlayer();
+        hideButtons();
         //play();
         //initialize(1);
     }
@@ -191,7 +194,7 @@ public abstract class Mancala
 
     private void addButtons()
     {
-        Button[] btns = new Button[14];
+        //Button[] btns = new Button[14];
         for(int i = 1; i < 14; i++)//skips 0 and 7
         {
             if (i != 7)
@@ -232,15 +235,33 @@ public abstract class Mancala
         }
         //myStage.show();
     }
-
+    protected void hideButtons()
+    {
+        if (player == PLAYER1)
+        {
+            for (int i = 1; i <= 6; i++)
+                btns[i].setVisible(true);
+            for (int i = 8; i <= 13; i++)
+                btns[i].setVisible(false);
+        }
+        else
+        {
+            for (int i = 1; i <= 6; i++)
+                btns[i].setVisible(false);
+            for (int i = 8; i <= 13; i++)
+                btns[i].setVisible(true);
+        }
+    }
+    
+    /**
+     * 
+     */
     public void drawStones(int num, int count)
     {
         if (board[num] != null)
             for (int i = 0; i < board[num].size(); i++)
                 ((Stone)board[num].get(i)).setTransparent();      
-                
-        
-            
+
         board[num] = new LinkedList();
         int x = setX(num);
         int y = setY(num);
