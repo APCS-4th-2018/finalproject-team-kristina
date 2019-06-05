@@ -11,9 +11,14 @@ public class Avalanche extends Mancala
 {
     /**
      * Constructor for objects of class Avalanche
+     * 
+     * @param scene
+     * @param stage
+     * @param root
      */
     public Avalanche(Scene scene, Stage stage, Pane root)
     {
+       //calls the parent constructor
        super(scene, stage, root);
     }
 
@@ -24,31 +29,32 @@ public class Avalanche extends Mancala
      */
     public void move(int num)
     {
+        //finds pit where last stone is
         int next = (num + board[num].size()) % 14;
-        super.move(num);//move normally
+        
+        //move normally
+        super.move(num);
 
+        //if the last stone falls on a pit that has stones
         while(!isEmpty(next))
         {
             num = next;
             next = (next + board[num].size()) % 14;
-            //super.switchPlayers();//keep it on the same player
-            super.move(num);//continue moving if there are stones there
             
+            //continue moving
+            super.move(num);
         }
+        
+        //switches turns
         switchPlayers();
+        
+        //shows whose turn it is
         showPlayer();
+        
+        //hides the buttons on the other player's size
         hideButtons();
+        
+        //check if anyone won
         isWon();
     }
-    
-    /**
-     * Determines whether the game is won yet
-     * 
-     * @return true if the game is won, false if not
-     */
-   // public boolean isWon()
-    //{
-       // return true;
-    //}
-    
 }

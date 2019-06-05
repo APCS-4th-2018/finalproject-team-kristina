@@ -1,4 +1,3 @@
-
 import javafx.scene.Scene;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage; 
@@ -13,28 +12,29 @@ import javafx.scene.Group;
 public class Stone
 {
     // instance variables 
+    private final int RADIUS = 15; //radius of stone
+    private Scene myScene;
     private Circle myCircle;
     private int xLocation; //x coordinate
     private int yLocation; //y coordinate
-    private Color myColor;
-    private Scene myScene;
-    private Stage myStage;
-    private int num;
-    private final int RADIUS = 15; //radius of stone
+    private Color myColor; //color of the stone
+    private int num; //number of the pit
+    
 
     /**
      * Constructor for objects of class Stone
      * 
+     * @param n the number of the pit it is in
      * @param x the x location of the stone
      * @param y the y location of the stone
+     * @param scene
      */
-    public Stone(int n, int x, int y, Scene scene, Stage stage)
+    public Stone(int n, int x, int y, Scene scene)
     {
         xLocation = x;
         yLocation = y;
         setColor();
         myScene = scene;
-        myStage = stage;
         num = n;
         draw();
     }
@@ -46,37 +46,44 @@ public class Stone
      */
     public void draw()
     {
-        //Circle circle = new Circle(RADIUS);
         myCircle = new Circle(RADIUS, myColor);
         int x = 0; //set initial x location to 0
         int y = 0; //set initial y location to 0
-        if (num != 0 && num != 7) //if num is not 0 and is not theh 7th pit
+        
+        //if not in the two big pits
+        if (num != 0 && num != 7) 
         {
+            //slightly randomizes locations so stones are not directly on top of each other
             x = 25-(int)(Math.random()*50);
             y = 25-(int)(Math.random()*50);
         }
         else
         {
+            //slightly randomizes locations so stones are not directly on top of each other
             x = 25-(int)(Math.random()*50);
             y = 150-(int)(Math.random()*300);
         }
+        
+        //sets center of the circle
         myCircle.setCenterX(xLocation + x);
         myCircle.setCenterY(yLocation + y);
 
+        //declare and instantiate new Group object
         Group group = new Group();
         group.setAutoSizeChildren(false); 
         group.getChildren().add(myScene.getRoot());
 
+        //add myCircle to group
         group.getChildren().add(myCircle);
         myScene.setRoot(group);
-        myStage.setScene(myScene);
-        myStage.show();
     }
 
+    //chooses random color
     private void setColor()
     {
-        //declare and instantiate variable
-        int rand = (int) (Math.random() * 8)+1; //finds random number
+        //finds random number
+        int rand = (int) (Math.random() * 8)+1; 
+        
         if (rand == 1) //if rand is one set stone to white
             myColor = Color.WHITE;
         else if (rand == 2) //if rand is two set stone to red
@@ -96,17 +103,7 @@ public class Stone
     }
 
     /**
-     * Gets the circle from Stone object
-     *
-     * @return myCircle the stone
-     */ 
-    public Circle getCircle()
-    {
-        return myCircle; //returns myCricle Circle object
-    }
-
-    /**
-     * Erases stone by setting color to transparent and making invisable.
+     * Erases stone by setting color to transparent and making invisible.
      */ 
     public void setTransparent()
     {
