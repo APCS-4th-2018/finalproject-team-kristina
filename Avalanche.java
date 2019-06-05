@@ -37,6 +37,7 @@ public class Avalanche extends Mancala
         }
         switchPlayers();
         showPlayer();
+        hideButtons();
         isWon();
     }
     
