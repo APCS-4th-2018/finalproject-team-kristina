@@ -29,7 +29,7 @@ public class Main extends Application
 {
     //local variable
     private Mancala game;
-    
+
     @Override
     public void start(Stage stage) throws Exception
     {
@@ -42,7 +42,7 @@ public class Main extends Application
         Button buttonHelp = new Button("Help"); //creates help button for instructions
         DropShadow shadow = new DropShadow(); //for button shadow
 
-        //window help 1
+        /***window help 1
         Popup help1 = new Popup(); 
         help1.setX(300); 
         help1.setY(200);
@@ -51,7 +51,7 @@ public class Main extends Application
         label.setStyle(" -fx-background-color: white;");
         help1.getContent().add(label);
         label.setMinWidth(80); 
-        label.setMinHeight(50); 
+        label.setMinHeight(50); ****/
 
         //formatting for the box
         box.setPadding(new Insets(20));
@@ -79,19 +79,20 @@ public class Main extends Application
         button1.setStyle("-fx-background-radius: 7"); //set rounded borders
         button2.setStyle("-fx-background-radius: 7"); 
         box.getChildren().add(buttonHelp);
+        buttonHelp.setOnAction(this::showStage);
 
-        /***** POPUP WINDOW *****/
+        /***** POPUP WINDOW 
         buttonHelp.setOnAction(new EventHandler<ActionEvent>() 
-            {
-                @Override public void handle(ActionEvent event) 
-                {
-                    //help1.show(stage);
-                    if (!help1.isShowing()) 
-                        help1.show(stage); 
-                    else
-                        help1.hide();
-                }
-            });
+        {
+        @Override public void handle(ActionEvent event) 
+        {
+        //help1.show(stage);
+        if (!help1.isShowing()) 
+        help1.show(stage); 
+        else
+        help1.hide();
+        }
+        });*****/
 
         /*
         Button hide = new Button("Hide");
@@ -157,15 +158,15 @@ public class Main extends Application
         box.setPadding(new Insets(20));
         Scene scene = new Scene(box, 1000, 1000);
         stage.setScene(scene);
-        
+
         //sets stage title for avalanche game
         stage.setTitle("Avalanche"); 
 
         //sets the background image (board)
         box.setBackground(displayBoard('a')); 
-        
+
         stage.show();
-        
+
         //instantiates new Avalanche game
         game = new Avalanche(scene, stage, box);
     }
@@ -179,24 +180,37 @@ public class Main extends Application
         box.setPadding(new Insets(20));
         Scene scene = new Scene(box, 1000, 1000);
         stage.setScene(scene);
-        
+
         //sets stage title for avalanche game
         stage.setTitle("Capture"); 
-        
+
         //sets the background image (board)
         box.setBackground(displayBoard('c'));
 
         stage.show();
-        
+
         //instantiates new Capture game
         game = new Capture(scene, stage, box);
+    }
+
+    private void showStage(ActionEvent event)
+    {
+        Stage stage = new Stage();
+        VBox comp = new VBox();
+        
+        //sets stage title for avalanche game
+        stage.setTitle("Capture"); 
+        
+        Scene stageScene = new Scene(comp, 300, 300);
+        stage.setScene(stageScene);
+        stage.show();
     }
 
     //chooses correct background image depending on the type of Mancala
     private Background displayBoard(char letter)
     {
         Image image;
-        
+
         //depending on what type of game is being played, get the correct image
         if (letter == 'a')
             image = new Image("NewAvalancheBoard.png"); 
@@ -206,7 +220,7 @@ public class Main extends Application
         //instantiate a new background image
         BackgroundImage bimage = new BackgroundImage(image, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, 
                 BackgroundPosition.CENTER, new BackgroundSize(100,100,true,true, true, true));
-                
+
         return new Background(bimage);
     }
 }
