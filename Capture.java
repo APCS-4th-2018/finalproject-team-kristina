@@ -30,34 +30,40 @@ public class Capture extends Mancala
     public void move(int num)
     {
         int next = (num + board[num].size()) % 14;
-        int size, across, diff;
+        int size, across, diff, originalSize;
         super.move(num);
-        size = board[next].size();
         //hello if you're looking at this know that it doesn't capture all the stones from the opposite pit for some reason
         if(board[next].size() == 1)//if where you end up in an empty pit
         {
-            if(player == PLAYER1)
+            //super.switchPlayers();//keep on the same player
+            if(player == PLAYER1 && next >= 1 && next <= 6)
             {
+                originalSize = board[0].size();
                 board[0].add(board[next].remove(0));
-                drawStones(0, 1);
                 across = 13 - next + 1;
-                for(int i = 0; i < board[across].size(); i++)
-                    board[0].add(board[across].remove(i));
-                drawStones(0, board[across].size());
+                size = board[across].size();
+                for(int i = 0; i < size; i++)
+                    board[0].add(board[across].remove(0));
+                drawStones(0, size + 1 + originalSize);
             }
-            else
+            else if(player == PLAYER2)
             {
+                originalSize = board[7].size();
                 board[7].add(board[next].remove(0));
                 drawStones(7, 1);
                 across = 13 - next + 1;
-                for(int i = 0; i < board[across].size(); i++)
-                    board[7].add(board[across].remove(i));
-                drawStones(7, board[across].size());
+                size = board[across].size();
+                for(int i = 0; i < size; i++)
+                    board[7].add(board[across].remove(0));
+                drawStones(7, size + 1 + originalSize);
             }
             drawNumbers();
-            isWon();
+            //isWon();
+            //super.switchPlayers();//switchs back
         }
-
+        switchPlayers();//switches what player going
+        showPlayer();
+        isWon();
     }
     /**
      *  Returns whether the user has won or lost in Capture mode.
