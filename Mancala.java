@@ -11,12 +11,6 @@ import javafx.stage.Stage;
 import javafx.scene.Group;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
-import javafx.scene.control.Label;
-import javafx.scene.shape.Path;
-import javafx.util.Duration;
-import javafx.animation.PathTransition;
-import javafx.scene.shape.MoveTo;
-import javafx.scene.Parent;
 import javafx.event.ActionEvent;
 import javafx.scene.effect.InnerShadow;
 import javafx.scene.layout.VBox;
@@ -30,36 +24,37 @@ import javafx.geometry.Pos;
  */
 public abstract class Mancala
 {
-    // instance variable
-    protected LinkedList[] board;  //Mancala board
-    protected Text[] count;
-    protected Scene myScene;
-    protected Stage myStage;
-    protected Pane myRoot;
+    // instance variables
     protected final int BOARDSIZE = 14;
     protected final int PLAYER1 = 1;
     protected final int PLAYER2 = 2;
     protected int player;
     protected boolean won;
-    protected Text[]  players;
+    protected Scene myScene;
+    protected Stage myStage;
     protected Text turn;
+    protected LinkedList[] board;  //Mancala board
+    protected Text[] count;
     protected Button[] btns;
+    protected Text[]  players;
 
     /**
      * Constructor for objects of Mancala
+     * 
+     * 
      */
     public Mancala(Scene scene, Stage stage, Pane root)
     {
         player = PLAYER1;
         myScene = scene;
         myStage = stage;
-        myRoot = root;
+        //myRoot = root;
         board = new LinkedList[BOARDSIZE];
         count = new Text[BOARDSIZE];
         players = new Text[2];
         btns = new Button[14];
         won = false;
-        addButtons();
+        addButtons(root);
         for (int i = 1; i < BOARDSIZE; i++)
             if (i != 7)
                 drawStones(i, 4);
@@ -67,8 +62,6 @@ public abstract class Mancala
         displayPlayers();
         showPlayer();
         hideButtons();
-        //play();
-        //initialize(1);
     }
 
     private void displayPlayers()
@@ -88,8 +81,6 @@ public abstract class Mancala
             group.getChildren().add(players[i]);
         }
         myScene.setRoot(group);
-        myStage.setScene(myScene);
-        myStage.show();
     }
 
     /**
@@ -112,10 +103,6 @@ public abstract class Mancala
         group.getChildren().add(myScene.getRoot());
         group.getChildren().add(turn);
         myScene.setRoot(group);
-        myStage.setScene(myScene);
-        myStage.show();
-
-        //add something in case of free turn- maybe override in avalanche/capture
     }
 
     private void buttonClick1(ActionEvent event)
@@ -195,7 +182,7 @@ public abstract class Mancala
 
     }
 
-    private void addButtons()
+    private void addButtons(Pane root)
     {
         //Button[] btns = new Button[14];
         for(int i = 1; i < 14; i++)//skips 0 and 7
@@ -208,7 +195,7 @@ public abstract class Mancala
                 btns[i].setLayoutY(setY(i)-50);
                 btns[i].setMinSize(100,100);//size the button
                 btns[i].setVisible(true);
-                myRoot.getChildren().add(btns[i]);
+                root.getChildren().add(btns[i]);
                 btns[i].toFront();
                 //make it so something different happens on each button click
                 if (i == 1)
@@ -239,7 +226,7 @@ public abstract class Mancala
         }
         //myStage.show();
     }
-    
+
     /**
      * makes it so that you can only see the buttons for the player's turn it's on
      */
@@ -260,7 +247,7 @@ public abstract class Mancala
                 btns[i].setVisible(true);//only be able to see 8-13
         }
     }
-    
+
     /**
      * draws the stones at the correct location
      * 
@@ -294,7 +281,7 @@ public abstract class Mancala
     private int setX(int i)
     {
         int x = 0;
-        
+
         //set the x location based on the int i passed
         if (i == 0)
             x = 95;
@@ -319,7 +306,7 @@ public abstract class Mancala
     private int setY(int i)
     {
         int y = 0;
-        
+
         //set the y location based on the i passed
         if (i <= 7)
             y = 423;
@@ -356,14 +343,7 @@ public abstract class Mancala
             }
             count++;
         }
-        
         drawNumbers();
-        
-       // switchPlayers();
-            
-           
-        // showPlayer();
-        // isWon();
     }
 
     /**
@@ -376,43 +356,6 @@ public abstract class Mancala
             player = PLAYER2;
         else 
             player = PLAYER1;
-    }
-    
-    private void initialize(int num)
-    {
-        // Rectangle rectangle = new Rectangle(678, 185);
-
-        // Path path = new Path();
-        // MoveTo moveTo = new MoveTo(100,100);
-        // path.getElements().add(moveTo);
-        // Group group = new Group();
-        // group.setAutoSizeChildren(false);
-        // group.getChildren().add(myScene.getRoot());
-        // for(int i = 0; i < board[num].size(); i++)
-        // group.getChildren().add((Circle)board[num].get(i));
-        // PathTransition transition = new PathTransition();
-        // transition.setDuration(Duration.seconds(5));
-        // transition.setNode(group);
-        // transition.setPath(path);
-        // transition.setCycleCount(1);
-        // transition.setAutoReverse(false);
-        // transition.play();
-        // myScene.setRoot(group);
-        // myStage.setScene(myScene);
-        // myStage.show();
-
-        Group group = new Group();
-        group.setAutoSizeChildren(false);
-        //group.getChildren().add(myScene.getRoot());
-        for(int i = 0; i < board[num].size(); i++)
-            group.getChildren().add((Circle)board[num].get(i));
-        PathTransition transition = new PathTransition();
-        transition.setNode(group);
-        transition.setDuration(Duration.seconds(5));
-        transition.setPath(new Rectangle(678, 185));
-        Scene scene = new Scene(group, 800,800);
-        myStage.setScene(scene);
-        myStage.show();
     }
 
     /**
@@ -434,22 +377,22 @@ public abstract class Mancala
      * 
      * @return true if the game is won, false if not
      */
-    public void isWon()
+    protected void isWon()
     {
         int winner = 0;
         boolean allEmpty1 = true;
         boolean allEmpty2 = true;
-        
+
         //traverse pits 1-6 to see if they're all empty
         for (int i = 1; i <= 6; i++)
             if (!isEmpty(i))
                 allEmpty1 = false;
-                
+
         //traverse pits 8-13 to see if they're all empty
         for (int i = 8; i <= 13; i++)
             if (!isEmpty(i))
                 allEmpty2 = false;
-                
+
         //if either row of pits is empty...
         if (allEmpty1 || allEmpty2)
         {
@@ -484,7 +427,7 @@ public abstract class Mancala
         title.setFont(Font.font("Monospaced", 36));
 
         Text result;
-        
+
         //Set the text for what player won
         if (winner == 0)
             result = new Text("It's a tie!");
@@ -492,7 +435,7 @@ public abstract class Mancala
             result = new Text("Player 1!");
         else 
             result = new Text("Player 2!");
-            
+
         //sets visual effects for the text
         result.setEffect(is);
         result.setFill(Color.MEDIUMORCHID);
@@ -511,8 +454,7 @@ public abstract class Mancala
         //Declare variables
         int winner = 0;
         int start, end, own;
-        
-        
+
         if (num == 1)
         {
             start = 8;
@@ -568,7 +510,5 @@ public abstract class Mancala
             group.getChildren().add(count[i]);
         }
         myScene.setRoot(group);
-        myStage.setScene(myScene);
-        myStage.show();
     }
 }
