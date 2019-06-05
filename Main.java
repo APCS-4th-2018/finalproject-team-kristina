@@ -208,22 +208,24 @@ public class Main extends Application
 
         //declaring instructions to the box
         Label capture = new Label("Capture Mode Rules:"); //capture mode label
-        Label capture1 = new Label("Each player owns one side of the board. Players take turns selecting pile of stones"
-        + "from each of their own pits. \nThe stones from the selected pit will move clockwise, dropping one stone over"
-        + "every pit until the player runs out of stones. If the last stone dropped is in an empty hole on the current"
-        + "players pit, the player will capture all stones on the same pit on the opposite side of the board, capturing"
-        + "the other players' stones. \nThe game ends when all six holes on either player's side are empty. The player"
-        + "with the most stones is the winner"); //capture mode label
-        
-        //formatting labels
-        box.getChildren().add(capture); 
-        capture.setFont(Font.font("Monospaced", FontWeight.BOLD, FontPosture.REGULAR, 20));
+        Label capture1 = new Label("Each player owns one side of the board. Players take turns selecting \npile of stones "
+                + "from each of their own highlighted pits. The stones from \nthe selected pit will move clockwise, dropping one stone over "
+                + "every pit \nuntil the player runs out of stones. If the last stone dropped is in an empty \nhole on the current "
+                + "players pit, the player will capture all stones on the same \npit on the opposite side of the board, capturing "
+                + "the other players' stones.\nThe game ends when all six holes on neither player's side are empty. \nThe player "
+                + "with the most stones is the winner,"); //capture mode label
+
+        //formatting labels and adding to box
+        box.getChildren().add(capture); //adds capture header text
+        box.getChildren().add(capture1);  //adds capture instructions
+        capture.setFont(Font.font("Monospaced", FontWeight.BOLD, FontPosture.REGULAR, 20)); //capture header
+        capture.setFont(Font.font("Monospaced", FontPosture.REGULAR, 15)); //instruction format
 
         //set background color
         box.setBackground(new Background(new BackgroundFill(Color.LIGHTPINK, new CornerRadii(1), new Insets(1))));
         stage.show();
 
-        Scene stageScene = new Scene(box, 500, 500);
+        Scene stageScene = new Scene(box, 525, 600);
         stage.setScene(stageScene);
         stage.show();
     }
