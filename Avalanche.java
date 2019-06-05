@@ -36,7 +36,7 @@ public class Avalanche extends Mancala
         super.move(num);
 
         //if the last stone falls on a pit that has stones
-        while(!isEmpty(next))
+        while(!isEmpty(next) && next != 0 && next != 7)
         {
             num = next;
             next = (next + board[num].size()) % 14;

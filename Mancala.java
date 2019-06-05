@@ -474,6 +474,8 @@ public abstract class Mancala
                 won = true;
                 winner = findWinner(2);
             }
+            for (int i = 0; i <= BOARDSIZE; i++)
+                drawStones(i, board[i].size());
             declareWinner(winner);
         }
     }
