@@ -16,6 +16,7 @@ import javafx.scene.effect.DropShadow;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.FontPosture; 
 import javafx.scene.text.FontWeight; 
+import javafx.scene.control.Label;
 
 /**
  * Driver class that handles initial screen
@@ -196,14 +197,18 @@ public class Main extends Application
         box.setSpacing(20); //sets spacing of words
         box.setAlignment(Pos.CENTER); //sets to center
 
+        //title header
         Text title = new Text("Instructions:"); //create title text
         title.setFont(Font.font("Monospaced", FontWeight.BOLD, FontPosture.REGULAR, 55));
         title.setStrokeWidth(2); //setting width  
         title.setStroke(Color.WHITE); //setting border
         title.setFill(Color.TAN); //set text color
         box.getChildren().add(title);
-        stage.setTitle("Mancala");
 
+        //add instructions to the box
+        Label label = new Label("this is VBox example");
+        box.getChildren().add(label); 
+        
         //set background color
         box.setBackground(new Background(new BackgroundFill(Color.LIGHTPINK, new CornerRadii(1), new Insets(1))));
         stage.show();
