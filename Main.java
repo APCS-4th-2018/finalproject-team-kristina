@@ -237,7 +237,7 @@ public class Main extends Application
         box.setBackground(new Background(new BackgroundFill(Color.LIGHTPINK, new CornerRadii(1), new Insets(1))));
         stage.show();
 
-        Scene stageScene = new Scene(box, 765, 650);
+        Scene stageScene = new Scene(box, 770, 650);
         stage.setScene(stageScene);
         stage.show();
     }
