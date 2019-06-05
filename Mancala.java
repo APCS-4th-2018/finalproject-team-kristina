@@ -92,6 +92,9 @@ public abstract class Mancala
         myStage.show();
     }
 
+    /**
+     * Method displays which player it's on
+     */
     protected void showPlayer()
     {
         if (turn != null)
@@ -199,14 +202,15 @@ public abstract class Mancala
         {
             if (i != 7)
             {
-                btns[i] = new Button();
-                btns[i].setShape(new Circle(50));
-                btns[i].setLayoutX(setX(i)-50);
+                btns[i] = new Button();//make the button
+                btns[i].setShape(new Circle(50));//make the button a circle
+                btns[i].setLayoutX(setX(i)-50);//set the location
                 btns[i].setLayoutY(setY(i)-50);
-                btns[i].setMinSize(100,100);
+                btns[i].setMinSize(100,100);//size the button
                 btns[i].setVisible(true);
                 myRoot.getChildren().add(btns[i]);
                 btns[i].toFront();
+                //make it so something different happens on each button click
                 if (i == 1)
                     btns[i].setOnAction(this::buttonClick1);
                 else if (i == 2)
@@ -235,26 +239,33 @@ public abstract class Mancala
         }
         //myStage.show();
     }
+    
+    /**
+     * makes it so that you can only see the buttons for the player's turn it's on
+     */
     protected void hideButtons()
     {
         if (player == PLAYER1)
         {
             for (int i = 1; i <= 6; i++)
-                btns[i].setVisible(true);
+                btns[i].setVisible(true);//only be able to see buttons 1-6
             for (int i = 8; i <= 13; i++)
-                btns[i].setVisible(false);
+                btns[i].setVisible(false);//don't see buttons 8-13
         }
         else
         {
             for (int i = 1; i <= 6; i++)
-                btns[i].setVisible(false);
+                btns[i].setVisible(false);//don't see buttons 1-6
             for (int i = 8; i <= 13; i++)
-                btns[i].setVisible(true);
+                btns[i].setVisible(true);//only be able to see 8-13
         }
     }
     
     /**
+     * draws the stones at the correct location
      * 
+     * @param num the location to draw the stones
+     * @param count the number of stones to draw
      */
     public void drawStones(int num, int count)
     {
@@ -266,12 +277,15 @@ public abstract class Mancala
         int x = setX(num);
         int y = setY(num);
 
+        //if its in the pits on the end
         if (num == 0 || num == 7)
             y = y + 93;
 
+        Stone s;
+        //make and add the new stones
         for (int i = 1; i <= count; i++)
         {
-            Stone s = new Stone(num,x,y,myScene,myStage);
+            s = new Stone(num,x,y,myScene,myStage);
             board[num].add(s);
         }
         myStage.show();
@@ -280,6 +294,8 @@ public abstract class Mancala
     private int setX(int i)
     {
         int x = 0;
+        
+        //set the x location based on the int i passed
         if (i == 0)
             x = 95;
         else if (i == 7)
@@ -303,6 +319,8 @@ public abstract class Mancala
     private int setY(int i)
     {
         int y = 0;
+        
+        //set the y location based on the i passed
         if (i <= 7)
             y = 423;
         else
@@ -319,11 +337,11 @@ public abstract class Mancala
     {
         int count = 1;
         int size = board[num].size();
-        
+        int index;
 
         for(int i = 1; i <= size; i++)
         {
-            int index = (num + count) % 14;
+            index = (num + count) % 14;
             if (board[index] == null)
                 board[index] = new LinkedList();
             if (player == PLAYER1 && index == 7)
@@ -348,6 +366,10 @@ public abstract class Mancala
         // isWon();
     }
 
+    /**
+     * method switches what player it's on
+     * 
+     */
     protected void switchPlayers()
     {
         if (player == PLAYER1)
@@ -417,15 +439,21 @@ public abstract class Mancala
         int winner = 0;
         boolean allEmpty1 = true;
         boolean allEmpty2 = true;
+        
+        //traverse pits 1-6 to see if they're all empty
         for (int i = 1; i <= 6; i++)
             if (!isEmpty(i))
                 allEmpty1 = false;
+                
+        //traverse pits 8-13 to see if they're all empty
         for (int i = 8; i <= 13; i++)
             if (!isEmpty(i))
                 allEmpty2 = false;
+                
+        //if either row of pits is empty...
         if (allEmpty1 || allEmpty2)
         {
-            if (allEmpty1)
+            if (allEmpty1)//if 1-6 is empty, determine the winner
             {
                 won = true;
                 winner = findWinner(1);
@@ -441,6 +469,7 @@ public abstract class Mancala
 
     private void declareWinner(int winner)
     {
+        //Declare variables
         InnerShadow is = new InnerShadow();
         is.setOffsetX(4.0f);
         is.setOffsetY(4.0f);
@@ -455,12 +484,16 @@ public abstract class Mancala
         title.setFont(Font.font("Monospaced", 36));
 
         Text result;
+        
+        //Set the text for what player won
         if (winner == 0)
             result = new Text("It's a tie!");
         else if (winner == 1)
             result = new Text("Player 1!");
         else 
             result = new Text("Player 2!");
+            
+        //sets visual effects for the text
         result.setEffect(is);
         result.setFill(Color.MEDIUMORCHID);
         result.setX(380);
@@ -475,8 +508,11 @@ public abstract class Mancala
 
     private int findWinner(int num)
     {
+        //Declare variables
         int winner = 0;
         int start, end, own;
+        
+        
         if (num == 1)
         {
             start = 8;
@@ -513,11 +549,10 @@ public abstract class Mancala
         group.getChildren().add(myScene.getRoot());
         for (int i = 0; i < board.length; i++)
         {
-            if (board[i] == null)
+            if (board[i] == null)//if there's nothing there
                 board[i] = new LinkedList();
             int num = board[i].size();
-            int x;
-            int y;
+            int x, y;
             if (count[i] != null)
                 count[i].setOpacity(0.0);
             count[i] = new Text(Integer.toString(num));
