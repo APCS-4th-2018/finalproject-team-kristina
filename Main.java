@@ -189,22 +189,8 @@ public class Main extends Application
         //declare and initialize variables
         VBox box = new VBox();
         Stage stage = new Stage();
-
         //sets stage title for help
         stage.setTitle("Help"); 
-
-        //formatting for the box
-        box.setPadding(new Insets(20));
-        box.setSpacing(20); //sets spacing of words
-        box.setAlignment(Pos.CENTER); //sets to center
-
-        //title header
-        Text title = new Text("Instructions:"); //create title text
-        title.setFont(Font.font("Monospaced", FontWeight.BOLD, FontPosture.REGULAR, 50));
-        title.setStrokeWidth(2); //setting width  
-        title.setStroke(Color.WHITE); //setting border
-        title.setFill(Color.TAN); //set text color
-        box.getChildren().add(title);
 
         //declaring instructions to the box
         Label capture = new Label("Capture Mode Rules:"); //capture mode label
@@ -217,11 +203,24 @@ public class Main extends Application
 
         Label avalanche = new Label("Avalanche Mode Rules:"); //avalanche mode label
         Label avalanche1 = new Label("Each player owns one side of the board. Players take turns selecting \na pile of stones "
-        + "from each of their own highlighted pits. The stones from \nthe selected pit will move clockwise, dropping one stone over "
-        + "every pit \nuntil the player runs out of stones. If the last stone dropped is in a unempty \nhole on either player's"
-        + "pit, the player will pick up all the stones in that pit \nand continue to deposit the stones clockwise. The player's\n"
-        + "turn ends when the last stone dropped is in an empty pit. \nThe game ends when all six holes on neither player's side are empty. \n"
-        + "The player with the most stones is the winner."); //avalanche mode label
+                + "from each of their own highlighted pits. The stones from \nthe selected pit will move clockwise, dropping one stone over "
+                + "every pit \nuntil the player runs out of stones. If the last stone dropped is in a unempty \nhole on either player's"
+                + "pit, the player will pick up all the stones in that pit \nand continue to deposit the stones clockwise. The player's\n"
+                + "turn ends when the last stone dropped is in an empty pit. \nThe game ends when all six holes on neither player's side are empty. \n"
+                + "The player with the most stones is the winner."); //avalanche mode label
+
+        //formatting for the box
+        box.setPadding(new Insets(20));
+        box.setSpacing(20); //sets spacing of words
+        box.setAlignment(Pos.CENTER); //sets to center
+
+        //title header
+        Text title = new Text("Instructions:"); //create title text
+        title.setFont(Font.font("Monospaced", FontWeight.BOLD, FontPosture.REGULAR, 50));
+        title.setStrokeWidth(2); //setting width  
+        title.setStroke(Color.WHITE); //setting border
+        title.setFill(Color.LIGHTPINK); //set text color
+        box.getChildren().add(title);
 
         //formatting labels and adding to box
         box.getChildren().add(capture); //adds capture header text
@@ -234,7 +233,7 @@ public class Main extends Application
         avalanche1.setFont(Font.font("Monospaced", FontPosture.REGULAR, 15)); //instruction format
 
         //set background color
-        box.setBackground(new Background(new BackgroundFill(Color.LIGHTPINK, new CornerRadii(1), new Insets(1))));
+        box.setBackground(new Background(new BackgroundFill(Color.LIGHTCYAN, new CornerRadii(1), new Insets(1))));
         stage.show();
 
         Scene stageScene = new Scene(box, 770, 650);
