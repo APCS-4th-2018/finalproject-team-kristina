@@ -231,13 +231,13 @@ public class Main extends Application
         capture.setFont(Font.font("Monospaced", FontWeight.BOLD, FontPosture.REGULAR, 20)); //capture header
         capture1.setFont(Font.font("Monospaced", FontPosture.REGULAR, 15)); //instruction format
         avalanche.setFont(Font.font("Monospaced", FontWeight.BOLD, FontPosture.REGULAR, 20)); //avalanche header
-        avalanche.setFont(Font.font("Monospaced", FontPosture.REGULAR, 15)); //instruction format
+        avalanche1.setFont(Font.font("Monospaced", FontPosture.REGULAR, 15)); //instruction format
 
         //set background color
         box.setBackground(new Background(new BackgroundFill(Color.LIGHTPINK, new CornerRadii(1), new Insets(1))));
         stage.show();
 
-        Scene stageScene = new Scene(box, 525, 600);
+        Scene stageScene = new Scene(box, 765, 650);
         stage.setScene(stageScene);
         stage.show();
     }
