@@ -34,6 +34,7 @@ public abstract class Mancala
     protected Scene myScene;
     protected Stage myStage;
     protected Text turn;
+    protected Group group;
     protected LinkedList[] board;  //Mancala board
     protected Text[] count;
     protected Button[] btns;
@@ -52,6 +53,10 @@ public abstract class Mancala
         //initializes instance variables
         myScene = scene;
         myStage = stage;
+        group = new Group();
+        group.setAutoSizeChildren(false);
+        group.getChildren().add(myScene.getRoot());
+        
         board = new LinkedList[BOARDSIZE];
         count = new Text[BOARDSIZE];
         players = new Text[2];
@@ -89,13 +94,6 @@ public abstract class Mancala
      */
     private void displayPlayers()
     {
-        //declare and instantiate Group object
-        Group group = new Group();
-        group.setAutoSizeChildren(false);
-
-        //add old stuff to group
-        group.getChildren().add(myScene.getRoot());
-
         //adds text indicating each player's side of the board
         for (int i = 0; i < 2; i++)
         {
@@ -128,7 +126,8 @@ public abstract class Mancala
     {
         //remove what is currently showing
         if (turn != null)
-            turn.setOpacity(0.0);
+            //turn.setOpacity(0.0);
+            group.getChildren().remove(turn);
 
         //sets appropriate text
         if (player == PLAYER1)
@@ -140,11 +139,6 @@ public abstract class Mancala
         turn.setX(100);
         turn.setY(100);
         turn.setFont(Font.font("Monospaced", FontWeight.BOLD, FontPosture.REGULAR, 20));
-
-        //declare and instantiate Group object
-        Group group = new Group();
-        group.setAutoSizeChildren(false);
-        group.getChildren().add(myScene.getRoot());
 
         //adds new stuff to group
         group.getChildren().add(turn);
@@ -372,7 +366,8 @@ public abstract class Mancala
         //removes what was previously there
         if (board[num] != null)
             for (int i = 0; i < board[num].size(); i++)
-                ((Stone)board[num].get(i)).setTransparent();      
+                //((Stone)board[num].get(i)).setTransparent();      
+                group.getChildren().remove(((Stone)board[num].get(i)).getCircle());
 
         //instantiates new LinkedList
         board[num] = new LinkedList();
@@ -388,7 +383,7 @@ public abstract class Mancala
         //make and add the new stones
         for (int i = 1; i <= count; i++)
         {
-            board[num].add(new Stone(num,x,y,myScene));
+            board[num].add(new Stone(num,x,y,myScene, group));
         }
     }
 
@@ -651,11 +646,6 @@ public abstract class Mancala
      */
     protected void drawNumbers()
     {
-        //declare and instantiate Group object
-        Group group = new Group();
-        group.setAutoSizeChildren(false);
-        group.getChildren().add(myScene.getRoot());
-
         //for each pit
         for (int i = 0; i < board.length; i++)
         {
@@ -668,7 +658,8 @@ public abstract class Mancala
 
             //remove what was previously there
             if (count[i] != null)
-                count[i].setOpacity(0.0);
+                //count[i].setOpacity(0.0);
+                group.getChildren().remove(count[i]);
 
             //create new Text object
             count[i] = new Text(Integer.toString(num));
