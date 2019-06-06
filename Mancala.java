@@ -583,7 +583,6 @@ public abstract class Mancala
         else 
             result = new Text("Player 2!");
 
-        System.out.println("winner");
         //sets visual effects for the text
         result.setEffect(is);
         result.setFill(Color.MEDIUMORCHID);
