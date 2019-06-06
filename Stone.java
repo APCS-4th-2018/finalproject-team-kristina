@@ -28,6 +28,7 @@ public class Stone
      * @param x the x location of the stone
      * @param y the y location of the stone
      * @param scene
+     * @author Helen Xu
      */
     public Stone(int n, int x, int y, Scene scene)
     {
@@ -43,6 +44,7 @@ public class Stone
      * Draws the stone
      *
      * @param  y  a sample parameter for a method
+     * @author Helen Xu
      */
     public void draw()
     {
@@ -79,6 +81,11 @@ public class Stone
     }
 
     //chooses random color
+    /**
+     * method sets the color of each stone 
+     * 
+     * @author Kristina Lansang
+     */
     private void setColor()
     {
         //finds random number
@@ -104,6 +111,8 @@ public class Stone
 
     /**
      * Erases stone by setting color to transparent and making invisible.
+     * 
+     * @author Helen Xu
      */ 
     public void setTransparent()
     {

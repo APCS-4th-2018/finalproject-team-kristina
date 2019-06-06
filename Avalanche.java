@@ -15,6 +15,7 @@ public class Avalanche extends Mancala
      * @param scene
      * @param stage
      * @param root
+     * @author Kristina Lansang
      */
     public Avalanche(Scene scene, Stage stage, Pane root)
     {
@@ -26,6 +27,7 @@ public class Avalanche extends Mancala
      * Moves the stones that are clicked on
      * 
      * @param num the location of the stone that is clicked on
+     * @author Kristina Lansang
      */
     public void move(int num)
     {
