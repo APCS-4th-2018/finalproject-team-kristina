@@ -1,16 +1,16 @@
 #BlueJ class context
 comment0.target=Stone
-comment0.text=\r\n\ Represents\ a\ stone\ of\ the\ mancala\ game\r\n\r\n\ @author\ Helen,\ Kylie,\ Kristina\r\n\ @version\ 5/22/19\r\n
+comment0.text=\n\ Represents\ a\ stone\ of\ the\ mancala\ game\n\n\ @author\ Helen,\ Kylie,\ Kristina\n\ @version\ 5/22/19\n
 comment1.params=n\ x\ y\ scene\ g
 comment1.target=Stone(int,\ int,\ int,\ javafx.scene.Scene,\ javafx.scene.Group)
-comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ Stone\r\n\ \r\n\ @param\ n\ the\ number\ of\ the\ pit\ it\ is\ in\r\n\ @param\ x\ the\ x\ location\ of\ the\ stone\r\n\ @param\ y\ the\ y\ location\ of\ the\ stone\r\n\ @param\ scene\r\n\ @author\ Helen\ Xu\r\n
+comment1.text=\n\ Constructor\ for\ objects\ of\ class\ Stone\n\ \n\ @param\ n\ the\ number\ of\ the\ pit\ it\ is\ in\n\ @param\ x\ the\ x\ location\ of\ the\ stone\n\ @param\ y\ the\ y\ location\ of\ the\ stone\n\ @param\ scene\n\ @author\ Helen\ Xu\n
 comment2.params=
 comment2.target=void\ draw()
-comment2.text=\r\n\ Draws\ the\ stone\r\n\r\n\ @param\ \ y\ \ a\ sample\ parameter\ for\ a\ method\r\n\ @author\ Helen\ Xu\r\n
+comment2.text=\n\ Draws\ the\ stone\n\n\ @param\ \ y\ \ a\ sample\ parameter\ for\ a\ method\n\ @author\ Helen\ Xu\n
 comment3.params=
 comment3.target=void\ setColor()
-comment3.text=\r\n\ method\ sets\ the\ color\ of\ each\ stone\ \r\n\ \r\n\ @author\ Kristina\ Lansang\r\n
+comment3.text=\n\ method\ sets\ the\ color\ of\ each\ stone\ \n\ \n\ @author\ Kristina\ Lansang\n
 comment4.params=
 comment4.target=javafx.scene.shape.Circle\ getCircle()
-comment4.text=\r\n\ Returns\ the\ circle\r\n\ \r\n\ @return\ circle\r\n\ @author\ Helen\ Xu\r\n
+comment4.text=\n\ Returns\ the\ circle\n\ \n\ @return\ circle\n\ @author\ Helen\ Xu\n
 numComments=5
