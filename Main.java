@@ -224,7 +224,7 @@ public class Main extends Application
         Label avalanche = new Label("Avalanche Mode Rules:"); //avalanche mode label
         Label avalanche1 = new Label("Each player owns one side of the board. Players take turns selecting \na pile of stones "
                 + "from each of their own highlighted pits. The stones from \nthe selected pit will move clockwise, dropping one stone over "
-                + "every pit \nuntil the player runs out of stones. If the last stone dropped is in a unempty \nhole on either player's"
+                + "every pit \nuntil the player runs out of stones. If the last stone dropped is in a unempty \nhole on either player's "
                 + "pit, the player will pick up all the stones in that pit \nand continue to deposit the stones clockwise. The player's\n"
                 + "turn ends when the last stone dropped is in an empty pit. \nThe game ends when all six holes on neither player's side are empty. \n"
                 + "The player with the most stones is the winner."); //avalanche mode label
