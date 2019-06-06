@@ -1,3 +1,4 @@
+
 import java.util.LinkedList;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -44,6 +45,7 @@ public abstract class Mancala
      * @param scene
      * @param stage
      * @param root
+     * @author Helen Xu and Kristina Lansang
      */
     public Mancala(Scene scene, Stage stage, Pane root)
     {
@@ -80,7 +82,11 @@ public abstract class Mancala
         hideButtons();
     }
 
-    //shows which side of the board belong to which player
+    /**
+     * shows which side of the board belong to which player
+     * 
+     * @author Helen Xu
+     */
     private void displayPlayers()
     {
         //declare and instantiate Group object
@@ -115,6 +121,8 @@ public abstract class Mancala
 
     /**
      * Method displays which player it's on
+     * 
+     * @author Helen Xu
      */
     protected void showPlayer()
     {
@@ -145,7 +153,11 @@ public abstract class Mancala
         myScene.setRoot(group);
     }
 
-    //adds buttons to the board
+    /**
+     * shows which side of the board belong to which player
+     * 
+     * @author Kristina Lansang
+     */
     private void addButtons(Pane root)
     {
         for(int i = 1; i < 14; i++) //skips 0 and 7
@@ -192,84 +204,132 @@ public abstract class Mancala
         }
     }
 
-    //moves the stones in pit 1 when clicked on
+    /**
+     * moves the stones in pit 1 when clicked on
+     * 
+     * @author Helen Xu
+     */
     private void buttonClick1(ActionEvent event)
     {
         if (!won && player == PLAYER1)
             move(1);
     }
 
-    //moves the stones in pit 2 when clicked on
+    /**
+     * moves the stones in pit 2 when clicked on
+     * 
+     * @author Helen Xu
+     */
     private void buttonClick2(ActionEvent event)
     {
         if (!won && player == PLAYER1)
             move(2);
     }
 
-    //moves the stones in pit 3 when clicked on
+    /**
+     * moves the stones in pit 3 when clicked on
+     * 
+     * @author Helen Xu
+     */
     private void buttonClick3(ActionEvent event)
     {
         if (!won && player == PLAYER1)
             move(3);
     }
 
-    //moves the stones in pit 4 when clicked on
+    /**
+     * moves the stones in pit 4 when clicked on
+     * 
+     * @author Helen Xu
+     */
     private void buttonClick4(ActionEvent event)
     {
         if (!won && player == PLAYER1)
             move(4);
     }
 
-    //moves the stones in pit 5 when clicked on
+    /**
+     * moves the stones in pit 5 when clicked on
+     * 
+     * @author Helen Xu
+     */
     private void buttonClick5(ActionEvent event)
     {
         if (!won && player == PLAYER1)
             move(5);
     }
 
-    //moves the stones in pit 6 when clicked on
+    /**
+     * moves the stones in pit 6 when clicked on
+     * 
+     * @author Helen Xu
+     */
     private void buttonClick6(ActionEvent event)
     {
         if (!won && player == PLAYER1)
             move(6);
     }
 
-    //moves the stones in pit 8 when clicked on
+    /**
+     * moves the stones in pit 8 when clicked on
+     * 
+     * @author Helen Xu
+     */
     private void buttonClick8(ActionEvent event)
     {
         if (!won && player == PLAYER2)
             move(8);
     }
 
-    //moves the stones in pit 9 when clicked on
+    /**
+     * moves the stones in pit 9 when clicked on
+     * 
+     * @author Helen Xu
+     */
     private void buttonClick9(ActionEvent event)
     {
         if (!won && player == PLAYER2)
             move(9);
     }
 
-    //moves the stones in pit 10 when clicked on
+    /**
+     * moves the stones in pit 8 when clicked on
+     * 
+     * @author Helen Xu
+     */
     private void buttonClick10(ActionEvent event)
     {
         if (!won && player == PLAYER2)
             move(10);
     }
 
-    //moves the stones in pit 11 when clicked on
+    /**
+     * moves the stones in pit 11 when clicked on
+     * 
+     * @author Helen Xu
+     */
     private void buttonClick11(ActionEvent event)
     {
         if (!won && player == PLAYER2)
             move(11);
     }
 
-    //moves the stones in pit 12 when clicked on
+    /**
+     * moves the stones in pit 12 when clicked on
+     * 
+     * @author Helen Xu
+     */
     private void buttonClick12(ActionEvent event)
     {
         if (!won && player == PLAYER2)
             move(12);
     }
 
-    //moves the stones in pit 13 when clicked on
+    /**
+     * moves the stones in pit 13 when clicked on
+     * 
+     * @author Helen Xu
+     */
     private void buttonClick13(ActionEvent event)
     {
         if (!won && player == PLAYER2)
@@ -278,6 +338,8 @@ public abstract class Mancala
 
     /**
      * makes it so that you can only see the buttons for the player's turn it's on
+     * 
+     * @author Helen Xu
      */
     protected void hideButtons()
     {
@@ -302,6 +364,8 @@ public abstract class Mancala
      * 
      * @param num the location to draw the stones
      * @param count the number of stones to draw
+     * 
+     * @author Helen Xu
      */
     protected void drawStones(int num, int count)
     {
@@ -312,7 +376,7 @@ public abstract class Mancala
 
         //instantiates new LinkedList
         board[num] = new LinkedList();
-        
+
         //set X and Y position
         int x = setX(num);
         int y = setY(num);
@@ -328,7 +392,11 @@ public abstract class Mancala
         }
     }
 
-    //sets the X location
+    /**
+     * sets the X location
+     * 
+     * @author Helen Xu and Kristina Lansang
+     */
     private int setX(int i)
     {
         int x = 0;
@@ -354,7 +422,11 @@ public abstract class Mancala
         return x;
     }
 
-    //sets the y location
+    /**
+     * sets the y location
+     * 
+     * @author Helen Xu and Kristina Lansang
+     */
     private int setY(int i)
     {
         int y = 0;
@@ -364,7 +436,7 @@ public abstract class Mancala
             y = 423;
         else
             y = 608;
-            
+
         return y;
     }
 
@@ -372,6 +444,7 @@ public abstract class Mancala
      * Moves the stones that are clicked on
      * 
      * @param num  location user clicked
+     * @author Helen Xu
      */
     protected void move(int num)
     {
@@ -385,11 +458,11 @@ public abstract class Mancala
         {
             //finds number of pit that next stone should be dropped in
             index = (num + count) % 14;
-            
+
             //instantiates new LinkedList if there wasn't one
             if (board[index] == null)
                 board[index] = new LinkedList();
-                
+
             //skip opponents big pit
             if (player == PLAYER1 && index == 0)
                 i--;
@@ -399,18 +472,18 @@ public abstract class Mancala
             else
             {
                 board[index].add(board[num%14].remove(0));
-                
+
                 //redraw stones in the new location
                 drawStones(index, board[index].size());
             }
-            
+
             //move to the next location
             count++;
         }
-        
+
         //update final number of stones
         drawStones(num%14, board[num%14].size());
-        
+
         //update numbers
         drawNumbers();
     }
@@ -418,6 +491,7 @@ public abstract class Mancala
     /**
      * Switches what player it's on
      * 
+     * @author Helen Xu
      */
     protected void switchPlayers()
     {
@@ -432,6 +506,7 @@ public abstract class Mancala
      * 
      * @param num  location to check
      * @return true/false
+     * @author Kristina Lansang
      */
     protected boolean isEmpty(int num)
     {
@@ -443,6 +518,8 @@ public abstract class Mancala
 
     /**
      * Determines whether the game is won yet
+     * 
+     * @author Helen Xu
      * 
      */
     protected void isWon()
@@ -480,7 +557,11 @@ public abstract class Mancala
         }
     }
 
-    //creates new window that declares the winner
+    /**
+     * creates new window that declares the winner
+     * 
+     * @author Helen Xu
+     */
     private void declareWinner(int winner)
     {
         //Declare variables
@@ -520,7 +601,11 @@ public abstract class Mancala
         stage.show();
     }
 
-    //finds the winner
+    /**
+     * finds the winner
+     * 
+     * @author Helen Xu
+     */
     private int findWinner(int num)
     {
         //declare variables
@@ -539,28 +624,30 @@ public abstract class Mancala
             end = 6;
             own = 0;
         }
-        
+
         //adds remaining pieces to your own
         for (int i = start; i <= end; i++)
             if (board[i] != null)
                 while (board[i].size() != 0)
                     board[own].add(board[i].remove(0));
-                    
+
         //tallies total marble in each side
         int count1 = board[0].size();
         int count2 = board[7].size();
-        
+
         //determines the winner based on who had more stones
         if (count1 > count2)
             winner = PLAYER1;
         else if (count2 > count1)
             winner = PLAYER2;
-            
+
         return winner;
     }
 
     /**
      * Prints out the number of stones in each pit
+     * 
+     * @author Helen Xu
      */
     protected void drawNumbers()
     {
@@ -568,24 +655,24 @@ public abstract class Mancala
         Group group = new Group();
         group.setAutoSizeChildren(false);
         group.getChildren().add(myScene.getRoot());
-        
+
         //for each pit
         for (int i = 0; i < board.length; i++)
         {
             //if there's nothing there
             if (board[i] == null) 
                 board[i] = new LinkedList();
-                
+
             int num = board[i].size();
             int x, y;
-            
+
             //remove what was previously there
             if (count[i] != null)
                 count[i].setOpacity(0.0);
-                
+
             //create new Text object
             count[i] = new Text(Integer.toString(num));
-            
+
             //set X and Y location
             if (i <= 7)
                 y = setY(i) - 88;
@@ -594,15 +681,15 @@ public abstract class Mancala
             x = setX(i) - 10;
             count[i].setX(x);
             count[i].setY(y);
-            
+
             //set font, size, color
             count[i].setFont(Font.font("Monospaced", FontWeight.EXTRA_BOLD, FontPosture.REGULAR, 30));
             count[i].setFill(Color.WHITE);
-            
+
             //add to group
             group.getChildren().add(count[i]);
         }
-        
+
         //update myScene
         myScene.setRoot(group);
     }

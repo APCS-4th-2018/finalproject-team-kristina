@@ -1,13 +1,13 @@
 #BlueJ class context
 comment0.target=Capture
-comment0.text=\n\ The\ Capture\ mode\ of\ the\ mancala\ game\n\n\ @author\ Helen,\ Kylie,\ Kristina\n\ @version\ 5/22/19\n
+comment0.text=\r\n\ The\ Capture\ mode\ of\ the\ mancala\ game\r\n\r\n\ @author\ Helen,\ Kylie,\ Kristina\r\n\ @version\ 5/22/19\r\n
 comment1.params=scene\ stage\ root
 comment1.target=Capture(javafx.scene.Scene,\ javafx.stage.Stage,\ javafx.scene.layout.Pane)
-comment1.text=\n\ \ Constructor\ for\ the\ Capture\ object\n\ \ \n\ \ @param\ scene\n\ \ @param\ stage\n\ \ @param\ root\n
+comment1.text=\r\n\ \ Constructor\ for\ the\ Capture\ object\r\n\ \ \r\n\ \ @param\ scene\r\n\ \ @param\ stage\r\n\ \ @param\ root\r\n\ \ @author\ Kristina\ Lansang\r\n
 comment2.params=num\ next
 comment2.target=void\ captured(int,\ int)
-comment2.text=\n\ \ Helper\ method\ for\ when\ stones\ are\ captured\n\ \ \n\ \ @param\ num\ number\ of\ the\ pit\ clicked\ on\n\ \ @param\ next\ number\ of\ the\ pit\ where\ the\ last\ stone\ lands\n
+comment2.text=\r\n\ \ Helper\ method\ for\ when\ stones\ are\ captured\r\n\ \ \r\n\ \ @param\ num\ number\ of\ the\ pit\ clicked\ on\r\n\ \ @param\ next\ number\ of\ the\ pit\ where\ the\ last\ stone\ lands\r\n\ \ @author\ Kristina\ Lansang\r\n
 comment3.params=num
 comment3.target=void\ move(int)
-comment3.text=\n\ \ Move\ method\ specifically\ for\ capture\ game\ type\ (how\ the\ stones\ move)\n\ \ \n\ \ @param\ num\ location\ of\ the\ pit\ clicked\ on\n
+comment3.text=\r\n\ \ Move\ method\ specifically\ for\ capture\ game\ type\ (how\ the\ stones\ move)\r\n\ \ \r\n\ \ @param\ num\ location\ of\ the\ pit\ clicked\ on\r\n\ \ @author\ Kristina\ Lansang\r\n
 numComments=4

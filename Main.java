@@ -22,7 +22,9 @@ import javafx.scene.control.Label;
 /**
  * Driver class that handles initial screen
  *
- * @author Helen, Kylie, Kristina
+ * @author Helen
+ * @author Kylie-also created the images for the board
+ * @author Kristina
  * @version 5/22/19
  */
 public class Main extends Application
@@ -30,6 +32,11 @@ public class Main extends Application
     //local variable
     private Mancala game;
 
+    /**
+     * method starts the game
+     * 
+     * @author Helen Xu and Kylie Park
+     */
     @Override
     public void start(Stage stage) throws Exception
     {
@@ -140,7 +147,11 @@ public class Main extends Application
         /**** END OF BUTTON LAYOUT ****/
     }
 
-    //when the Avalanche button is clicked
+    /**
+     * when the Avalanche button is clicked
+     * 
+     * @author Helen Xu
+     */
     private void buttonClickA(ActionEvent event)
     {
         //declares and instantiates variables
@@ -162,7 +173,11 @@ public class Main extends Application
         game = new Avalanche(scene, stage, box);
     }
 
-    //when the Capture button is clicked
+    /**
+     * when the Capture button is clicked
+     * 
+     * @author Helen Xu
+     */
     private void buttonClickC(ActionEvent event)
     {
         //declares and instantiates variables
@@ -184,6 +199,11 @@ public class Main extends Application
         game = new Capture(scene, stage, box);
     }
 
+    /**
+     * method shows the stage
+     * 
+     * @author Kylie Park
+     */
     private void showStage(ActionEvent event)
     {
         //declare and initialize variables
@@ -240,7 +260,11 @@ public class Main extends Application
         stage.show(); //show stage
     }
 
-    //chooses correct background image depending on the type of Mancala
+    /**
+     * chooses correct background image depending on the type of Mancala
+     * 
+     * @author Kylie Park
+     */
     private Background displayBoard(char letter)
     {
         Image image;
