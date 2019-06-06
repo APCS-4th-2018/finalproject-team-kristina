@@ -56,7 +56,7 @@ public abstract class Mancala
         group = new Group();
         group.setAutoSizeChildren(false);
         group.getChildren().add(myScene.getRoot());
-        
+
         board = new LinkedList[BOARDSIZE];
         count = new Text[BOARDSIZE];
         players = new Text[2];
@@ -126,7 +126,7 @@ public abstract class Mancala
     {
         //remove what is currently showing
         if (turn != null)
-            //turn.setOpacity(0.0);
+        //turn.setOpacity(0.0);
             group.getChildren().remove(turn);
 
         //sets appropriate text
@@ -366,7 +366,7 @@ public abstract class Mancala
         //removes what was previously there
         if (board[num] != null)
             for (int i = 0; i < board[num].size(); i++)
-                //((Stone)board[num].get(i)).setTransparent();      
+            //((Stone)board[num].get(i)).setTransparent();      
                 group.getChildren().remove(((Stone)board[num].get(i)).getCircle());
 
         //instantiates new LinkedList
@@ -548,6 +548,7 @@ public abstract class Mancala
             }
             for (int i = 0; i < BOARDSIZE; i++)
                 drawStones(i, board[i].size());
+            drawNumbers();
             declareWinner(winner);
         }
     }
@@ -583,7 +584,6 @@ public abstract class Mancala
         else 
             result = new Text("Player 2!");
 
-        System.out.println("winner");
         //sets visual effects for the text
         result.setEffect(is);
         result.setFill(Color.MEDIUMORCHID);
@@ -624,7 +624,7 @@ public abstract class Mancala
 
             //remove what was previously there
             if (count[i] != null)
-                //count[i].setOpacity(0.0);
+            //count[i].setOpacity(0.0);
                 group.getChildren().remove(count[i]);
 
             //create new Text object
