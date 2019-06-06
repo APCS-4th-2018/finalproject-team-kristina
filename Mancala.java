@@ -205,7 +205,7 @@ public abstract class Mancala
      */
     private void buttonClick1(ActionEvent event)
     {
-        if (!won && player == PLAYER1)
+        if (!won && player == PLAYER1 && board[1].size() != 0)
             move(1);
     }
 
@@ -216,7 +216,7 @@ public abstract class Mancala
      */
     private void buttonClick2(ActionEvent event)
     {
-        if (!won && player == PLAYER1)
+        if (!won && player == PLAYER1 && board[2].size() != 0)
             move(2);
     }
 
@@ -227,7 +227,7 @@ public abstract class Mancala
      */
     private void buttonClick3(ActionEvent event)
     {
-        if (!won && player == PLAYER1)
+        if (!won && player == PLAYER1 && board[3].size() != 0)
             move(3);
     }
 
@@ -238,7 +238,7 @@ public abstract class Mancala
      */
     private void buttonClick4(ActionEvent event)
     {
-        if (!won && player == PLAYER1)
+        if (!won && player == PLAYER1 && board[4].size() != 0)
             move(4);
     }
 
@@ -249,7 +249,7 @@ public abstract class Mancala
      */
     private void buttonClick5(ActionEvent event)
     {
-        if (!won && player == PLAYER1)
+        if (!won && player == PLAYER1 && board[5].size() != 0)
             move(5);
     }
 
@@ -260,7 +260,7 @@ public abstract class Mancala
      */
     private void buttonClick6(ActionEvent event)
     {
-        if (!won && player == PLAYER1)
+        if (!won && player == PLAYER1 && board[6].size() != 0)
             move(6);
     }
 
@@ -271,7 +271,7 @@ public abstract class Mancala
      */
     private void buttonClick8(ActionEvent event)
     {
-        if (!won && player == PLAYER2)
+        if (!won && player == PLAYER2 && board[8].size() != 0)
             move(8);
     }
 
@@ -282,7 +282,7 @@ public abstract class Mancala
      */
     private void buttonClick9(ActionEvent event)
     {
-        if (!won && player == PLAYER2)
+        if (!won && player == PLAYER2 && board[9].size() != 0)
             move(9);
     }
 
@@ -293,7 +293,7 @@ public abstract class Mancala
      */
     private void buttonClick10(ActionEvent event)
     {
-        if (!won && player == PLAYER2)
+        if (!won && player == PLAYER2 && board[10].size() != 0)
             move(10);
     }
 
@@ -304,7 +304,7 @@ public abstract class Mancala
      */
     private void buttonClick11(ActionEvent event)
     {
-        if (!won && player == PLAYER2)
+        if (!won && player == PLAYER2 && board[11].size() != 0)
             move(11);
     }
 
@@ -315,7 +315,7 @@ public abstract class Mancala
      */
     private void buttonClick12(ActionEvent event)
     {
-        if (!won && player == PLAYER2)
+        if (!won && player == PLAYER2 && board[12].size() != 0)
             move(12);
     }
 
@@ -326,7 +326,7 @@ public abstract class Mancala
      */
     private void buttonClick13(ActionEvent event)
     {
-        if (!won && player == PLAYER2)
+        if (!won && player == PLAYER2 && board[13].size() != 0)
             move(13);
     }
 
