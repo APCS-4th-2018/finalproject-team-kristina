@@ -1,13 +1,13 @@
 #BlueJ class context
 comment0.target=Avalanche
-comment0.text=\r\n\ The\ Avalanche\ mode\ of\ the\ mancala\ game\r\n\r\n\ @author\ Helen,\ Kylie,\ Kristina\r\n\ @version\ 5/22/19\r\n
+comment0.text=\n\ The\ Avalanche\ mode\ of\ the\ mancala\ game\n\n\ @author\ Helen,\ Kylie,\ Kristina\n\ @version\ 5/22/19\n
 comment1.params=scene\ stage\ root
 comment1.target=Avalanche(javafx.scene.Scene,\ javafx.stage.Stage,\ javafx.scene.layout.Pane)
-comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ Avalanche\r\n\ \r\n\ @param\ scene\r\n\ @param\ stage\r\n\ @param\ root\r\n\ @author\ Kristina\ Lansang\r\n
+comment1.text=\n\ Constructor\ for\ objects\ of\ class\ Avalanche\n\ \n\ @param\ scene\n\ @param\ stage\n\ @param\ root\n\ @author\ Kristina\ Lansang\n
 comment2.params=num
 comment2.target=void\ move(int)
-comment2.text=\r\n\ Moves\ the\ stones\ that\ are\ clicked\ on\r\n\ \r\n\ @param\ num\ the\ location\ of\ the\ stone\ that\ is\ clicked\ on\r\n\ @author\ Kristina\ Lansang\r\n
+comment2.text=\n\ Moves\ the\ stones\ that\ are\ clicked\ on\n\ \n\ @param\ num\ the\ location\ of\ the\ stone\ that\ is\ clicked\ on\n\ @author\ Kristina\ Lansang\n
 comment3.params=num
 comment3.target=int\ findWinner(int)
-comment3.text=\r\n\ find\ out\ who\ the\ winner\ of\ the\ game\ is\r\n\ \r\n\ @param\ num\ the\ side\ that\ emptied\ all\ the\ pits\r\n\ @author\ Kristina\ Lansang\r\n
+comment3.text=\n\ find\ out\ who\ the\ winner\ of\ the\ game\ is\n\ \n\ @param\ num\ the\ side\ that\ emptied\ all\ the\ pits\n\ @author\ Kristina\ Lansang\n
 numComments=4
