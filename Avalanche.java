@@ -59,4 +59,21 @@ public class Avalanche extends Mancala
         //check if anyone won
         isWon();
     }
+    
+    /**
+     * find out who the winner of the game is
+     * 
+     * @param num the side that emptied all the pits
+     * @author Kristina Lansang
+     */
+    protected int findWinner(int num)
+    {
+        int winner = 0;
+        if(board[0].size() > board[7].size())
+            winner = PLAYER2;
+        else if(board[0].size() < board[7].size())
+            winner = PLAYER1;
+            
+        return winner;
+    }
 }
