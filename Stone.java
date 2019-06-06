@@ -89,7 +89,7 @@ public class Stone
         int rand = (int) (Math.random() * 8)+1; 
         
         if (rand == 1) //if rand is one set stone to white
-            myColor = Color.WHITE;
+            myColor = Color.DARKGRAY;
         else if (rand == 2) //if rand is two set stone to red
             myColor = Color.RED;
         else if (rand == 3) //if rand is three set stone to orange
