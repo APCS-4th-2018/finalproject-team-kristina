@@ -107,8 +107,8 @@ public class Capture extends Mancala
                     board[own].add(board[i].remove(0));
 
         //tallies total marble in each side
-        int count1 = board[0].size();
-        int count2 = board[7].size();
+        int count1 = board[7].size();
+        int count2 = board[0].size();
 
         //determines the winner based on who had more stones
         if (count1 > count2)
