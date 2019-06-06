@@ -19,6 +19,7 @@ public class Stone
     private int yLocation; //y coordinate
     private Color myColor; //color of the stone
     private int num; //number of the pit
+    private Group group;
     
 
     /**
@@ -30,13 +31,14 @@ public class Stone
      * @param scene
      * @author Helen Xu
      */
-    public Stone(int n, int x, int y, Scene scene)
+    public Stone(int n, int x, int y, Scene scene, Group g)
     {
         xLocation = x;
         yLocation = y;
         setColor();
         myScene = scene;
         num = n;
+        group = g;
         draw();
     }
 
@@ -69,11 +71,6 @@ public class Stone
         //sets center of the circle
         myCircle.setCenterX(xLocation + x);
         myCircle.setCenterY(yLocation + y);
-
-        //declare and instantiate new Group object
-        Group group = new Group();
-        group.setAutoSizeChildren(false); 
-        group.getChildren().add(myScene.getRoot());
 
         //add myCircle to group
         group.getChildren().add(myCircle);
@@ -108,16 +105,15 @@ public class Stone
         else //else if none of those, set stone to pale violet red
             myColor = Color.PALEVIOLETRED;
     }
-
+    
     /**
-     * Erases stone by setting color to transparent and making invisible.
+     * Returns the circle
      * 
+     * @return circle
      * @author Helen Xu
-     */ 
-    public void setTransparent()
+     */
+    public Circle getCircle()
     {
-        myColor = Color.TRANSPARENT; //sets stone color to transparent
-        myCircle.setVisible(false); //sets visibility to false
-        draw(); //draws the erased stone
+        return myCircle;
     }
 }
