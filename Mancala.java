@@ -546,7 +546,7 @@ public abstract class Mancala
                 won = true;
                 winner = findWinner(2);
             }
-            for (int i = 0; i <= BOARDSIZE; i++)
+            for (int i = 0; i < BOARDSIZE; i++)
                 drawStones(i, board[i].size());
             declareWinner(winner);
         }
@@ -583,6 +583,7 @@ public abstract class Mancala
         else 
             result = new Text("Player 2!");
 
+        System.out.println("winner");
         //sets visual effects for the text
         result.setEffect(is);
         result.setFill(Color.MEDIUMORCHID);
@@ -597,47 +598,12 @@ public abstract class Mancala
     }
 
     /**
-     * finds the winner
+     * method finds which side the winner is on
      * 
-     * @author Helen Xu
+     * @param num the emptied side
+     * @author Kristina Lansang
      */
-    private int findWinner(int num)
-    {
-        //declare variables
-        int winner = 0;
-        int start, end, own;
-
-        if (num == 1)
-        {
-            start = 8;
-            end = 13;
-            own = 7;
-        }
-        else 
-        {
-            start = 1; 
-            end = 6;
-            own = 0;
-        }
-
-        //adds remaining pieces to your own
-        for (int i = start; i <= end; i++)
-            if (board[i] != null)
-                while (board[i].size() != 0)
-                    board[own].add(board[i].remove(0));
-
-        //tallies total marble in each side
-        int count1 = board[0].size();
-        int count2 = board[7].size();
-
-        //determines the winner based on who had more stones
-        if (count1 > count2)
-            winner = PLAYER1;
-        else if (count2 > count1)
-            winner = PLAYER2;
-
-        return winner;
-    }
+    protected abstract int findWinner(int num);
 
     /**
      * Prints out the number of stones in each pit
